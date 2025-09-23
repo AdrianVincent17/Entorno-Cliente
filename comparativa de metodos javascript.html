@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comparacion: innerHTML vs innerText</title>
+
+</head>
+<body>
+    <h1>Comparativa de métodos en JavaScript</h1>
+    <div id="contenido">
+        <strong>Visible</strong><span style="display:none;">oculto</span>
+    </div>
+    <p><strong>Abre la consola para ver los resultados</strong></p>
+    <script>
+        let elemento = document.getElementById("contenido");
+
+        console.log("innerHTML:");
+        console.log(elemento.innerHTML); 
+        console.log("innerText:");
+        console.log(elemento.innerText); 
+        console.log("textContent:");
+        console.log(elemento.textContent); 
+    </script>
+</body>
+</html>
