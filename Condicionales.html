@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales</title>
+</head>
+<body>
+    <h1>Nota del alumno</h1>
+    <p id="resultado"></p>
+    <script>
+        let nota=Number(prompt("Dime tu nota "));
+
+        if (nota >=0 && nota<5){
+            alert("El alumno esta suspenso ");
+
+        }else if(nota>=5 && nota<7){
+            alert("El alumno ha sacado un aprobado");
+
+        }else if(nota>=7 && nota<9){
+            alert("El alumno ha sacado un notable");
+
+        }else if(nota>=9 && nota<=10){
+            alert("El alumno ha sacado un sobresaliente")
+
+        }else{
+            alert("nota no valida");
+        }
+
+
+    </script>
+    
+</body>
+</html>
