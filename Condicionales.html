@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condicionales</title>
+</head>
+<body>
+    <h1>Nota del alumno</h1>
+    <div id="resultado"></div>
+    <div id="mensaje"></div>
+    <script>
+        let nota=prompt("Dime tu nota ");
+
+        if (isNaN(nota)){
+            document.getElementById("resultado").textContent="Error, debes introducir algun numero ";
+
+            }else if(nota==null || nota==""){
+                document.getElementById("resultado").textContent="Debes introducir algun dato por favor maquinarias"
+            }else{
+                    nota=Number(nota);
+                if (nota >=0 && nota<5){
+                    alert("El alumno esta suspenso ");
+                    mensaje="Este alumno esta suspenso";
+                }else if(nota>=5 && nota<7){
+                    alert("El alumno ha sacado un aprobado");
+                   mensaje="Este alumno esta aprobado";
+
+                }else if(nota>=7 && nota<9){
+                    alert("El alumno ha sacado un notable");
+                    mensaje="Este alumno tiene un notable";
+
+                }else if(nota>=9 && nota<=10){
+                    alert("El alumno ha sacado un sobresaliente")
+                  mensaje="Este alumno tiene un sobresaliente";
+
+                }else{
+                    alert("nota no valida, fuera de rango");
+                   mensaje="<br>"+"Esta nota no es valida, debe estar entre 0 y 10";
+                }
+
+    }
+     document.getElementById("resultado").innerHTML="<h1>"+nota+"</h1>";
+      document.getElementById("mensaje").innerHTML=mensaje;
+    </script>
+    
+</body>
+</html>

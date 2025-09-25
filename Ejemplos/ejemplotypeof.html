@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de typeof</title>
+</head>
+<body>
+    <h1>Ejemplo: typeof</h1>
+    <p id="resultado"></p>
+    <script>
+        let nombre="Lucia";
+        console.log(typeof nombre);     //"string"
+        let edad=21;
+        console.log(typeof edad);       //"number"
+
+        let persona={nombre: "Ana", edad: 21}; //"object"
+        console.log(typeof persona);
+
+        let lista=[1,3,5];
+        console.log(typeof lista); //"object"
+
+        function saludar(){
+            return "Hola";
+        }
+        console.log(typeof saludar); //"function"
+
+    </script>  
+</body>
+</html>
