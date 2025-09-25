@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Nota del alumno</h1>
+<<<<<<< HEAD
     <div id="resultado"></div>
     <div id="mensaje"></div>
     <script>
@@ -42,6 +43,29 @@
     }
      document.getElementById("resultado").innerHTML="<h1>"+nota+"</h1>";
       document.getElementById("mensaje").innerHTML=mensaje;
+=======
+    <p id="resultado"></p>
+    <script>
+        let nota=Number(prompt("Dime tu nota "));
+
+        if (nota >=0 && nota<5){
+            alert("El alumno esta suspenso ");
+
+        }else if(nota>=5 && nota<7){
+            alert("El alumno ha sacado un aprobado");
+
+        }else if(nota>=7 && nota<9){
+            alert("El alumno ha sacado un notable");
+
+        }else if(nota>=9 && nota<=10){
+            alert("El alumno ha sacado un sobresaliente")
+
+        }else{
+            alert("nota no valida");
+        }
+
+
+>>>>>>> d5ae24310c42d5c3abb9881b183703345df0c812
     </script>
     
 </body>
