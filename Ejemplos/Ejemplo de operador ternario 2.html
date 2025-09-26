@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Operador ternario 2</title>
+</head>
+<body>
+    <h1>Ejemplo de operador ternario 2</h1>
+    <p id="result"></p>
+    <script>
+        let num=parseFloat(prompt("Dime un numero"));
+
+      if(isNaN(num) || num==null || num==""){
+        alert("Meteme un numerico nene");
+        document.getElementById("result").innerHTML="¿Estas intentando meter una palabra enserio?";
+      }else{
+        mensaje=((num%2==0)?"Par":"Impar");
+        alert(mensaje);
+        document.getElementById("result").innerHTML="El numero es "+mensaje;
+      }
+    </script>
+</body>
+</html>

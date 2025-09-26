@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Switch 2</title>
+</head>
+<body>
+    <h1>Ejemplo: Switch 2</h1>
+    <p>Abre la consolo del navegador para ver los resultados</p>
+    <div id="resul"></div>
+    <script>
+        let dia=prompt("Escribe un numero y te dia que dia es");
+        let nombredia;
+
+        switch(dia){
+            case 1: nombredia="Lunes";break;
+            case 2: nombredia="Martes";break;
+            case 3: nombredia="Miercoles";break;
+            case 4: nombredia="Jueves";break;
+            case 5: nombredia="Viernes";break;
+            default: alert("Error, Fuera de rango");
+                
+        }
+
+        if(dia>7 || dia<1 || isNaN(dia)){
+        document.getElementById("resul").innerHTML="Error, dia incorrecto ";
+        }else{
+        document.getElementById("resul").innerHTML="Hoy es "+nombredia;
+        }
+        </script>
+</body>
+</html>
