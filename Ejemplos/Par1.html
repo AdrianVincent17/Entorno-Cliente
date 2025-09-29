@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par 1</title>
+</head>
+<body>
+    <h1>Par o impar</h1>
+    <p>Abre la consoloa del navegador para ver el resultado </p>
+
+    <script>
+        //Pedimos el valor y o vonbvertimos a numero entero
+        let num=parseInt(prompt("Dime un numero"));
+
+        if(isNaN(num)){
+            //caso cadena no numerica
+            console.log("Debes introducir un valor entero");
+
+        }else{
+            //Caso correcto -> Mostramos por consoloa si el numero es par o impar
+            let tipo=(num % 2==0)? "Par": "Impar";
+            console.log(`El numero ${num} es ${tipo}`);
+        }
+
+    </script>
+</body>
+</html>

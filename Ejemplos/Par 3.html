@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par 3</title>
+</head>
+
+<body>
+    <h1>Par o impar</h1>
+    <p>Abre la consoloa del navegador para ver el resultado </p>
+
+    <script>
+        //Pedimos el valor y o vonbvertimos a numero entero
+        let valor = prompt("Dime un numero entero");
+
+        //Comprobamos si se ha cancelado la introduccion del valor
+        if (valor === null) {
+            //El usuario pulsa cancelar
+            console.log("Operacion cancelada por el usuario")
+        } else {
+            if (valor === "" || valor.trim() === "") {
+                //Caso cadena varia o cadena con espacios en blanco
+                console.log("No has introducido ningun valor");
+            } else {
+                let num = Number(valor);
+                if (Number.isInteger(num)) {
+                    //Caso correcto -> Mostramos por consoloa si el numero es par o impar
+                    let tipo = (num % 2 == 0) ? "Par" : "Impar";
+                    console.log(`El numero ${num} es ${tipo}`);
+
+
+                } else {
+                    //caso cadena no numerica
+                    console.log("Debes introducir un valor entero");
+                }
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
