@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio notas condicionales</title>
+</head>
+<body>
+    <h1>Ejercicio de notas alumno</h1>
+    <p>pide una nota y devuelve la calificacion</p>
+
+    <script>
+
+        
+        let nota=parseFloat(prompt("Dime la nota del alumno"));
+
+        if(isNaN(nota)){
+           alert("Debes introducir una calificacion valida");
+        }else{
+            if(nota<0){
+                alert("Debes introducir una calificacion mayor o igual que 0");
+                }else if(nota<5){
+                    alert("Insuficiente");
+                }else if(nota<6){
+                     alert("Suficiente");
+                }else if(nota<7){
+                     alert("Bien");
+                }else if(nota<9){
+                     alert("Notable");
+                }else if(nota<=10){
+                     alert("Sobresaliente");
+                }else{
+                    alert("Debes introducir una calificacion mayor o igual que 10");
+                }
+        }
+    </script>
+    
+</body>
+</html>
