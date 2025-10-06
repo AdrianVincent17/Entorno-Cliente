@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piramide</title>
+</head>
+<body>
+    <h1>Piramide</h1>
+    <p>piramide con console log</p> 
+    <script>
+
+        const ALTURA=4;
+            for(let i=1; i<=ALTURA; i++){
+                let fila="";
+                //añadimos los espacios en blanco
+                let blancos=ALTURA-1;
+                for(let j=i; j<=blancos; j++){
+                    fila+=" ";
+                }
+                //añadimos los asteriscos
+                let asteriscos=2*i-1;
+                for(let x=1; x<=asteriscos; x++){
+                    fila+="*";
+
+                }
+                //mostramos fila completa
+                console.log(fila);
+            }
+
+    </script>   
+</body>
+</html>
