@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desglose monedas y billetes</title>
+</head>
+<body>
+    <h1>Desglose de monedas y billetes</h1>
+    <p id="total"></p>
+    <h2>Desglose: </h2>
+    <p><ul id="desglose"></ul></p>
+    
+    <script>
+            
+            let dinero=prompt("indica una cantidad de dinero");
+            let salida=""; 
+        if(dinero==null){
+            alert("Operacion cancelada por el usuario");
+        }else{
+            dinero=Number(dinero);
+
+            let resto=dinero;
+            
+
+            if(dinero<=0 || isNaN(dinero)){
+                alert("Debe ser un numero positivo");
+            }else{
+                
+                let b500=(parseInt)(resto/500);
+                    resto=resto%500;
+                let b200=(parseInt)(resto/200);
+                    resto=resto%200;
+                let b100=(parseInt)(resto/100);
+                    resto=resto%100;
+                let b50=(parseInt)(resto/50);
+                    resto=resto%50;
+                let b20=(parseInt)(resto/20);
+                    resto=resto%20;
+                let b10=(parseInt)(resto/10);
+                    resto=resto%10;
+                let b5=(parseInt)(resto/5);
+                    resto=resto%5;
+                let m2=(parseInt)(resto/2);
+                    resto=resto%2;
+                let m1=resto;
+
+                
+                 if(b500>0){
+                     salida+=`<li >${b500} X 500€ </li>`;
+                }
+                if(b200>0){
+                     salida+=`<li >${b200} X 200€ </li>`;
+                }
+                if(b100>0){
+                    salida+=`<li> ${b100} X 100€ </li>`;
+                }
+                if(b50>0){
+                     salida+=`<li>${b50} X 50€ </li>`;
+                }
+                if(b20>0){
+                     salida+=`<li> ${b20} X 20€ </li>`;
+                }
+                if(b10>0){
+                     salida+=`<li> ${b10} X 10€ </li>`;
+                }
+                if(b5>0){
+                     salida+=`<li> ${b5} X 5€ </li>`;
+                }
+                if(m2>0){
+                     salida+=`<li> ${m2} X 2€ </li>`;
+                }
+                if(m1>0){
+                     salida+=`<li> ${m1} X 1€ </li>`;
+                }
+            
+            }
+        }
+
+                document.getElementById("total").innerHTML="Cantidad introducida: "+dinero+"€";
+                document.getElementById("desglose").innerHTML+=salida;
+                     
+
+          
+
+    </script>
+</body>
+</html>
