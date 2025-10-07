@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma numeros</title>
+</head>
+<body>
+    <h1>Suma de dos numeros</h1>
+    <script>
+        //Pedimos los valores al usuario
+        let valor1=prompt("Introduce el primer numero");
+        let valor2=prompt("Introduce el segundo numero");
+
+        let mensaje="";
+
+        //Ahora validamos si la introduccion de numero se cancela
+
+        if(valor1===null || valor2===null){
+            mensaje="Operacion cancelada por el usuario";
+        }else{
+            //Eliminamos espacios en blanco (esto se puede hacer simplemente parseando a Number)
+            valor1=valor1.trim();
+            valor2=valor2.trim();
+
+            //validamos cadenas vacias 
+            if(valor1===" " || valor2===" "){
+                mensaje="No has introducido ambos valores";
+            }else{
+                //Conversion a numero
+                let a=Number(valor1);
+                let b=Number(valor2);
+
+                //validamos numeros no validos
+                if(isNaN(a)||isNaN(b)){
+                    mensaje="Debes introducir dos numeros validos";
+                }else{
+                    //realiza la suma
+                    let suma=a+b;
+                    mensaje=`El resultado de sumar ${a} y ${b} es igual a ${suma} \nGracias por usar este programa`;
+                }
+            }
+        }
+        alert(mensaje);
+
+    </script>
+    
+</body>
+</html>

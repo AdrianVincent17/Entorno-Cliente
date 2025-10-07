@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayor y menor</title>
+</head>
+<body>
+    
+    <h1>Mayor y menor en javascript (v1)</h1>
+    <p>Abre la consola del navegador para ver los resultados</p>
+
+    <script>
+        //pedimos los numeros
+       ;
+        
+         let a=Number(prompt("Dime el primer numero"));
+         let b=Number(prompt("Dime el segundo numero"));
+
+         //validamos los numeros introducidos
+         if(!isNaN(a) && !isNaN(b)){
+            console.log("Los valores introducidos son " ,a,b);
+            if(a>b){
+                console.log("Mayor: ",a);
+                console.log("Menor: ",b);
+            }else if(a<b){
+                console.log("Mayor: ",b);
+                console.log("Menor: ",a);
+            }else{
+                console.log("Ambos valores son iguales ",a);
+            }
+         }else{
+            console.log("Debes introducir dos valores numericos");
+         }
+    </script>
+</body>
+</html>

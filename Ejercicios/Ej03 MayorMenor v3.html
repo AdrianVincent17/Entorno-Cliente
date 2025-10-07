@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayory menor</title>
+</head>
+<body>
+    <h1>Mayor y menor en Javascript v3</h1>
+    <div id="valores"></div>
+    <div id="resultado"></div>
+
+    <script>
+
+        //pedimos los valores 
+        let valor1=prompt("Introduce el primer numero");
+        let valor2=prompt("Introduce el segundo numero");
+        let mensaje=document.getElementById("valores");
+
+        //Comprobamos si se ha cancelado la introduccion de datos 
+        if(valor1===null || valor2===null){
+             mensaje.textContent="Operacion cancelada por el usuario";
+           
+        }else{
+            //convertimos la entrada del prompt en numeros o decimales
+            let a=parseFloat(valor1);
+            let b=parseFloat(valor2);
+
+            //validamos si la entrada son numeros o no 
+            if(isNaN(a) || isNaN(b)){
+                mensaje.textContent="Debes introducir numeros validos";
+            }else{
+                 mensaje.textContent=`Numeros introducidos: ${valor1} y ${valor2}`;
+                 if(a===b){
+                mensaje.textContent=`Ambos numeros son iguales ${valor1}`;
+                }else{
+                    const mayor=a>b?a:b;
+                    const menor=a<b?a:b;
+
+                    document.getElementById("resultado").innerHTML=`El mayor es ${mayor} <br> El menor es ${menor}`;
+                }
+            }
+             
+           
+
+            
+        }
+
+
+    </script>
+</body>
+</html>

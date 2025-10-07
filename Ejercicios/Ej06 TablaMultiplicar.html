@@ -10,7 +10,7 @@
     <p id="result"></p>
     
         <script>
-            let num=prompt("Dime la t+++abla que quieras");
+            let num=prompt("Dime la tabla que quieras");
             let salida="";
 
             if (num === null){
@@ -20,7 +20,7 @@
             }else{
                 num=Number(num);
                 if(!Number.isInteger(num) || num<1 || num > 10){
-                salida="Debes introducir un numero entero entre 1 y 10";
+                    salida="Debes introducir un numero entero entre 1 y 10";
 
                 }else{
                      salida=`<h2>Tabla del ${num}</h2>`;

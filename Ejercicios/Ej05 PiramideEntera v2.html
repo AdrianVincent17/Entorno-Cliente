@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piramide v2</title>
+</head>
+<body>
+    <h1>Piramide de asteriscos en JavaScript v2</h1>
+
+    <pre id="piramide"></pre><!-- pre conserva los espacios y saltos de linea --> 
+    <script>
+
+
+        const altura=5;
+        let resultado="";
+
+            for(let i=1; i<=altura; i++){
+
+                let fila="";
+
+                //añadimos los espacios en blanco
+                let blancos=altura-1;
+
+                for(let j = i ; j <= blancos; j++){
+                    fila+= " ";
+                }
+
+                //añadimos los asteriscos
+                let asteriscos= 2 * i - 1;
+
+                for(let j = 1; j <= asteriscos; j++){
+                    fila+="*";
+                }
+
+                //Añadimos el salto de linea
+                resultado+=`${fila}\n`;
+                
+            }
+            
+            //mostramos fila completa
+                document.getElementById("piramide").textContent=resultado;
+
+    </script>   
+</body>
+</html>

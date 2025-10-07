@@ -10,7 +10,7 @@
     <p>Abre la consoloa del navegador para ver el resultado </p>
 
     <script>
-        //Pedimos el valor y o vonbvertimos a numero entero
+        //Pedimos el valor
         let valor=prompt("Dime un numero entero");
 
         //Comprobamos si se ha cancelado la introduccion del valor
@@ -18,15 +18,18 @@
             //El usuario pulsa cancelar
             console.log("Operacion cancelada por el usuario")
         }else{
+            //Convertimos a numero entero
             let num=parseInt(valor);
         if(isNaN(num)){
             //caso cadena no numerica
             console.log("Debes introducir un valor entero");
 
         }else{
-            //Caso correcto -> Mostramos por consoloa si el numero es par o impar
-            let tipo=(num % 2==0)? "Par": "Impar";
+            //Caso correcto → Mostramos por consoloa si el numero es par o impar
+            let tipo = (num % 2 === 0)? "Par": "Impar";
             console.log(`El numero ${num} es ${tipo}`);
+
+            
         }
     }
 

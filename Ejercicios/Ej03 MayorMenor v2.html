@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayor y menor</title>
+</head>
+<body>
+    <h1>Mayor y menor con Javascript v2</h1>
+    <p>Abre la consola del navegador para ver los resultados</p>
+
+    <script>
+
+        //Pedimos los valores
+        let valor1=prompt("Dime el primer valor");
+        let valor2=prompt("Dime el segundo valor");
+
+        //Comprobamos si se ha cancelado la introduccion de datos
+        if(a===null || b===null){
+            console.log("Operacion cancelada por el usuario");
+
+        }else{
+            //Convertimos a Numero (permitimos numeros enteros y decimales)
+            const a=parseFloat(valor1);
+            const b=parseFloat(valor2);
+
+            //validamos los numeros
+            if(isNaN(a)|| isNaN(b)){
+                console.log("Debes introducir numero validos");
+            }else{
+                console.log("Los numeros introducidos son " ,a,b);
+                if(a===b){
+                    console.log("Ambos numeros son iguales ",a);
+                }else{
+                    const mayor= a > b ? a : b;
+                    const menor= a < b ? a : b;
+
+                    console.log("Mayor: ",mayor);
+                    console.log("Menor: ",menor);
+                }
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+</html>

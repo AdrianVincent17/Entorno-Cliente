@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones</title>
+</head>
+<body>
+    <h1>Calificacion</h1>
+    <p>Abre la consola del navegador para ver el resultado</p>
+    <script>
+        //Pedimos la clificacion
+        let valor = prompt("Dime una calificacion entre 1 y 10");
+
+        //Comprobamos si el usuario cancela o no 
+        if(valor===null){
+            console.log("Operacion cancelada por el usuario");
+        }else{
+            valor=parseFloat(valor);
+            if(isNaN(valor)){
+                //caso cadena no numerica
+                console.log("Debes introducir un numero entero")
+            }else{
+                //Mostramos la cadena de caracteres correspondiente con la nota
+                if(valor<0){
+                    console.log("Debes introducir una calificacion entre 1 y 10");
+                }else if(valor<5){
+                    console.log("Insuficiente");
+                }else if(valor<6){
+                    console.log("Suficiente");
+                }else if(valor<7){
+                    console.log("Bien");
+                }else if(valor<9){
+                    console.log("Notable");
+                }else if(valor<=10){
+                    console.log("Sobresaliente");
+                }else{
+                    console.log("Debes introducir una calificacion menor o igual que 10");
+                }
+                
+            }
+        }
+    </script>
+    
+</body>
+</html>

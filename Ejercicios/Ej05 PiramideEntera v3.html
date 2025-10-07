@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piramide v3</title>
+</head>
+<body>
+    <h1>Piramide de asteriscos en JavaScript v3</h1>
+    <pre id="piramide"></pre> 
+    <script>
+
+       
+                //Pedimos laaltura al usuario y la convertimos a numero
+                let altura=Number(prompt("Dime la altura de la piramide"));
+
+                let mensaje=document.getElementById("piramide");
+
+                //Validamos que sea un numero positivo
+                if(isNaN(altura) || altura <= 0){
+                   mensaje.textContent="Altura no valida";
+
+                } else {
+                    let resultado = "";
+                    
+                    for (let i = 1; i <= altura; i++){
+                        let fila = "";
+
+                    //añadimos los espacios en blanco
+                        let blancos = altura - 1;
+                    for (let j = i; j <= blancos; j++){
+                        fila += " ";
+                    }
+
+                    //añadimos los asteriscos
+                    let asteriscos = 2 * i - 1;
+
+                    for(let j = 1; j <= asteriscos; j++){
+                        fila += "*";
+
+                    }
+
+                    resultado += fila + "\n";
+
+                       
+
+                    }
+
+                //mostramos fila completa
+                mensaje.textContent = resultado;
+
+                }
+                 
+
+
+        
+            
+            
+
+    </script>   
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeros Romanos</title>
+</head>
+<body>
+    <h1>Conversion de numero decimal a numeros romanos</h1>
+
+    <p id="año"></p>
+    <p id="romanos"></p>
+
+    <script>
+        //Pedimos al usuario la introduccion de un numero entero positivo
+
+        let decimal=prompt("Dime un numero");
+        let romano="";
+
+        let mensaje="";
+        
+        if(decimal===null){
+            document.getElementById("año").textContent="Operacion cancelada por el usuario";
+
+        }else{
+            let numero=parseInt(decimal);
+            if(isNaN(numero)|| numero===" " || numero<0){
+                document.getElementById("año").textContent="Introduce un numero valido"
+            }else{
+
+                while(numero>=1000){
+                    romano+="M";
+                    numero-=1000;
+                }
+                 while(numero>=900){
+                    romano+="CM";
+                    numero-=900;
+                }
+                 while(numero>=500){
+                    romano+="D";
+                    numero-=500;
+                }
+                 while(numero>=400){
+                    romano+="CD";
+                    numero-=400;
+                }
+                 while(numero>=100){
+                    romano+="C";
+                    numero-=100;
+                }
+                 while(numero>=90){
+                    romano+="XC";
+                    numero-=90;
+                }
+                 while(numero>=50){
+                    romano+="L";
+                    numero-=50;
+                }
+                while(numero>=40){
+                    romano+="XL";
+                    numero-=40;
+                }
+                while(numero>=10){
+                    romano+="X";
+                    numero-=10;
+                }
+                while(numero>=9){
+                    romano+="IX";
+                    numero-=9;
+                }
+                while(numero>=5){
+                    romano+="V";
+                    numero-=5;
+                }
+                while(numero>=4){
+                    romano+="IV";
+                    numero-=4;
+                }
+                while(numero>=1){
+                    romano+="I";
+                    numero-=1;
+                }
+
+                document.getElementById("año").textContent="año introducido: "+decimal;
+                document.getElementById("romanos").textContent="Numeros romanos: "+romano;
+
+            }
+        }
+            
+        
+
+
+
+    </script>
+    
+</body>
+</html>

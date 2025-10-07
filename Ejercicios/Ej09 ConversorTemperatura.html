@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+</head>
+<body>
+    <h1>Conversor de Temperatura (Fahrenheit a Celsius y viceversa)</h1>
+    
+    <script>
+        //Pedimos al usuario que elija cual opcion quiere
+        let opcion=prompt(`Elige una opción:\n1 - De Celsius a Fahrenheit\n2 - De Fahrenheit a Celsius` );
+
+        if(opcion===null){
+            alert("Operacion Cancelada por el usuario");
+        }else{
+            if(opcion==="1"){
+                let temperaturaF=prompt("Dime los grados en Celsius");
+                if(temperaturaF===null){
+                    alert("Operacion cancelada por el usuario");
+
+                }else if(temperaturaF==="" || isNaN(temperaturaF)){
+                    alert("Debes elegir un numero valido");
+                     
+                }else{
+                    temperaturaF=parseFloat(temperaturaF)
+                    temperaturaF=(temperaturaF*9/5)+32;
+                    alert("La temperatura en Fahrenheit es: "+temperaturaF);
+                }
+               
+            }else if(opcion==="2"){
+                  let temperaturaC=prompt("Dime los grados en Fahrenheit");
+                        
+                 if(temperaturaC===null){
+                    alert("Operacion cancelada por el usuario");
+
+                }else if(temperaturaC==="" || isNaN(temperaturaC)){
+                    alert("Debes elegir un numero valido");
+                     
+                }else{
+                    temperaturaC=parseFloat(temperaturaC);
+                    temperaturaC=(temperaturaC-32)*5/9;
+                    alert("La temperatura en Celsius es: "+temperaturaC);
+                }
+               
+            }else{
+                alert("Debes introducir una de las dos opciones");
+            }
+        }
+        
+
+    </script>
+    
+</body>
+</html>
