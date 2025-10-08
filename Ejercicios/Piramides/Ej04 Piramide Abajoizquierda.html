@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piramide Abajo izquierda</title>
+</head>
+<body>
+    <h1>Piramide Abajo izquierda</h1>
+    
+    <pre id="result"></pre>
+
+    <script>
+
+        //pedimos la altura de la piramide al usuario
+        let altura=prompt("Dime la altura de la piramide");
+
+        let mensaje=document.getElementById("result");
+        if(altura==null){
+            mensaje.textContent="Operacion cancelada por el usuario";
+        }else{
+            altura=Number(altura);
+            if(isNaN(altura) || altura<=0){
+                mensaje.textContent="Operacion no valida, introduce un numero";
+            }else{
+                let resu="";
+                for(let i=altura; i>=1; i--){
+
+                    let fila="";
+
+                    for(let j=altura; j>i; j--){
+                        //añadimos los espacios
+                        fila+=" ";
+                    }
+                    for(let j=1; j<=i-1; j++){
+                        //añadimos los asteriscos
+                        fila+="*";
+                    }
+
+                    resu+=fila+"\n";
+
+                    mensaje.textContent=resu;
+
+                }
+                
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

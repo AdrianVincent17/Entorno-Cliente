@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rombo</title>
+</head>
+
+<body>
+    <h1>Rombo</h1>
+
+    <pre id="resultado"></pre>
+
+    <script>
+
+        //Pedimos al usuario la entrada de datos
+        let altura = prompt("Dime la altura de la piramide");
+
+        if (altura === null) {
+            document.getElementById("resultado").textContent = "Operacion cancelada por el usuario";
+        } else {
+            altura = Number(altura);
+            if (altura <= 0 || isNaN(altura) ||!Number.isInteger(altura)) {
+                document.getElementById("resultado").textContent = "Operacion no valida";
+            } else {
+
+                let res = "";
+                //añadimos la parte superior del rombo
+                for (let i = 1; i <= altura; i++) {
+                    let fila = "";
+
+                    //añadimos espacios en blanco
+                    for (let j = i; j <= altura - 1; j++) {
+                        fila += " ";
+                    }
+                    //añadimos los asteriscos
+                    for (let j = 1; j <= 2 * i - 1; j++) {
+                        fila += "*"
+                    }
+
+                    res += fila + "\n";
+
+                }
+
+                //añadimos la parte inferior del rombo
+                for (let i = altura - 1; i >= 1; i--) {
+                    let fila = "";
+
+                    //añadimos espacios en blanco
+                    for (let j = altura - 1; j >= i; j--) {
+                        fila += " ";
+                    }
+                    //añadimos los asteriscos
+                    for (let j = 1; j <= 2 * i - 1; j++) {
+                        fila += "*"
+                    }
+
+                    res += fila + "\n";
+
+                }
+
+
+                document.getElementById("resultado").textContent = res;
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>
