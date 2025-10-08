@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Año de nacimiento</title>
+</head>
+<body>
+    <h1 id="mayor"></h1>
+
+    <p id="edad"></p>
+
+    <script>
+
+        let entrada=prompt("Introduce tu año de nacimiento");
+
+
+        if(entrada===null){
+            document.getElementById("edad").textContent="Operacion cancelada por el usuario";
+
+        }else{
+            entrada=parseInt(entrada);
+            if(isNaN(entrada) || entrada<=0 || entrada<1900){
+                document.getElementById("edad").textContent="Operacion no valida";
+
+
+            }else{
+                
+                let añoactual=new Date().getFullYear();
+
+                let edad=añoactual-entrada;
+
+              let salida=edad>18?"Mayor de edad":"Menor de edad";
+
+              document.getElementById("edad").textContent=`Con ${edad} años, eres ${salida}`; 
+              document.getElementById("mayor").innerHTML=salida;
+            }
+            
+        }
+    
+
+    </script>
+</body>
+</html>
