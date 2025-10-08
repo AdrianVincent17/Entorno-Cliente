@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo do while</title>
+</head>
+<body>
+    <h1>Ejemplo con Bucle Do...while</h1>
+
+    <p id="valor"></p>
+
+    <script>
+        let valor;
+        do{
+            valor=Number(prompt("Introduce un numero (mayor que 10)"));
+            if(isNaN(valor)){
+                alert("No has introducido un valor numerico");
+            }else if(valor<=10){
+                alert("El valor introducido es menor que 10");
+            }
+
+        }while(isNaN(valor) || valor<=10);
+
+        document.getElementById("valor").textContent=`El valor introducido es ${valor}`;
+
+
+    </script>
+    
+</body>
+</html>

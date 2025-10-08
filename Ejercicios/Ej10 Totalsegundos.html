@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total Segundos</title>
+</head>
+<body>
+    <h1>Total Segundos</h1>
+    <div id="total"></div>
+
+    <script>
+        let totalsegundos=prompt("Dime cuantos segundos y te lo convierto a horas, min y seg");
+        let mensaje=document.getElementById("total");
+
+        if(totalsegundos===null){
+            mensaje.textContent="Operacion cancelada por el usuario";
+        }else{
+            totalsegundos=Number(totalsegundos);
+            if(isNaN(totalsegundos)|| totalsegundos<=0){
+                mensaje.textContent="Debes introducir algun segundo";
+            }else{
+
+                let horas=parseInt(totalsegundos/3600);
+                let minutos=parseInt((totalsegundos%3600)/60);
+                let segundos=parseInt(totalsegundos%60);
+
+                
+
+                mensaje.innerHTML=`Los ${totalsegundos} segundos introducidos son: <br>${horas} horas <br>${minutos} min <br>${segundos} segundos`;
+
+            }
+        }
+
+    </script>
+  
+    
+</body>
+</html>

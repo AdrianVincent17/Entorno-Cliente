@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo con while</title>
+</head>
+<body>
+    <h1>Ejemplo con bucle while</h1>
+
+    <p id="valor"></p>
+
+    <script>
+
+        let valor=Number(prompt("Dame un numero (mayor que 10)"));
+        
+        while(isNaN(valor) || (valor<=10)){
+            alert("El valor introducido no es mayor que 10");
+            valor=Number(prompt("Introduce otro numero"));
+        }
+
+        document.getElementById("valor").textContent=`Has introducido el ${valor}`;
+
+    </script>
+    
+</body>
+</html>

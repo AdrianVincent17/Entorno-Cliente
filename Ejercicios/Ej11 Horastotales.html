@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasalo a segundos</title>
+</head>
+
+<body>
+    <h1>Pasa las horas minutos y segundos a total segundos</h1>
+
+    <p id="total"></p>
+
+    <script>
+
+        let segundos = 0;
+
+        let minutos = 0;
+
+        let segundosTot = 0;
+
+        let mensaje = document.getElementById("total");
+
+
+
+        let horas = prompt("Dime las horas");
+
+        if (horas === null) {
+
+            mensaje.textContent = "Operacion cancelada por el usuario";
+
+        } else {
+
+            horas = parseInt(horas);
+
+            if (isNaN(horas) || horas <0) {
+                mensaje.textContent = "Operacion no valida";
+
+            } else {
+
+                segundosTot += horas * 3600;
+
+                minutos = prompt("Dime los minutos");
+                if (minutos === null) {
+                    mensaje.textContent = "Operacion cancelada por el usuario";
+                } else {
+                    minutos = parseInt(minutos);
+                    if (isNaN(minutos) || minutos <0) {
+                        mensaje.textContent = "Operacion no valida";
+                    } else {
+
+                        segundosTot += minutos * 60;
+
+
+                        segundos = prompt("Dime los segundos");
+
+                        if (segundos === null) {
+                            mensaje.textContent = "Operacion cancelada por el usuario";
+
+                        } else {
+                            segundos = parseInt(segundos);
+                            if (isNaN(segundos) || segundos <0) {
+                                mensaje.textContent = "Operacion no valida";
+                            } else {
+
+                                segundosTot += segundos;
+
+                                mensaje.textContent =`Los segundos totales son: ${segundosTot} segundos`;
+
+
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+
+
+        
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
