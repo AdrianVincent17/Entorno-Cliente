@@ -15,6 +15,7 @@
         //Pedimos al usuario la introduccion de un numero entero positivo
 
         let decimal=prompt("Dime un numero");
+        
         let romano="";
 
         let mensaje="";
@@ -24,7 +25,7 @@
 
         }else{
             let numero=parseInt(decimal);
-            if(isNaN(numero)|| numero===" " || numero<0){
+            if(isNaN(numero)|| numero===" " || numero<=0){
                 document.getElementById("año").textContent="Introduce un numero valido"
             }else{
 

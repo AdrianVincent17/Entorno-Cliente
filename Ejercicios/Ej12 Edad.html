@@ -26,14 +26,14 @@
 
             }else{
                 
-                let añoactual=new Date().getFullYear();
+                let añoactual=2025;
 
                 let edad=añoactual-entrada;
 
               let salida=edad>18?"Mayor de edad":"Menor de edad";
 
               document.getElementById("edad").textContent=`Con ${edad} años, eres ${salida}`; 
-              document.getElementById("mayor").innerHTML=salida;
+              document.getElementById("mayor").textContent=salida;
             }
             
         }
