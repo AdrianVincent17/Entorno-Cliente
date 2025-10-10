@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creacion de nuevo Objeto</title>
+</head>
+<body>
+    <h1>Creacion de nuevo objeto</h1>
+  
+    <script>
+        let persona = new Object();
+        persona.nombre="Ana";
+        persona.apellido="Sanz";
+        persona.saludar=function(){
+            console.log("Hola, soy "+ this.nombre)
+        };
+
+        persona.salud();   //Hola, soy Ana
+
+        console.log(Object.keys(persona));  //['noombre', 'apellido', 'saluda']:
+        console.log(Object.values(persona));
+        console.log(Object.entries(persona));
+
+        
+
+    </script>
+</body>
+</html>

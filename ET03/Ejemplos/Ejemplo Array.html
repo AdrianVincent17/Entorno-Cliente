@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de array</title>
+</head>
+<body>
+    <h1>Ejemplo de array</h1>
+
+    <script>
+        let numeros=[10,20,30];
+
+        let alumnos=["Carlos", "Ana", "Luis"];
+        console.log(alumnos.includes("Marta"));   //false
+        alumnos.push("Marta"); 
+        console.log(alumnos.length); //4
+        alumnos.sort();
+        alumnos.unshift("Pepe"); //añade al principio
+        alumnos.shift();  //elimina el primero
+        alumnos.pop(); //elimina el ultimo
+        console.log(alumnos.indexOf("Marta"));
+        console.log(alumnos.length);
+
+    </script>
+    
+</body>
+</html>

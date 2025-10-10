@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de objeto</title>
+</head>
+
+<body>
+
+    <h1>Ejemplo de Objeto</h1>
+
+    <script>
+        let coche = {
+
+            marca: "Toyota",
+            modelo: "Corolla",
+            arrancar: function () {
+                console.log("El coche esta arrancando...");
+            }
+
+        };
+
+        console.log(coche.marca);  //Toyota
+        coche.arrancar();  //El coche esta arrancando
+
+        //Se añaden prpopiedaddes al obejto despues de crearlo
+        coche.motor="Hybrid";
+        coche.color="Blanco";
+
+        //se pueden iterar las propiedades con let in
+
+        for(let p in coche){
+            console.log(p);
+        }
+
+        //Si accedemos a propiedades que no existen nos dara error
+        //se comprobara de esta manera
+
+        console.log("transmision" in coche);  //false
+        console.log("motor" in coche);  //true
+    </script>
+
+</body>
+
+</html>
