@@ -19,62 +19,61 @@
 
         let nombre = document.getElementById("nombre");
         let introducido = document.getElementById("introducido");
-        let primo=document.getElementById("primo");
-        let factorial=document.getElementById("factorial");
+        let primo = document.getElementById("primo");
+        let factorial = document.getElementById("factorial");
         let num = Number(prompt("Dime otro numero (1-10)"));
-        let prim="";
-        let facto=1;
+        let prim = "";
+        let facto = 1;
         let nombrecito = "";
 
         while ((num < 1 || num > 10) || isNaN(num)) {
 
             num = Number(prompt("Dime otro numero (1-10)"));
-        
+
         }
 
-         switch (num) {
-                case 1: nombrecito = "UNO"; break;
-                case 2: nombrecito = "DOS"; break;
-                case 3: nombrecito = "TRES"; break;
-                case 4: nombrecito = "CUATRO"; break;
-                case 5: nombrecito = "CINCO"; break;
-                case 6: nombrecito = "SEIS"; break;
-                case 7: nombrecito = "SIETE"; break;
-                case 8: nombrecito = "OCHO"; break;
-                case 9: nombrecito = "NUEVE"; break;
-                case 10: nombrecito = "DIEZ"; break;
-                default: nombrecito = "fuera de rango"; break;
+        switch (num) {
+            case 1: nombrecito = "UNO"; break;
+            case 2: nombrecito = "DOS"; break;
+            case 3: nombrecito = "TRES"; break;
+            case 4: nombrecito = "CUATRO"; break;
+            case 5: nombrecito = "CINCO"; break;
+            case 6: nombrecito = "SEIS"; break;
+            case 7: nombrecito = "SIETE"; break;
+            case 8: nombrecito = "OCHO"; break;
+            case 9: nombrecito = "NUEVE"; break;
+            case 10: nombrecito = "DIEZ"; break;
+            default: nombrecito = "fuera de rango"; break;
 
-            }
-        
-            
-            
-        for(let i=1; i<=num; i++){
-            facto *=i;
         }
 
-        let correcto=false;
 
-        for(let i=2; i<=num/2; i++){
-            if(num==1){
-                correcto=false;
-            }else{
-                if(num%i==0){
-                    correcto=false;
-                }else{
-                    correcto=true;
+
+        for (let i = num; i >= 1; i--) {
+            facto *= i;
+        }
+
+        let correcto = true;
+
+        if (num === 1) {
+            correcto = false;
+        } else {
+            for (let i = 2; i <= num / 2; i++) {
+                if (num % i == 0) {
+                    correcto = false;
+
                 }
             }
         }
 
-        if(correcto){
-            prim=`Si, ${num} si es primo`;
-        }else{
-            prim=`No, ${num}  no es primo`;
+        if (correcto) {
+            prim = `Si, ${num} si es primo`;
+        } else {
+            prim = `No, ${num}  no es primo`;
         }
 
-        primo.innerHTML+=prim;
-        factorial.innerHTML+=facto;
+        primo.innerHTML += prim;
+        factorial.innerHTML += facto;
         nombre.innerHTML += nombrecito;
 
         introducido.innerHTML = `<b>Numero introducido: </b> ${num}`;
