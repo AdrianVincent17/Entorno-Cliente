@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13 Corregido</title>
+</head>
+<body>
+    <h1>Ejercicio 13</h1>
+    <script>
+        let menu = Number(prompt(`Elige una opción: \n1- Multiplicar\n2- Restar\n3- Sumar\n4- Dividir`));
+
+        // 1. Validar la opción del menú
+        while (isNaN(menu) || menu < 1 || menu > 4 || !Number.isInteger(menu)) {
+            alert("Opción no válida. Debes introducir un número entero entre 1 y 4.");
+            menu = Number(prompt(`Elige una opción: \n1- Multiplicar\n2- Restar\n3- Sumar\n4- Dividir`));
+        }
+
+        // 2. Pedir y validar los números
+        let num1 = Number(prompt("Introduce el primer número"));
+        let num2 = Number(prompt("Introduce el segundo número"));
+
+        // 3. Comprobar si los números son válidos ANTES de calcular
+        if (isNaN(num1) || isNaN(num2)) {
+            alert("Operación cancelada. Uno o ambos valores no son números válidos.");
+        } else {
+            // 4. Si son válidos, realizar el cálculo y mostrar el resultado
+            let result;
+            let mensaje = "";
+
+            switch (menu) {
+                case 1:
+                    mensaje = "El resultado de la multiplicación es: ";
+                    result = num1 * num2;
+                    break;
+                case 2:
+                    mensaje = "El resultado de la resta es: ";
+                    result = num1 - num2;
+                    break;
+                case 3:
+                    mensaje = "El resultado de la suma es: ";
+                    result = num1 + num2;
+                    break;
+                case 4:
+                    if (num2 === 0) {
+                        mensaje = "Error: ";
+                        result = "No se puede dividir por cero.";
+                    } else {
+                        mensaje = "El resultado de la división es: ";
+                        result = num1 / num2;
+                    }
+                    break;
+            }
+            alert(mensaje + result);
+        }
+    </script>
+</body>
+</html>
