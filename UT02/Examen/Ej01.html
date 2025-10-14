@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <h1>Calculadora de IMC (Índice de Masa Corporal)</h1>
+    <p id="operacion"></p>
+    <p id="prueba"></p>
+    <p id="peso">Peso: </p>
+    <p id="altura">Altura: </p>
+    <p id="imc">IMC: </p>
+    <p id="clasificacion">clasificacion: </p>
+    <script>
+        let mensaje = "Operacion cancelada por el usuario";
+        let mensaje2 = "Debes introducir valores validos";
+        let peso = prompt("Introduce tu peso en kilogramos(ejemplo 72.5)");
+        let altura;
+        let imc;
+        let clasificacion = "";
+        if (peso == null) {
+            document.getElementById("operacion").textContent = mensaje;
+        } else {
+            peso = Number(peso);
+        } if (isNaN(peso) || peso <= 0) {
+            document.getElementById("operacion").textContent = mensaje2;
+        } else {
+            altura = prompt("Introduce la altura en metros (ejemplo 1.75)");
+            if (altura == null) {
+                document.getElementById("operacion").textContent = mensaje;
+            } else {
+                altura = Number(altura);
+            } if (isNaN(altura) || altura <= 0) {
+                document.getElementById("operacion").textContent = mensaje2;
+            } else {
+
+                imc = parseFloat(peso / (altura * altura));
+
+                if (imc < 18.5) {
+                    clasificacion = "Bajo peso";
+                } else if (imc >= 18.5 && imc < 24.9) {
+                    clasificacion = "Peso normal";
+                } else if (imc >= 25 && imc < 29.9) {
+                    clasificacion = "Sobrepeso";
+                } else {
+                    clasificacion = "Obesidad";
+                }
+
+
+                document.getElementById("peso").textContent += `${peso} kg`;
+                document.getElementById("altura").textContent += `${altura} m`;
+                document.getElementById("imc").textContent += `${imc} `;
+                document.getElementById("clasificacion").innerHTML += `<b>${clasificacion}</b>`;
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

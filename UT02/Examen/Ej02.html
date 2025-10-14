@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2
+    </title>
+</head>
+<body>
+     <h1></h1>
+    <script>
+        let numero=prompt("Escribe un numero entero positivo");
+
+        if(numero===null){
+            console.log("Operacion Cancelada");
+        }else{
+            numero=Number(numero);
+            if(isNaN(numero) || !Number.isInteger(numero)|| numero<1){
+                console.log("Debes introducir un numero entero positivo")
+            }else{
+                if(numero===1){
+                    console.log("El numero 1 no tiene divisores");
+                }else{
+                    for(let i=1; i<numero/2; i++){
+                        if(numero%i==0){
+                            console.log(`El mayor divisor es ${i}`);
+                        }else{
+                            console.log("El mayor divisor es 1");
+                        }
+                    }
+                }
+            }
+        }
+    </script>    
+    
+</body>
+</html>

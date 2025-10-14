@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+     <h1></h1>
+    <script>
+        let test=prompt("Dime tu nota en el test");
+        let boletin;
+        let examen;
+        let notafinal;
+      
+        let resultado="";
+
+        if(test===null){
+            alert("Operacion cancelada");
+        }else{
+            test=Number(test);
+        }if(isNaN(test) || test<0 || test>10){
+            alert("Debes introducir tres notas validas entre 0 y 10");
+        }else{
+             boletin=prompt("Dime tu nota en el boletin");
+        }if(boletin===null){
+            alert("Operacion cancelada");
+        }else{
+            boletin=Number(boletin);
+        }if(isNaN(boletin) || boletin<0 || boletin>10){
+            alert("Debes introducir tres notas validas entre 0 y 10");
+        }else{
+            examen=prompt("Dime tu nota en el examen");
+        }if(examen===null){
+            alert("Operacion cancelada");
+        }else{
+            examen=Number(examen);
+        }if(isNaN(examen) || examen<0 || examen>10){
+            alert("Debes introducir tres notas validas entre 0 y 10");
+        }else{
+            notafinal=Number((test*0.2)+(boletin*0.40)+(examen*0.40));
+           
+
+            resultado=(notafinal>=5) ? "Aprobado": "Suspenso";
+
+            alert(`Notas: ${test} , ${boletin} , ${examen}\nMedia: ${notafinal}\nResultado: ${resultado}`);
+        }
+        
+    </script>    
+    
+</body>
+</html>
