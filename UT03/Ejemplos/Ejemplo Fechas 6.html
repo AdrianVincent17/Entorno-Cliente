@@ -21,26 +21,26 @@
 
 
         //Creamos la fecha con esos valores (cuidado!! el mes empieza en 0)
-        const fecha = new Date(año, mes - 1, dia);
+        const fecha = new Date(año, (mes - 1), dia);
 
-        if (fecha.getFullYear() === año && fecha.getMonth() === mes - 1 && fecha.getDate() === dia) {
+        if (fecha.getFullYear() === año && fecha.getMonth() === (mes - 1) && fecha.getDate() === dia) {
+
             const fechaActual = new Date();
             const diaActual = fechaActual.getDate();
             const mesActual = fechaActual.getMonth();
             const añoActual = fechaActual.getFullYear();
 
-            if(mes<=mesActual && dia<diaActual){
-                let edad=añoActual-año-1;
-                alert(`Tu edad es: ${edad}`);
+            let edad=añoActual-año;
 
+            if (mesActual < mes || (mesActual === mes && diaActual < dia)) {
+                    --edad;
+                }
+                alert(`Tu edad es: ${edad} años`);
 
-            }else if(mes==mesActual && dia>=diaActual){
-                edad=añoActual-año;
-                alert(`Tu edad es: ${edad}`); 
         } else {
             alert("Fecha incorrecta");
         }
-    }
+    
 
 
 
