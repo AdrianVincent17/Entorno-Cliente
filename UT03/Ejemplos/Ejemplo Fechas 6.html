@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo de Date en JavaScript</h1>
+    <p>Abre la consola del navegador para ver los resultados</p>
+    <script>
+        const entrada = prompt("Introduce la fecha de tu cumpleaños (formato AAAA-MM-DD)");
+
+        //Dividimos el texto en año,, mes y dia
+        const partes = entrada.split("-");
+        const año = parseInt(partes[0]);
+        const mes = parseInt(partes[1]);
+        const dia = parseInt(partes[2]);
+
+
+        //Creamos la fecha con esos valores (cuidado!! el mes empieza en 0)
+        const fecha = new Date(año, mes - 1, dia);
+
+        if (fecha.getFullYear() === año && fecha.getMonth() === mes - 1 && fecha.getDate() === dia) {
+            const fechaActual = new Date();
+            const diaActual = fechaActual.getDate();
+            const mesActual = fechaActual.getMonth();
+            const añoActual = fechaActual.getFullYear();
+
+            if(mes<=mesActual && dia<diaActual){
+                let edad=añoActual-año-1;
+                alert(`Tu edad es: ${edad}`);
+
+
+            }else if(mes==mesActual && dia>=diaActual){
+                edad=añoActual-año;
+                alert(`Tu edad es: ${edad}`); 
+        } else {
+            alert("Fecha incorrecta");
+        }
+    }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

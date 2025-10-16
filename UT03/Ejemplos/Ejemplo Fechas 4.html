@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo de Date en JavaScript</h1>
+    <p>Abre la consola del navegador para ver los resultados</p>
+    <script>
+        const hoy = new Date();
+        console.log(hoy.toLocaleDateString("es-ES",{
+            weekday: "long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        }));
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

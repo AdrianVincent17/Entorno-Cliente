@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo de Date en JavaScript</h1>
+    <p>Abre la consola del navegador para ver los resultados</p>
+    <script>
+        let fecha = new Date("2000-9-5");
+        console.log(fecha.toDateString());
+        console.log(`Fecha: ${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}`);
+        console.log("fecha: ", fecha.toLocaleDateString());
+        console.log("fecha: ", fecha.toLocaleDateString("en-US"));
+        console.log("Dia de la semana: ", fecha.toLocaleDateString("es-ES", { weekday: "long" }));
+        console.log("Dia de la semana: ", fecha.toLocaleDateString("es-ES", { weekday: "short" }));
+        console.log("Dia de la semana: ", fecha.toLocaleDateString("es-ES", { weekday: "narrow" }));
+        console.log("Dia del mes: ", fecha.toLocaleDateString("es-ES", { month: "numeric" }));
+        console.log("Mes (numero): ", fecha.toLocaleDateString("es-ES", { month: "2-digit" }));
+        console.log("Mes (nombre): ", fecha.toLocaleDateString("es-ES", { month: "long" }));
+         console.log("Año: ", fecha.toLocaleDateString("es-ES",{year: "numeric"}));
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

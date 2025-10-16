@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejemplo de Date en JavaScript</h1>
+    <p>Abre la consola del navegador para ver los resultados</p>
+    <script>
+        let fecha=new Date("2025-1-31");
+        console.log(fecha.toLocaleDateString());
+
+        fecha=new Date(2025,1,31); //el mes en este formato va del 0-11 lo cual en este caso seria febrero y tiene 28 lo cual se pasa a marzo y seria el 3
+        console.log(fecha.toLocaleDateString());
+
+        fecha=new Date("2025-1-32"); //En este formato te daria error como un date invalid
+        console.log(fecha.toLocaleDateString());
+
+        fecha=new Date(2025,11,32); //en este formato reajusta siempre hacia arriba 
+        console.log(fecha.toLocaleDateString());
+
+        fecha=new Date("2025-4-31"); //En este caso se lo come porque va desde el 1 al 31 a pesar de no existir el 31 de abril
+        console.log(fecha.toLocaleDateString());
+
+      
+
+
+
+    </script>
+    
+</body>
+</html>

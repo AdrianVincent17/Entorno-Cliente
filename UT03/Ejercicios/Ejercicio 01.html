@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ejercicio clase</h1>
+    <script>
+
+        let nombre=prompt("Dime tu nombre");
+
+        try{
+            if(nombre==="" || nombre===null ){
+            let error=new error("Operacion Cancelada");
+        }else{
+            let numero=Number(prompt("Dime tu numero"));
+            if(!Number.isInteger(numero) || numero<=0){
+                error=new error("Operacion no valida");
+            }else{
+
+              let persona={
+                    nombre:nombre,
+                    numero:parseInt(numero),
+                };
+
+                console.log(`Nombre: persona.nombre.toUpperCase`);
+                console.log(`Numero: pow(persona.numero,2)`);
+
+            }
+        }
+
+        }catch(e){
+            console.log(e.message);
+
+        }
+        
+        
+
+
+    </script>
+    
+</body>
+</html>
