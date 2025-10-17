@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h1>Tira el dado</h1>
+    <div class="caja" id="resultado"></div>
+
+    <script>
+
+        let dado1=Math.random()*6+1;
+        let dado2=Math.random()*6+1;
+
+        let contenedor=document.getElementById("resultado");
+
+        contenedor=`<p><b>Dado: 1</b>${dado1}</p>
+                    <p><b>Dado: 2</b>${dado2}</p>
+                    <p><b>Suma: 1</b>${dado1+dado2}</p>
+                    <;><b>Dado: 1</b>${dado1}===${dado2}? "Son iguales" : "Mayor"`;
+
+
+
+    </script>
+</body>
+</html>

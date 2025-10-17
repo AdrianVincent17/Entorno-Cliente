@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <h1>Numeros y redondeo</h1>
+    <div class="caja" id="resultado"></div>
+
+    <script>
+
+        let entrada = prompt("Dime un numero con decimales");
+        let numero = parseFloat(entrada);
+        let contenedor = document.getElementById("resultado");
+
+        if (isNaN(numero)) {
+
+            contenedor.innerHTML = "<p class='error'>No has introducido un numero valido.</p>";
+        } else {
+            contenedor.innerHTML =
+                `<p><b>Numero original: </b>${numero}</p>
+                <p><b>Numbero con dos decimales: </b>${numero.toFixed(2)}</p>
+                <p><b>Tres cifras significativas: </b>${numero.toPrecision(3)}</p>
+                <p><b>¿Es entero?: </b>${Number.isInteger(numero) ? "Si" : "No"}</p>
+                <p><b>Parte entera: </b>${parseInt(numero)}</p>`;
+        }
+
+    </script>
+
+
+</body>
+
+</html>
