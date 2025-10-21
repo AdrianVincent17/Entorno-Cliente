@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 4</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
+
 <body>
 
+    <h1>Calculo radio</h1>
     <p id="resultado"></p>
-    
-    
+
+
     <script>
-        let radio=(prompt("Dime el radio"));
-        let resultado=document.getElementById("resultado");
+        let radio = Number(prompt("Dime el radio"));
+        let resultado = document.getElementById("resultado");
+        const PI = 3.1516;
 
-        
-
-        if(isNaN(radio) || !Number.isInteger(radio) || radio<=0){
+        if (isNaN(radio) || !Number.isInteger(radio) || radio <= 0) {
             alert("El valor introducido no es correcto");
-        }else{
-            resultado.innerHTML=        }
+        } else {
+            resultado.innerHTML = `<b>valor Radio: </b> ${radio} <br>
+            <b>valor Perimetro: </b> ${2 * PI * radio} <br>
+            <b>valor Area: </b> ${PI * (Math.pow(radio, 2))} <br>
+            <b>valor Volumen esfera: </b> ${(4 / 3) * PI * (Math.pow(radio, 3))} <br>`
+        }
 
 
     </script>
-    
+
 
 
 </body>
+
 </html>

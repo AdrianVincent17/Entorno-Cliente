@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h1>Contar digitos</h1>
+
+    <p id="resultado"></p>
+
+    <script>
+        let entrada = parseInt(Math.abs(prompt("Dime un numero entero")));
+
+        let resultado = document.getElementById("resultado");
+        let salida = "";
+        let conta = 0;
+        if (isNaN(entrada)) {
+            salida = "No es un numero correcto";
+        } else {
+            if (entrada < 10) {
+                salida = `El numero solo tiene un digito que es ${entrada}`;
+            } else {
+                while (entrada > 0) {
+                    entrada = Math.floor(entrada / 10);
+                    conta++;
+                }
+                salida= `El numero introducido tiene ${conta} numeros`;
+            }
+        }
+            resultado.innerHTML = salida;
+
+
+    </script>
+
+
+</body>
+
+</html>
