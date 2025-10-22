@@ -11,35 +11,36 @@
 <body>
     <h1>Contar digitos</h1>
 
-    <p id="resultado"></p>
+    <div id="resultado" class="caja"></div>
 
     <script>
         let entrada = prompt("Dime un numero entero");
 
         let resultado = document.getElementById("resultado");
         let salida = "";
-        let conta = 0;
+        let conta = 1;
 
         if(entrada===null || entrada.trim()===""){
-
+            salida=`<p class='error'> Operacion cancelada por el usuario </p>`;
         }else{
-
-            
+            numero=parseInt(entrada);
+            entrada=Math.abs(numero);
         if (isNaN(entrada)) {
-            salida = "No es un numero correcto";
+            salida = `<p class='error'>El valor introducido no es un numero valido</p>`;
         } else {
-            if (entrada < 10) {
-                salida = `El numero solo tiene un digito que es ${entrada}`;
+            if (numero < 10) {
+                salida = `El numero ${entrada} solo tiene un digito`;
             } else {
-                while (entrada > 0) {
-                    entrada = Math.floor(entrada / 10);
+                while (numero > 10) {
+                    numero = Math.floor(numero / 10);
                     conta++;
                 }
-                salida= `El numero introducido tiene ${conta} numeros`;
+                salida= `El numero ${entrada}, tiene ${conta} digitos`;
             }
         }
-            resultado.innerHTML = salida;
+            
     }
+    resultado.innerHTML = salida;
 
     </script>
 

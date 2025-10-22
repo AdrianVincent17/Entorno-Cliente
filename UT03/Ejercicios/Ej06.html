@@ -1,31 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
     <title>Ejercicio 6</title>
 </head>
 <body>
-    <h1>Tiempo restante</h1>
-    <script>
-        let ahora=new Date();
-
-        let año=ahora.getFullYear();
-
-        let finAño=new Date(año,11,31,23,59,59);
-
-        let totalsegundosahora=ahora.getTime()/1000;
-        let totalfinAño=finAño.getTime()/1000;
-
-        let restante=parseInt(totalfinAño-totalsegundosahora);
-
-        let diasrestantes=parseInt(restante%365);
-
-       
-        alert(`${diasrestantes}`);
-    
+    <div>
+        <h1>Información de la Fecha Actual</h1>
+       <div id="resultado" class="caja"></div>
         
 
+    <script>
+        // 1. Obtenemos el elemento donde escribiremos el resultado
+        const resultado = document.getElementById("resultado");
+
+        // 2. Creamos el objeto Date (contiene la fecha y hora actuales)
+        const ahora = new Date();
+
+        // 3. Obtenemos toda la información requerida
+
+        // a. Fecha actual (en formato local, ej: "22/10/2025")
+        const fechaActual = ahora.toLocaleDateString('es-ES');
+
+        // b. Año, mes y día
+        const año = ahora.getFullYear(); // Ej: 2025
+        const diaDelMes = ahora.getDate(); // Ej: 22 (del 1 al 31)
+
+        // b. Mes (número y nombre)
+        // getMonth() devuelve 0 (Enero) a 11 (Diciembre)
+        const mesNumero = ahora.getMonth() + 1; // Sumamos 1 para formato 1-12
+        
+        // Usamos toLocaleString con opciones para obtener el nombre completo
+        const mesNombre = ahora.toLocaleString('es-ES', {
+            month: 'long'
+        });
+
+        // c. Día de la semana (Lunes, Martes, etc.)
+        const diaSemana = ahora.toLocaleString('es-ES', {
+            weekday: 'long'
+        });
+        
+        // 4. Construimos el HTML que se mostrará
+        const salida = `
+            <p><strong>Fecha actual:</strong> ${fechaActual}</p>
+            <p><strong>Año:</strong> ${año}</p>
+            <p><strong>Día del mes:</strong> ${diaDelMes}</p>
+            <p><strong>Mes (número):</strong> ${mesNumero}</p>
+            <p><strong>Mes (nombre):</strong> ${mesNombre}</p>
+            <p><strong>Día de la semana:</strong> ${diaSemana}</p>
+        `;
+
+        // 5. Insertamos el HTML en el div
+        resultado.innerHTML = salida;
     </script>
     
 </body>

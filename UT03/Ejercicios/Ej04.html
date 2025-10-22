@@ -11,29 +11,32 @@
 <body>
 
     <h1>Calculo radio</h1>
-    <p id="resultado"></p>
+    <div id="resultado" class="caja"></div>
 
 
     <script>
+
         let radio = prompt("Dime el radio");
         let resultado = document.getElementById("resultado");
-        const PI = 3.1516;
-        const perimetro = 2*Math.PI*radio;
-        const area=Math.PI*Math.pow(radio,2);
-        
-        if(radio===null || radio===""){
-            resultado.innerHTML=`<p class='error'>El valor introducido no es un numero valido</p>`;
-        }else{
+        const perimetro = 2 * Math.PI * radio;
+        const area = Math.PI * Math.pow(radio, 2);
+        const volumen = (4 / 3) * Math.PI * (Math.pow(radio, 3));
 
-        if (isNaN(radio) || radio <= 0) {
-            resultado.innerHTML=`<p class='error'>El valor no es un numero o es negativo</p>`;
+        if (radio === null || radio === "") {
+            resultado.innerHTML = `<p class='error'>Operacion cancelada por el usuario</p>`;
         } else {
-            resultado.innerHTML = `<b>valor Radio: </b> ${radio} <br>
-            <b>valor Perimetro: </b> ${2 * PI * radio} <br>
-            <b>valor Area: </b> ${PI * (Math.pow(radio, 2))} <br>
-            <b>valor Volumen esfera: </b> ${(4 / 3) * PI * (Math.pow(radio, 3))} <br>`
+            radio = parseFloat(radio);
+            if (isNaN(radio) || radio <= 0) {
+
+                resultado.innerHTML = `<p class='error'>El valor no es un numero o es negativo</p>`;
+            } else {
+
+                resultado.innerHTML = `<b> Radio: </b> ${radio} <br>
+            <b>Perimetro: </b> ${perimetro.toFixed(2)} <br>
+            <b>Area: </b> ${area.toFixed(2)} <br>
+            <b>Volumen esfera: </b> ${volumen.toFixed(2)} Unidades <br>`
+            }
         }
-    }
 
     </script>
 
