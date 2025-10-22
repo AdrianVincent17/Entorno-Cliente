@@ -14,8 +14,17 @@
 
         let finAño=new Date(año,11,31,23,59,59);
 
-        let totalsegundosahora=ahora.getTime();
-        let totalfinAño=finAño.getTime();
+        let totalsegundosahora=ahora.getTime()/1000;
+        let totalfinAño=finAño.getTime()/1000;
+
+        let restante=parseInt(totalfinAño-totalsegundosahora);
+
+        let diasrestantes=parseInt(restante%365);
+
+       
+        alert(`${diasrestantes}`);
+    
+        
 
     </script>
     

@@ -14,11 +14,17 @@
     <p id="resultado"></p>
 
     <script>
-        let entrada = parseInt(Math.abs(prompt("Dime un numero entero")));
+        let entrada = prompt("Dime un numero entero");
 
         let resultado = document.getElementById("resultado");
         let salida = "";
         let conta = 0;
+
+        if(entrada===null || entrada.trim()===""){
+
+        }else{
+
+            
         if (isNaN(entrada)) {
             salida = "No es un numero correcto";
         } else {
@@ -33,7 +39,7 @@
             }
         }
             resultado.innerHTML = salida;
-
+    }
 
     </script>
 
