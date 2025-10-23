@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+    <script>
+        const email=prompt("Introduce tu correo del C.E.S Vega Media (ejemplo: usuario@ces-vegamedia.es)");
+
+        const patron =/^[\w.-]+@ces-vegamedia\.es$/;
+
+        if(email===null||email.trim()===""){
+            alert("No has introducido ningun correo electronico");
+
+        }else if(patron.test(email)){
+            alert("✔ Correo institucional valido (C.E.S Vega Media)");
+        }else{
+            alert("❌ Correo no valido. Debe terminar en @ces-vegamedia.es");
+        }
+
+    </script>
+</body>
+</html>

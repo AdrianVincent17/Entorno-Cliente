@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Ejercicio 10</title>
+</head>
+
+<body>
+    <h1>Manejo de errores</h1>
+    <div id="resultado" class="caja"></div>
+
+    <script>
+
+        let num = prompt("Dime un numero entero positivo");
+        let salida = "";
+        let resultado = document.getElementById("resultado");
+        try {
+            if (num === null || num === "") {
+                throw new Error("Operacion cancelada por el usuario");
+
+            }
+
+            const numero=parseFloat(num);
+            if (isNaN(numero)) {
+                throw new Error("El valor introducido no es un numero");
+            }
+
+            if(numero<0){
+                throw new Error("El numero no puede ser negativo")
+            }
+
+            const raiz=Math.sqrt(numero);
+
+            alert(`La raiz cuadrada de ${numero} es: ${raiz.toFixed(2)} `);
+            salida=`<b>La raiz cuadrada de ${numero} es: </b> ${raiz.toFixed(2)}`;
+
+            resultado.innerHTML=salida;
+        }catch (error) {
+            alert("❌ Error: "+error.message);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Analisis de fortaleza</h1>
+
+    <script>
+        const password=prompt("Introduce una constraseña para analizar su fortaleza");
+
+        if(password===null ){
+            alert("Operacion cancelada por el usuario");
+        }else{
+            //analizamos la contraseña
+
+            const longitud=password.length;
+            const tieneMayus=/[A-Z]/.test(password);
+            const tieneMinus=/[a-z]/.test(password);
+            const tieneNums=/[0-9]/.test(password);
+            const tieneEspecial=/[@#$%&*?¿!¡]/.test(passsword);
+
+            let fortaleza="";
+
+            if(longitud>=8 && tieneMayus && tieneMinus && tieneEspecial && tieneNums){
+                fortaleza="Fuerte";
+            }else if(longitu>=6 &&(tieneMayus || tieneMinus)&& tieneNums){
+                fortaleza="Media";
+            }else if(longitud<6){
+                fortaleza="Debil";
+            }else{
+                fortaleza="Tiene que mejorar";
+            }
+             alert(`${fortaleza}`);
+        }
+       
+
+    </script>
+    
+</body>
+</html>

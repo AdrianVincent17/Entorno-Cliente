@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
     <title>Ejercicio 7</title>
 </head>
+
 <body>
     <h1>Edad user</h1>
     <div id="resultado" clas="caja"></div>
@@ -20,58 +22,57 @@
 
         //Si la fecha es incorrecta (cancela) o no se introduce nada
         if (fechaTexto === null || fechaTexto.trim() === "") {
-            
+
             salida = `<p class="error">Operación cancelada o no se introdujo fecha.</p>`;
-        
+
         } else {
-            
-            //Comprobar si la fecha tiene un formato válido (DD-MM-AAAA)
-            // Usamos una Expresión Regular (RegEx)
-            const formatoValido = /^\d{2}-\d{2}-\d{4}$/;
 
-            if (!formatoValido.test(fechaTexto)) {
-                
+            // Si el formato es correcto, extraemos las partes
+            const partes = fechaTexto.split('-'); // ["DD", "MM", "AAAA"]
+
+
+
+            if (partes.length !== 3) {
+
                 //Error si el formato no coincide
-                salida= `<p class="error">Formato incorrecto. Debe ser DD-MM-AAAA.</p>`;
-            
-            } else {
-                
-                // Si el formato es correcto, extraemos las partes
-                const partes = fechaTexto.split('-'); // ["DD", "MM", "AAAA"]
-                const dia = parseInt(partes[0], 10);
-                const mes = parseInt(partes[1], 10); // 1 (Enero) a 12 (Diciembre)
-                const anio = parseInt(partes[2], 10);
+                salida = `<p class="error">Formato incorrecto. Debe ser DD-MM-AAAA.</p>`;
 
+            } else {
+
+
+                const dia = parseInt(partes[0]);
+                const mes = parseInt(partes[1]-1); // 1 (Enero) a 12 (Diciembre)
+                const año = parseInt(partes[2]);
                 // Creamos un objeto Date
                 // NOTA: El mes en JavaScript Date() va de 0 (Ene) a 11 (Dic), por eso restamos 1
-                const fechaNacimiento = new Date(anio, mes - 1, dia);
+                const fechaNacimiento = new Date(anñ, mes, dia);
                 const hoy = new Date();
 
                 // Validación lógica de la fecha:
                 // 1. Comprobamos que JS no "corrigió" la fecha (ej: 30-02-2000 lo vuelve 01-03-2000)
                 // 2. Comprobamos que la fecha no sea futura
-                if (fechaNacimiento.getFullYear() !== anio ||
-                    fechaNacimiento.getMonth() !== (mes - 1) ||
+                if (fechaNacimiento.getFullYear() !== año ||
+                    fechaNacimiento.getMonth() !== mes ||
                     fechaNacimiento.getDate() !== dia) {
-                    
+
                     // Error si la fecha es lógicamente inválida
-                    salidaHTML = `<p class="error">Fecha inválida (Ej: 30-02-2000 no existe).</p>`;
-                
+                    salida = `<p class="error">Fecha inválida (Ej: 30-02-2000 no existe).</p>`;
+
                 } else if (fechaNacimiento > hoy) {
-                
+
                     //Error si la fecha es en el futuro
-                     salidaHTML = `<p class="error">La fecha de nacimiento no puede ser en el futuro.</p>`;
-               
+                    salida = `<p class="error">La fecha de nacimiento no puede ser en el futuro.</p>`;
+
                 } else {
-                    
+
                     //Si la fecha es válida, calcular la edad
-                    
+
                     let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-                    
+
                     // Comprobamos si ya ha sido su cumpleaños este año
                     const mesActual = hoy.getMonth(); // 0-11
                     const diaActual = hoy.getDate(); // 1-31
-                    
+
                     const mesNacimiento = fechaNacimiento.getMonth(); // 0-11
                     const diaNacimiento = fechaNacimiento.getDate(); // 1-31
 
@@ -83,7 +84,7 @@
                     }
 
                     // d. Mostrar la fecha de nacimiento y la edad
-                    salida= `
+                    salida = `
                         <p><strong>Fecha de Nacimiento:</strong> ${fechaTexto}</p>
                         <p><strong>Edad actual:</strong> ${edad} años</p>
                     `;
@@ -94,6 +95,7 @@
         // Finalmente, escribimos el resultado (sea éxito o error) en el div
         resultado.innerHTML = salida;
     </script>
-    
+
 </body>
+
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Ejercicio 11</title>
+</head>
+
+<body>
+    <h1>Divide la Frase</h1>
+    <div id="resultado" class="caja"></div>
+
+
+
+
+
+    <script>
+        let frase = prompt("Dime una frase");
+        let resultado = document.getElementById("resultado");
+        let salida = "";
+        let lista = "<ul>";
+
+
+        if (frase === null || frase.trim() === "") {
+            salida = "<p class='error'>Operacion cancelada por el usuario</p>";
+        }
+
+        let partes = frase.trim().split(/\s+/);
+
+        for (let i =0; i <partes.length; i++) {
+            lista += `<li>${i+1}.- ${partes[i]}</li>`;
+        }
+        lista += "</ul>";
+
+        salida = `<p><b>La frase introducida es: </b>${frase}</p><br>
+        <p><b>cantidad de palabras de la frase: </b>${partes.length}</p><br>
+        <p><b>Lista de palabras: </b> ${lista}</p>`;
+
+
+        resultado.innerHTML = salida;
+
+    </script>
+</body>
+
+</html>
