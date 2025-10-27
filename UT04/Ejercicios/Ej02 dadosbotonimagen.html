@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .dados {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dados img {
+            margin: 10px;
+        }
+
+        button {
+            background-color: rgb(0, 153, 255);
+            text-align: center;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: rgb(127, 172, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lanzamiento de dos dados</h1>
+    <div class="dados">
+        <img id="imagenDado1" src="" alt="Primer dado">
+        <img id="imagenDado2" src="" alt="Segundo dado">
+    </div>
+
+    <div class="caja" id="resultado"></div>
+    <script>
+
+        function lanzarDados() {
+            let dado1 = Math.floor(Math.random() * 6) + 1;
+            let dado2 = Math.floor(Math.random() * 6) + 1;
+            let suma = dado1 + dado2;
+
+            let mayor = Math.max(dado1, dado2);
+
+            document.getElementById("imagenDado1").src = `img/dado${dado1}.png`;
+            document.getElementById("imagenDado2").src = `img/dado${dado2}.png`;
+            let contenedor = document.getElementById("resultado");
+
+            contenedor.innerHTML = `<p><b>Dado 1: </b>${dado1}</p>
+                    <p><b>Dado 2: </b>${dado2}</p>
+                    <p><b>Suma: </b>${suma}</p>
+                    <p><b>Mayor: </b>${dado1 === dado2 ? "Ambos son iguales" : mayor}</p>`;
+
+        }
+
+
+    </script>
+    <button onclick="lanzarDados()">Volver a lanzar</button>
+</body>
+
+</html>
