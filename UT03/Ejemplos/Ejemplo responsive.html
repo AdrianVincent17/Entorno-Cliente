@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Ejercicio con onresize</title>
+
+    <style>
+        /* Estilos solo para centrar el mensaje */
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 90vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+
+        p {
+            color: #ff1500;
+            font-size: 52px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <p id="mensaje"></p>
+
+
+    <script>
+        let mensaje = document.getElementById('mensaje');
+
+        // 1. Creamos la función que se ejecutará
+        function verificarTamano() {
+
+
+            // Obtenemos el ancho
+            let ancho = window.innerWidth;
+            let breakpoint = "";
+
+            // 1. Determinar el breakpoint
+            if (ancho < 576) {
+                breakpoint = 'XS (Móvil)';
+            } else if (ancho < 768) {
+                breakpoint = 'SM (Tablet Pequeña)';
+            } else if (ancho < 992) {
+                breakpoint = 'MD (Tablet/Laptop)';
+            } else if (ancho < 1200) {
+                breakpoint = 'LG (Monitor)';
+            } else if (ancho < 1600) {
+                breakpoint = 'XL (Monitor Grande)';
+            } else {
+                breakpoint = 'XXL (Monitor Muy Grande)';
+            }
+
+            // Actualizamos el contenido
+            mensaje.textContent = `El ancho es: ${ancho} px\n${breakpoint}`;
+
+        }
+
+        // 2. Asignamos esa función al evento 'onresize' de la ventana
+        window.onresize = verificarTamano;
+
+        // 3. (Importante) También la asignamos al evento 'onload' para el estado inicial
+        window.onload = verificarTamano;
+
+    </script>
+
+</body>
+
+</html>
