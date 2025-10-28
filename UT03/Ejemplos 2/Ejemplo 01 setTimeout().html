@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo 2 de setTimeout()</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h2>Ejemplo 2 de setTimeout()</h2>
+    <p id="mensaje">Esperando mensaje...</p>
+
+
+    <script>
+        function mostrarMensaje(){
+            document.getElementById("mensaje").textContent="🛎¡Han pasado 3 segundos!"
+        }
+        setTimeout(mostrarMensaje,3000)
+            
+
+      
+    </script>
+    
+</body>
+</html>

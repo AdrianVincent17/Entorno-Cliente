@@ -5,12 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 3</title>
     <link rel="stylesheet" href="estilos.css">
+
+    <style>
+          button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #0b5b6f;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+
+        }
+
+        button:hover {
+            background-color: #0b8f8f;
+        }
+
+
+    </style>
 </head>
 <body>
 
     <h1 id="numero"></h1>
     <p class="caja" id="ley"></p>
-  
+    <button onclick="generarley()">Mostrar ley</button>
 
     <script>
 
@@ -32,12 +53,15 @@
             "Cuanto mas urgente sea algo, mas tardara en llegar."
         ];
 
-      //Generamos un numero aleatorio entre 0 y (leyes.length-1)
+        function generarley(){
+        //Generamos un numero aleatorio entre 0 y (leyes.length-1)
         const indiceAleatorio=Math.floor(Math.random()*leyes.length);
 
         document.getElementById("numero").innerHTML=`Ley de Murphy Nº ${indiceAleatorio+1}`
         document.getElementById("ley").textContent=`${leyes[indiceAleatorio]}`;
-        
+        }
+
+        generarley();
     </script>
     
 </body>
