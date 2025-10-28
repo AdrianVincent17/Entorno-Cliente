@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos.css">
-    <title>Ejercicio 12</title>
+    <title>Fortaleza de la contraseña</title>
 </head>
+
 <body>
-    <h1>Analisis de fortaleza</h1>
+    <h1>Analisis de fortaleza de contraseña</h1>
 
     <script>
-        const password=prompt("Introduce una constraseña para analizar su fortaleza");
 
-        if(password===null ){
-            alert("Operacion cancelada por el usuario");
-        }else{
-            //analizamos la contraseña
+        //a.Solicitar la contraseña al usuario
+        const password = prompt("Introduce una constraseña para analizar su fortaleza");
 
-            const longitud=password.length;
-            const tieneMayus=/[A-Z]/.test(password);
-            const tieneMinus=/[a-z]/.test(password);
-            const tieneNums=/[0-9]/.test(password);
-            const tieneEspecial=/[@#$%&*?¿!¡]/.test(passsword);
+        //Si el usuario cancela, finaliza el programa
+        if (password === null) {
+            alert("Operacion cancelada");
+        } else {
 
-            let fortaleza="";
+            //b. Analizamos la contraseña
 
+<<<<<<< HEAD
             if(longitud>=8 && tieneMayus && tieneMinus && tieneEspecial && tieneNums){
                 fortaleza="Fuerte";
             }else if(longitu>=6 &&(tieneMayus || tieneMinus)&& tieneNums){
@@ -38,8 +36,32 @@
         }
          alert(`La fortaleza de la contraseña es: ${fortaleza}`);
        
+=======
+            const longitud = password.length;
+            const tieneMayusculas = /[A-Z]/.test(password);
+            const tieneMinusculas = /[a-z]/.test(password);
+            const tieneNumeros = /[0-9]/.test(password);
+            const tieneEspeciales = /[@#$%\&*?¿!¡]/.test(password);
+
+            let fortaleza = "";
+
+            if (longitud >= 8 && tieneMayusculas && tieneMinusculas && tieneEspeciales && tieneNumeros) {
+                fortaleza = "Fuerte";
+            } else if (longitud >= 6 && (tieneMinusculas || tieneMayusculas) && tieneNumeros) {
+                fortaleza = "Media";
+            } else if (longitud < 6) {
+                fortaleza = "Débil";
+            } else {
+                //Caso intermedio si no cumple los criterios de fuerte o media pero tiene mas de 6 caracteres
+                fortaleza = "Media (pero puede mejorar)";
+            }
+            alert(`La fortaleza de la contraseña es: ${fortaleza}`);
+        }
+
+>>>>>>> a54e085e4e9713a9c51da175f76fc8ef52bde761
 
     </script>
-    
+
 </body>
+
 </html>

@@ -1,0 +1,27 @@
+ body{
+            font-family: Arial, sans-serif;       /*tipografia arial o sans serif para todo el documento*/
+            background-color: #e7e7e7;          /*Establecemos un color de fondo gris muy claro*/
+            margin: 40px;                         /*Añadimos un margen de 40px alrededor del body*/
+            text-align: center;                   /*Centramos horizontalmente el texto de todos los elementos dentro del documento*/
+        }
+
+        /*CAJA*/
+        .caja{
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            max-width: 250px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        p{
+            margin: 2px 0;
+        }
+
+        .error{
+            color:red;
+            font-weight: bold;
+            text-align: center;
+        }
