@@ -22,21 +22,6 @@
 
             //b. Analizamos la contraseña
 
-<<<<<<< HEAD
-            if(longitud>=8 && tieneMayus && tieneMinus && tieneEspecial && tieneNums){
-                fortaleza="Fuerte";
-            }else if(longitu>=6 &&(tieneMayus || tieneMinus)&& tieneNums){
-                fortaleza="Media";
-            }else if(longitud<6){
-                fortaleza="Debil";
-            }else{
-                fortaleza="Media (pero puede mejorar)";
-            }
-            
-        }
-         alert(`La fortaleza de la contraseña es: ${fortaleza}`);
-       
-=======
             const longitud = password.length;
             const tieneMayusculas = /[A-Z]/.test(password);
             const tieneMinusculas = /[a-z]/.test(password);
@@ -58,7 +43,6 @@
             alert(`La fortaleza de la contraseña es: ${fortaleza}`);
         }
 
->>>>>>> a54e085e4e9713a9c51da175f76fc8ef52bde761
 
     </script>
 

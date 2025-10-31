@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario de Bootstrap 5 (Modo Oscuro)</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    
+
+    <style>
+        /* CSS Personalizado para el glosario en modo oscuro */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Ajuste para que el menú fijo no tape los títulos */
+            scroll-padding-top: 100px;
+        }
+
+        /* Estilos del Glosario con acentos azules */
+        dt {
+            /* Término: Color azul primario */
+            color: var(--bs-primary);
+            font-weight: bold;
+            font-size: 1.15em;
+            margin-top: 1.5rem;
+        }
+
+        dd {
+            /* Definición: Fondo gris oscuro (terciario) */
+            background-color: var(--bs-tertiary-bg);
+            /* Borde izquierdo azul */
+            border-left: 4px solid var(--bs-primary);
+            padding: 10px 15px;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        /* Código dentro de las definiciones */
+        dd code,
+        dd pre {
+            font-weight: 600;
+        }
+
+        /* Estilo para los bloques de código */
+        dd pre {
+            background-color: var(--bs-dark-bg-subtle);
+            border: 1px solid var(--bs-border-color);
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Estilos para las sub-listas dentro de una definición */
+        dd ul {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="container text-center p-4 pt-5">
+        <h1 class="display-4">Mi Chuleta de Bootstrap 5</h1>
+        <p class="lead">Glosario interactivo en modo oscuro.</p>
+    </header>
+
+    <nav class="navbar p-3 sticky-top bg-dark border-bottom border-secondary">
+        <div class="container-fluid justify-content-center">
+            <a class="btn btn-outline-primary m-1" href="#introduccion">Introducción</a>
+            <a class="btn btn-outline-primary m-1" href="#sistema-grid">Sistema Grid</a>
+            <a class="btn btn-outline-primary m-1" href="#textos-tipografia">Textos y Tipografía</a>
+            <a class="btn btn-outline-primary m-1" href="#imagenes-tablas">Imágenes y Tablas</a>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+
+        <section id="introduccion" class="pt-5 pb-4 mb-5">
+            <h2 class="display-5 border-bottom pb-2 mb-4 text-primary">1. Introducción a Bootstrap</h2>
+            <dl>
+                <dt>¿Qué es Bootstrap?</dt>
+                <dd>
+                    Un framework de diseño web (CSS y JS) creado por Twitter. Es Open Source y facilita la creación de
+                    sitios web con diseño adaptable ("responsive") y bajo la filosofía "Mobile First".
+                </dd>
+                <dt>Ventajas</dt>
+                <dd>
+                    Permite crear diseños adaptables que se ajustan a cualquier pantalla (móvil, tablet, escritorio).
+                    Acelera el desarrollo, asegura consistencia visual y es compatible con todos los navegadores
+                    modernos.
+                </dd>
+
+                <dt>Instalación Remota (CDN)</dt>
+                <dd>
+                    Es la forma más rápida y recomendada para prototipar. Se enlaza a los archivos de Bootstrap alojados
+                    en un servidor externo (CDN). Requiere conexión a internet.
+
+                    <p class="mt-3 mb-2 text-white">Código para el <code>&lt;head&gt;</code> (CSS):</p>
+                    <pre><code>&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"&gt;</code></pre>
+
+                    <p class="mt-3 mb-2 text-white">Código antes de cerrar <code>&lt;/body&gt;</code> (JavaScript):</p>
+                    <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"&gt;&lt;/script&gt;</code></pre>
+                </dd>
+
+                <dt>Instalación Local (Archivos)</dt>
+                <dd>
+                    Se descargan los archivos <code>.css</code> y <code>.js</code> compilados desde la web oficial de
+                    Bootstrap y se alojan en carpetas dentro de tu proyecto. No requiere conexión a internet para
+                    funcionar.
+
+                    <p class="mt-3 mb-2 text-white">Código para el <code>&lt;head&gt;</code> (CSS):</p>
+                    <pre><code>&lt;!-- La ruta './css/' depende de dónde guardes el archivo --&gt;
+&lt;link rel="stylesheet" href="./css/bootstrap.min.css"&gt;</code></pre>
+
+                    <p class="mt-3 mb-2 text-white">Código antes de cerrar <code>&lt;/body&gt;</code> (JavaScript):</p>
+                    <pre><code>&lt;!-- La ruta './js/' depende de dónde guardes el archivo --&gt;
+&lt;script src="./js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+                </dd>
+
+            </dl>
+        </section>
+
+        <section id="sistema-grid" class="pt-5 pb-4 mb-5">
+            <h2 class="display-5 border-bottom pb-2 mb-4 text-primary">2. Sistema Grid</h2>
+            <dl>
+                <dt>Concepto Principal</dt>
+                <dd>
+                    Un sistema de rejilla "Mobile First" basado en <strong>12 columnas</strong>. Permite estructurar el
+                    contenido de forma flexible y responsiva.
+                </dd>
+
+                <dt>Estructura Básica</dt>
+                <dd>
+                    La rejilla siempre sigue esta jerarquía:
+                    <br>
+                    <code>.container</code> (o <code>.container-fluid</code>) > <code>.row</code> > <code>.col-*</code>
+                </dd>
+
+                <dt><code>.container</code> vs <code>.container-fluid</code></dt>
+                <dd>
+                    <code>.container</code>: Tiene un ancho máximo (<code>max-width</code>) que cambia según el tamaño
+                    de pantalla. El contenido queda centrado.
+                    <br>
+                    <code>.container-fluid</code>: Ocupa siempre el 100% del ancho (<code>width: 100%</code>).
+                </dd>
+
+                <dt><code>.col-*</code> (Columnas)</dt>
+                <dd>
+                    Define el ancho de una columna (cuántas de las 12 columnas virtuales ocupa).
+                    <br>
+                    <code>.col</code>: Ancho automático. Se reparten el espacio equitativamente.
+                    <br>
+                    <code>.col-6</code>: Ocupa 6 de 12 columnas (la mitad del ancho) en todos los tamaños.
+                    <br>
+                    <code>.col-md-4</code>: Ocupa 4 de 12 columnas en pantallas medianas (<code>md</code>) y más
+                    grandes. En pantallas pequeñas ocupa el 100%.
+                </dd>
+
+                <dt>Alineación de Columnas (Flexbox)</dt>
+                <dd>
+                    Puedes usar utilidades de Flexbox en la fila (<code>.row</code>) para alinear las columnas.
+                    <br>
+                    <strong class="text-white">Alineación Horizontal (se aplica a <code>.row</code>):</strong>
+                    <ul>
+                        <li><code>.justify-content-center</code>: Centra las columnas horizontalmente.</li>
+                        <li><code>.justify-content-end</code>: Alinea columnas al final.</li>
+                        <li><code>.justify-content-between</code>: Espacio igual entre columnas.</li>
+                    </ul>
+                    <strong class="text-white">Alineación Vertical (se aplica a <code>.row</code>):</strong>
+                    <ul>
+                        <li><code>.align-items-start</code>: Alinea todas las columnas arriba.</li>
+                        <li><code>.align-items-center</code>: Centra todas las columnas verticalmente.</li>
+                        <li><code>.align-items-end</code>: Alinea todas las columnas abajo.</li>
+                    </ul>
+                    <strong class="text-white">Alineación Vertical (individual, se aplica a <code>.col</code>):</strong>
+                    <ul>
+                        <li><code>.align-self-center</code>: Columna individual al centro.</li>
+                    </ul>
+                </dd>
+
+                <dt>Gutters (Espaciado entre columnas)</dt>
+                <dd>
+                    Controla el espacio *entre* columnas. Se aplica directamente a la clase <code>.row</code>:
+                    <ul>
+                        <li><code>g-0</code>: Elimina todos los gutters (márgenes y paddings).</li>
+                        <li><code>g-{tamaño}</code>: Asigna gutter horizontal y vertical (tamaño 0-5).</li>
+                        <li><code>gx-{tamaño}</code>: Asigna gutter horizontal (eje X).</li>
+                        <li><code>gy-{tamaño}</code>: Asigna gutter vertical (eje Y).</li>
+                    </ul>
+                    Ejemplo: <code>&lt;div class="row g-3"&gt;...&lt;/div&gt;</code>
+                </dd>
+
+                <dt>Márgenes y Rellenos (Spacing)</dt>
+                <dd>
+                    Puedes añadir márgenes (<code>margin</code>) o rellenos (<code>padding</code>) a cualquier elemento.
+                    <br>
+                    <strong>Formato:</strong> <code>{propiedad}{lado}-{tamaño}</code>
+                    <ul>
+                        <li><strong>Propiedad:</strong> <code>m</code> (para margin), <code>p</code> (para padding).
+                        </li>
+                        <li><strong>Lado:</strong> <code>t</code> (top), <code>b</code> (bottom), <code>s</code>
+                            (start/left), <code>e</code> (end/right), <code>x</code> (ejes X), <code>y</code> (ejes Y).
+                        </li>
+                        <li><strong>Tamaño:</strong> <code>0</code> (cero), <code>1</code> (pequeño) a <code>5</code>
+                            (grande), y <code>auto</code>.</li>
+                    </ul>
+                    <strong>Ejemplos:</strong> <code>.mt-3</code> (margin-top), <code>.px-4</code> (padding horizontal),
+                    <code>.mb-5</code> (margin-bottom), <code>.mx-auto</code> (centrar horizontalmente).
+                </dd>
+
+                <dt>Breakpoints (Puntos de Corte)</dt>
+                <dd>
+                    Son los tamaños de pantalla donde el diseño puede cambiar (ej.
+                    <code>col-<strong>lg</strong>-3</code>).
+                    <ul>
+                        <li><code>sm</code> (>= 576px)</li>
+                        <li><code>md</code> (>= 768px)</li>
+                        <li><code>lg</code> (>= 992px)</li>
+                        <li><code>xl</code> (>= 1200px)</li>
+                        <li><code>xxl</code> (>= 1400px)</li>
+                    </ul>
+                </dd>
+
+                <dt>Offset (Desplazamiento)</dt>
+                <dd>
+                    <code>.offset-md-2</code>: Empuja la columna 2 espacios (columnas) hacia la derecha, a partir del
+                    tamaño <code>md</code>.
+                </dd>
+
+                <dt>Utilidades Responsive (Display)</dt>
+                <dd>
+                    <code>.d-none</code>: Oculto siempre.
+                    <br>
+                    <code>.d-md-none</code>: Oculto a partir de <code>md</code>.
+                    <br>
+                    <code>.d-lg-block</code>: Visible como bloque a partir de <code>lg</code> (oculto en <code>sm</code>
+                    y <code>md</code>).
+                </dd>
+            </dl>
+        </section>
+
+        <section id="textos-tipografia" class="pt-5 pb-4 mb-5">
+            <h2 class="display-5 border-bottom pb-2 mb-4 text-primary">3. Textos y Tipografía</h2>
+            <dl>
+                <dt>Display Headings</dt>
+                <dd>
+                    Encabezados más grandes y destacados.
+                    <br>
+                    Clases: <code>.display-1</code>, <code>.display-2</code>, <code>.display-3</code>,
+                    <code>.display-4</code>, <code>.display-5</code>, <code>.display-6</code>.
+                </dd>
+
+                <dt><code>.lead</code></dt>
+                <dd>
+                    Clase para párrafos introductorios o destacados. Les da un tamaño de fuente mayor.
+                </dd>
+
+                <dt>Alineación de Texto</dt>
+                <dd>
+                    <code>.text-start</code> (izquierda), <code>.text-center</code> (centrado), <code>.text-end</code>
+                    (derecha).
+                    <br>
+                    <strong>Responsivo:</strong> <code>.text-md-center</code> (centra solo a partir de <code>md</code>).
+                </dd>
+
+                <dt>Transformación de Texto</dt>
+                <dd>
+                    <code>.text-lowercase</code>, <code>.text-uppercase</code>, <code>.text-capitalize</code>.
+                </dd>
+
+                <dt>Peso y Estilo (Font Weight/Style)</dt>
+                <dd>
+                    <code>.fw-bold</code> (negrita), <code>.fw-normal</code>, <code>.fw-light</code>.
+                    <br>
+                    <code>.fst-italic</code> (cursiva).
+                </dd>
+
+                <dt>Blockquote (Citas)</dt>
+                <dd>
+                    <code>.blockquote</code> para la etiqueta <code>&lt;blockquote&gt;</code>.
+                    <br>
+                    <code>.blockquote-footer</code>: Para indicar la fuente de la cita.
+                </dd>
+
+                <dt>Resaltar Código</dt>
+                <dd>
+                    <code>&lt;code&gt;</code>: Para fragmentos de código en línea.
+                    <br>
+                    <code>&lt;pre&gt;</code>: Para bloques de código de varias líneas.
+                    <br>
+                    <code>&lt;kbd&gt;</code>: Para indicar atajos de teclado.
+                </dd>
+            </dl>
+        </section>
+
+        <section id="imagenes-tablas" class="pt-5 pb-4 mb-5">
+            <h2 class="display-5 border-bottom pb-2 mb-4 text-primary">4. Imágenes y Tablas</h2>
+            <dl>
+                <dt>Imágenes Fluidas (Responsivas)</dt>
+                <dd>
+                    <code>.img-fluid</code>: La clase más importante. Aplica <code>max-width: 100%;</code> y
+                    <code>height: auto;</code>.
+                </dd>
+
+                <dt>Estilos de Imagen</dt>
+                <dd>
+                    <code>.rounded</code> (esquinas redondeadas).
+                    <br>
+                    <code>.rounded-circle</code> (círculo).
+                    <br>
+                    <code>.img-thumbnail</code> (borde de miniatura).
+                </dd>
+
+                <dt>Alinear Imágenes</dt>
+                <dd>
+                    <code>.float-start</code> (izquierda), <code>.float-end</code> (derecha).
+                    <br>
+                    <strong>Centrar:</strong> <code>.d-block</code> y <code>.mx-auto</code>.
+                </dd>
+
+                <dt>Tablas (Base)</dt>
+                <dd>
+                    <code>.table</code>: Es la clase base obligatoria para <code>&lt;table&gt;</code>.
+                </dd>
+
+                <dt>Estilos de Tabla</dt>
+                <dd>
+                    <code>.table-striped</code>: Filas con colores alternos.
+                    <br>
+                    <code>.table-bordered</code>: Con bordes.
+                    <br>
+                    <code>.table-hover</code>: Efecto al pasar el ratón.
+                    <br>
+                    <code>.table-sm</code>: Tabla más compacta.
+                </dd>
+
+                <dt>Tablas Oscuras / Claras</dt>
+                <dd>
+                    Bootstrap 5 adapta las tablas automáticamente al modo oscuro.
+                    <code>.table-dark</code> sigue forzando el modo oscuro si fuera necesario.
+                </dd>
+
+                <dt>Tablas Responsivas</dt>
+                <dd>
+                    <code>.table-responsive</code>: Se usa en un <code>&lt;div&gt;</code> que <strong>envuelve</strong>
+                    a la <code>&lt;table&gt;</code>. Añade scroll horizontal en pantallas pequeñas si la tabla no cabe.
+                </dd>
+            </dl>
+        </section>
+
+    </main>
+
+    <footer class="text-center text-body-secondary p-4 mt-5">
+        <p>Glosario modo oscuro (Estilo Sencillo)</p>
+    </footer>
+
+    
+</body>
+
+</html>
