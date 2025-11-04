@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar contenedor</title>
+</head>
+
+<body>
+
+    <div id="contenedor">
+        <p id="mensaje">Hola, mundo</p>
+    </div>
+    <button onclick="eliminarparrafo()">Eliminar parrafo</button>
+
+    <script>
+        function eliminarparrafo() {
+            const contenedor = document.getElementById("contenedor");
+
+            const mensaje = document.getElementById("mensaje");
+
+            
+
+            contenedor.removeChild(mensaje);
+        }
+    </script>
+
+</body>
+
+</html>

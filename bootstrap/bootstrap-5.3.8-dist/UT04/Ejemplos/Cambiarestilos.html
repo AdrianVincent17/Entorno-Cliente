@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar estilos</title>
+</head>
+
+<body>
+
+    <h1 id="titulo">titulo de la pagina</h1>
+    <p id="parrafo">La primera vez que pulses el boton cambiaras los estilos</p>
+    <button onclick="cambiarEstilos()">Cambiar estilos</button>
+
+
+    <script>
+        function cambiarEstilos() {
+            
+            //Cambiar colo del titulo
+            document.getElementById("titulo").style.color = "red";
+
+            //Cambiar el tamaño de la fuente del parrafo
+            document.getElementById("parrafo").style.fontSize = "20px";
+
+            //Cambiar el color del fo
+            document.body.style.backgroundColor = "lightblue"
+
+            document.getElementById("parrafo").style.textAlign = "center";
+
+        }
+    </script>
+
+</body>
+
+</html>

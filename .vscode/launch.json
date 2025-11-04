@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Open Ejemplo 1.html",
+            "file": "c:\\Users\\AdrianV\\Entorno-Cliente\\bootstrap\\bootstrap-5.3.8-dist\\UT04\\Ejemplos\\Ejemplo 1.html"
+        }
+    ]
+}

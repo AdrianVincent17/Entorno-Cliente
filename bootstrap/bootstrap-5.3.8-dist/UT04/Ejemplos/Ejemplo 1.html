@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de generacion de texto</title>
+</head>
+<body>
+
+    <h1>Ejemplo generacion texto y elementos desde el html</h1>
+
+    <script>
+        //1.Crear parrafo
+        let nuevoparrafo=document.createElement("p");
+
+        //2.Añadir contenido al parrafo
+        nuevoparrafo.textContent="Parrafo creado dinamicamente con JS";
+
+        //3.Insertalo en el documento (al final del body);
+        document.body.appendChild(nuevoparrafo);
+
+        //1.Crear un elemento de lista
+        let nuevalista=document.createElement("ul");
+
+        //2.Crear tres elementos <li>
+        for(let i=1; i<=3; i++){
+            let item=document.createElement("li");
+            item.textContent="Elemento"+i;
+            nuevalista.appendChild(item);
+        }
+
+        //3.Insertar la lista en el documento
+        document.body.appendChild(nuevalista);
+
+    </script>
+    
+</body>
+</html>

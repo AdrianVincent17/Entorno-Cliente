@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar estilos</title>
+</head>
+
+<body>
+
+    <h1 id="titulo">titulo cambiado con JavaScript</h1>
+    <p id="parrafo">Esto es un parrafo inicial</p>
+    <button onclick="añadirparrafo()">añadir parrafo</button>
+    <button onclick="cambiarEstilos()">Cambiar estilos</button>
+
+
+
+    <script>
+        function cambiarEstilos() {
+
+            //Cambiar el color del fondo del body
+            document.body.style.backgroundColor = "yellow"
+
+            //alinear texto al centro del parrafo
+            document.getElementById("parrafo").style.color = "blue";
+
+            document.getElementById("parrafo").style.fontWeight = "bold";
+
+
+        }
+
+        function añadirparrafo() {
+
+            let nuevoparrafo = document.createElement("p")
+
+            let mensaje = "Este parrafo fue creado dinamicamente";
+
+            nuevoparrafo.textcontent = mensaje;
+
+            document.body.appendChild(nuevoparrafo);
+
+        }
+    </script>
+
+</body>
+
+</html>
