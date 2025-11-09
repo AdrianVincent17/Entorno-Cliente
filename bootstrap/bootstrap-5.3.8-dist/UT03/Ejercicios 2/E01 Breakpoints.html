@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deteccion del tamaño de ventana</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #tamaño {
+            font-size: 5em;
+            color: #c00;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tamaño actual de la ventana</h1>
+    <div id="tamaño"></div>
+
+    <script>
+        function mostrartamaño() {
+            let mensaje = "";
+
+            if (innerWidth < 576) {
+                mensaje = "XS";
+            } else if (innerWidth < 768) {
+                mensaje = "SM";
+            } else if (innerWidth < 992) {
+                mensaje = "MD";
+            } else if (innerWidth < 1200) {
+                mensaje = "LG";
+            } else {
+                mensaje = "XL";
+            }
+
+            document.getElementById("tamaño").textContent=mensaje;
+        }
+
+        mostrartamaño();
+
+        window.onresize=mostrartamaño;
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Ejemplo de setTimeout()</title>
+</head>
+
+<body>
+    <h1>Ejemplo 2 de setTimeout()</h1>
+    <p id="result" class="caja">Esperando mensaje...</p>
+    <script>
+        function mensaje(){
+            document.getElementById("result").textContent="Esto se vera tras 5 segundos";
+        }
+        setTimeout(mensaje, 5000);
+    </script>
+
+
+</body>
+
+</html>

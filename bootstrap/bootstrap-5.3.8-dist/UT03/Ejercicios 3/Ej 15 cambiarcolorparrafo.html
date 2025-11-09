@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        background-color: darkgray;
+    }
+
+    #boton {
+
+        margin-top: 50px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+    #boton:hover {
+        background-color: rgb(61, 61, 61);
+
+
+    }
+
+    #caja {
+
+
+        margin: 20px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        background-color: rgb(255, 8, 8);
+    }
+</style>
+
+<body>
+
+
+
+    <button id="boton" onclick="cambiar()">Cambiar color</button>
+
+    <div id="caja"></div>
+    <p id="colortexto">#ff4512</p>
+
+    <script>
+
+        function cambiarcolor() {
+            //generar un color hexadecimal #RRGGBB
+            let letras="0123456789ABCDEF";
+            let color="#";
+            for(let i=0; i<6; i++){
+                color+=letras[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+
+
+        function cambiar() {
+
+            let coloraleatorio=cambiarcolor();
+
+            const micaja = document.getElementById('caja');
+            const miboton = document.getElementById('boton');
+
+            micaja.style.background = coloraleatorio;
+            document.getElementById("colortexto").textContent=coloraleatorio;
+            document.getElementById("colortexto").style.color=coloraleatorio;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

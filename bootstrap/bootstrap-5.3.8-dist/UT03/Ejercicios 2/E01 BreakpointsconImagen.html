@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deteccion del tamaño de ventana</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #tamaño {
+            font-size: 5em;
+            color: #c00;
+        }
+
+        #dispositivo {
+            height: 300px;
+            /*Altura fija para el contenedor de la imagenes*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #dispositivoImg {
+            /*Para que la imagen se ajuste y no se desborde*/
+            max-width: 100%;
+            max-height: 280px;
+            /*Transicion suave al cambiar de imagen */
+            transition: opacity 0.3ease;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tamaño actual de la ventana</h1>
+    <div id="tamaño"></div>
+
+    <div id="dispositivo">
+        <img id="dispositivoImg" src="" alt="Imagen del dispositivo">
+    </div>
+
+    <script>
+        function mostrartamaño() {
+            let mensaje = "";
+            let nuevaImgSrc = "";
+            let nuevoAltText = "";
+
+            if (innerWidth < 576) {
+                mensaje = "XS";
+                nuevaImgSrc = "img/dispositivo1.png";
+                nuevoAltText = "Smartphone (XS)";
+            } else if (innerWidth < 768) {
+                mensaje = "SM";
+                nuevaImgSrc = "img/dispositivo2.png";
+                nuevoAltText = "Tablet vertical (SM)";
+            } else if (innerWidth < 992) {
+                mensaje = "MD";
+                nuevaImgSrc = "img/dispositivo3.png";
+                nuevoAltText = "Tablet horizontal (MD)";
+            } else if (innerWidth < 1200) {
+                mensaje = "LG";
+                nuevaImgSrc = "img/dispositivo4.png";
+                nuevoAltText = "Laptop (LG)";
+            } else {
+                mensaje = "XL";
+                nuevaImgSrc = "img/dispositivo5.png";
+                nuevoAltText = "Sobremesa (XL)";
+            }
+
+            document.getElementById("tamaño").textContent = mensaje;
+            document.getElementById("dispositivoImg").src = nuevaImgSrc;
+            document.getElementById("dispositivoImg").alt = nuevoAltText;
+        }
+
+        mostrartamaño();
+
+        window.onresize = mostrartamaño;
+
+
+    </script>
+
+</body>
+
+</html>
