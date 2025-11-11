@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin-top: 50px;
+
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        .textotemporizador {
+            font-size: 48px;
+            color: red;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px auto;
+            width: 320px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .boton-borrar {
+            background-color: #ff6961;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Desafio de precision temporal</h1>
+    <p>Intenta detener el temporizador justo antes de llegar a 0</p>
+
+    <p id="temporizador" name="temporizador" class="textotemporizador">3.00</p>
+    <br>
+    <button onclick="contar()">Iniciar</button>
+    <button onclick="detener()">Detener</button>
+    <br>
+    <h2>Ranking de intentos</h2>
+    <ul id="lista"></ul>
+
+    <script>
+        //creamos las variables para el intervalo y los segundos
+        let intervalo;
+        let segundos = 1;
+
+
+        segundos = segundos.toFixed(2);
+
+        let lista = document.getElementById("lista");
+
+        //Funcion que incrementa el contador y lo muestra
+        function disminuyecontador() {
+
+            segundos = (segundos - 0.01).toFixed(2);
+            document.getElementById("temporizador").textContent = segundos;
+
+
+            if (segundos == 0) {
+                detener();
+            }
+
+        }
+
+        //Continua el temporizador (Solo si esta detenido)
+        function contar() {
+            segundos = 3;
+            clearInterval(intervalo);       //Evita que se creen multiples intervalos
+            intervalo = setInterval(disminuyecontador, 10);
+
+
+        }
+
+        let intentos = 0;
+        //Detiende el temporizador
+        function detener() {
+
+            clearInterval(intervalo);
+
+            //Creamos el elemnto <li>
+            let nuevoelemento = document.createElement("li");
+
+            if (segundos == 0) {
+                nuevoelemento.textContent = `intento: ${intentos} FALLO has llegado a 0`;
+            } else {
+                //damos el valor del input al nuevoelemento
+                nuevoelemento.textContent = `intentos: ${intentos} ${segundos}`;
+            }
+
+            //creamos el boton X
+            let botonBorrar = document.createElement("button");
+
+            botonBorrar.textContent = "X";
+            botonBorrar.className = "boton-borrar";
+            botonBorrar.onclick = function () {
+
+                //Eliminar este <li> concreto
+                lista.removeChild(nuevoelemento);
+
+            }
+            if (intervalo != null) {
+
+                intentos++;
+                //Añadimo el boton al <li>
+                nuevoelemento.appendChild(botonBorrar);
+
+                //añadimos el <li> a la lista
+                lista.appendChild(nuevoelemento);
+
+            }
+
+            intervalo = null;
+
+
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
