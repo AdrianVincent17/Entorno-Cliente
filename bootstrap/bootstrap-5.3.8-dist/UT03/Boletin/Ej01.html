@@ -102,7 +102,7 @@
 
         }
 
-        let intentos = 0;
+        let intentos = 1;
         //Detiende el temporizador
         function detener() {
 
@@ -115,7 +115,7 @@
                 nuevoelemento.textContent = `intento: ${intentos} FALLO has llegado a 0`;
             } else {
                 //damos el valor del input al nuevoelemento
-                nuevoelemento.textContent = `intentos: ${intentos} ${segundos}`;
+                nuevoelemento.textContent = `intento: ${intentos}  ${segundos} segundos`;
             }
 
             //creamos el boton X
