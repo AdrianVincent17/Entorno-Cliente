@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Cambiar colo de la caja</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        button {
+            background-color: darkgrey;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        #caja {
+            background-color: red;
+            display: block;
+            width: 150px;
+            height: 150px;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px black;
+            text-align: center;
+            margin: 20px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="cambiarcolor()">Cambiar color</button>
+
+    <div id="caja"></div>
+
+    <script>
+
+        let caja = document.getElementById("caja");
+        function generacolor() {
+
+            let colores = ['red', 'blue', 'yellow', 'brown', 'pink', 'purple', 'green', 'orange'];
+
+            return colores[Math.floor(Math.random() * colores.length)];
+        }
+
+
+        function cambiarcolor() {
+            caja.style.backgroundColor = generacolor();
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

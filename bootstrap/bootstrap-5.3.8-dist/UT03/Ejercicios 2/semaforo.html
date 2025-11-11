@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .caja {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+            margin: 40px auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .rojo, .ambar, .verde {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 10px;
+            opacity: 0.3; /* apagado */
+            transition: opacity 0.5s;
+        }
+        .rojo { background-color: red; }
+        .ambar { background-color: yellow; }
+        .verde { background-color: green; }
+
+        /* Luces encendidas */
+        .activo { opacity: 1; }
+    </style>
+    <title>Semaforo</title>
+</head>
+<body>
+    <h1>Semaforo</h1>
+
+    <div class="caja">
+        <div id="rojo" class="rojo"></div>
+        <div id="ambar" class="ambar"></div>
+        <div id="verde" class="verde"></div>
+    </div>
+
+    <script>
+        const rojo = document.getElementById("rojo");
+        const ambar = document.getElementById("ambar");
+        const verde = document.getElementById("verde");
+
+        function encenderRojo() {
+            rojo.classList.add("activo");
+            ambar.classList.remove("activo");
+            verde.classList.remove("activo");
+            setTimeout(encenderVerde, 4000); // después de 4 seg pasa a verde
+        }
+
+        function encenderVerde() {
+            rojo.classList.remove("activo");
+            ambar.classList.remove("activo");
+            verde.classList.add("activo");
+            setTimeout(encenderAmbar, 4000); // después de 4 seg pasa a ámbar
+        }
+
+        function encenderAmbar() {
+            rojo.classList.remove("activo");
+            ambar.classList.add("activo");
+            verde.classList.remove("activo");
+            setTimeout(encenderRojo, 2000); // después de 2 seg pasa a rojo
+        }
+
+        // Inicia el ciclo
+        encenderRojo();
+    </script>
+
+
+
+
+    
+</body>
+</html>

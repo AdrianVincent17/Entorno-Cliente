@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            margin-top: 50px;
+
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 10px auto;
+            width: 320px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .boton-borrar {
+            background-color: #ff6961;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 4px 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lista de Tareas</h1>
+
+    <input type="text" id="tareas" placeholder="Escribeme una tarea">
+    <button onclick="añadirtarea()">Añadir tarea</button>
+    <button onclick="eliminartodas()">Eliminar todas</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+
+
+        let lista = document.getElementById("lista");
+
+        function añadirtarea() {
+
+            let tareas = document.getElementById("tareas").value;
+
+            if (tareas.trim() !=="") {
+
+                //Creamos el elemnto <li>
+                let nuevoelemento = document.createElement("li");
+
+                //damos el valor del input al nuevoelemento
+                nuevoelemento.textContent = tareas;
+
+                //creamos el boton X
+                let botonBorrar = document.createElement("button");
+
+                botonBorrar.textContent = "X";
+                botonBorrar.className = "boton-borrar";
+                botonBorrar.onclick = function () {
+                    //Eliminar este <li> concreto
+                    lista.removeChild(nuevoelemento);
+                }
+
+                //Añadimo el boton al <li>
+                nuevoelemento.appendChild(botonBorrar);
+
+                //añadimos el <li> a la lista
+                lista.appendChild(nuevoelemento);
+            }
+
+            document.getElementById("tareas").value = "";
+        }
+
+        function eliminartodas() {
+            const confirmar = confirm("¿Estas seguro de que desea eliminar todas las tareas?");
+
+            if (confirmar) {
+                lista.innerHTML = "";
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

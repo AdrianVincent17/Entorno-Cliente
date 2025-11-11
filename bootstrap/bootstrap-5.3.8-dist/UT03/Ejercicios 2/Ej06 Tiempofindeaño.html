@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <title>Tiempo restante hasta fin de año</title>
+    <style>
+        .caja {
+            /* Fondo blanco */
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 16px;
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <div class="container text-center mt-5">
+        <h2>Cuenta atrás hasta fin de año</h2>
+        <p class="fw-light">Tiempo testante hasta el 31 de diciembre a las 23:59:59</p>
+        <div class="row justify-content-around mt-5">
+            <div class="caja col-5 col-md-2">
+                <div class="display-4 fw-bold" id="dias">00</div>
+                <div class="text-uppercase fst-italic">días</div>
+            </div>
+            <div class="caja col-5 col-md-2">
+                <div class="display-4 fw-bold" id="horas">00</div>
+                <div class="text-uppercase fst-italic">horas</div>
+            </div>
+            <div class="w-100 d-block d-md-none mt-3"></div>
+            <div class="caja col-5 col-md-2">
+                <div class="display-4 fw-bold" id="minutos">00</div>
+                <div class="text-uppercase fst-italic">minutos</div>
+            </div>
+            <div class="caja col-5 col-md-2">
+                <div class="display-4 fw-bold" id="segundos">00</div>
+                <div class="text-uppercase fst-italic">segundos</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function dosDigitos(n){
+            if(n<10)
+                return "0"+n;
+            return n;
+        }
+
+        function actual() {
+
+            let actual = new Date();
+            let resultado = document.getElementById("resultado");
+            let ahora = new Date();
+
+            let año = ahora.getFullYear();
+
+            // Establece la fecha de fin de año (Mes 11 es Diciembre)
+            let finAño = new Date(año, 11, 31, 23, 59, 59);
+
+            // Obtenemos la diferencia en milisegundos y la pasamos a segundos
+
+            let diferenciaEnMilisegundos = finAño.getTime() - ahora.getTime();
+            let restante = parseInt(diferenciaEnMilisegundos / 1000);
+
+            // 1. Calcular los días totales
+            let diasrestantes = Math.floor(restante / 86400);
+
+            // 2. Calcular las horas restantes (usando el módulo % para obtener el sobrante)
+            let horasrestantes = Math.floor((restante % 86400) / 3600);
+
+            // 3. Calcular los minutos restantes
+            let minutosrestantes = Math.floor((restante % 3600) / 60);
+
+            // 4. Calcular los segundos restantes (Corregido para que coincida con la salida)
+            let segundosrestantes = restante % 60;
+
+            // Formateamos la fecha actual para que sea más legible
+            let fechaActualFormato = ahora.toLocaleString('es-ES', {
+                dateStyle: 'long',
+                timeStyle: 'medium'
+            })
+
+            document.getElementById('segundos').innerHTML = dosDigitos(segundosrestantes);
+            document.getElementById('minutos').innerHTML = dosDigitos(minutosrestantes);
+            document.getElementById('horas').innerHTML = dosDigitos(horasrestantes);
+            document.getElementById('dias').innerHTML = dosDigitos(diasrestantes);
+        }
+        actual();
+
+        setInterval(actual, 1000);
+        
+    </script>
+</body>
+
+</html>

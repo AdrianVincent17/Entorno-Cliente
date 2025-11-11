@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        margin-top: 80px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        text-align: center;
+        background-color: darkgray;
+
+    }
+
+    #boton {
+
+        margin-top: 50px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+    #boton:hover {
+        background-color: rgb(61, 61, 61);
+
+
+    }
+
+    #caja {
+
+
+        margin: 20px auto;
+        width: 200px;
+        height: 200px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+        background-color: rgb(255, 8, 8);
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    input,
+    button {
+        padding: 8px;
+        margin: 5px;
+        font-size: 16px;
+    }
+
+    li {
+        background-color: lightgray;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 8px;
+        margin: 5px auto;
+        width: 250px;
+    }
+
+    #elegido{
+        border-radius: 8px;
+        border: 2px solid blue;
+        background-color: aqua;
+        padding: 8px 10px;
+        margin: 20px auto;
+        width: 250px;
+        font-weight: bold;
+
+    }
+
+    #nombreale{
+        color: blueviolet;
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <h1>Lista de nombres</h1>
+
+    <input type="text" id="name" placeholder="Escribe un nombre">
+    <button id="boton" onclick="añadirnombre()">Añadir nombre</button>
+    <button id="boton" onclick="nombrealeatorio()">Elegir nombre aleatorio</button>
+    <button id="boton" onclick="borrarlista()">Borrar lista</button>
+
+    <ul id="lista"></ul>
+
+    <div id="elegido" style="display: none;"></div>
+    
+    
+    <script>
+
+
+        let item = document.getElementById("lista");
+        let arraynombres=[];
+
+
+        function añadirnombre() {
+
+            let nombre = document.getElementById("name").value;
+            //no insertar nombres vacios
+            if (nombre.trim() !== "") {
+
+                //Creamos el elemento
+                let nuevoelemento = document.createElement('li');
+
+                //añadomos la informacion del value del input al elemento <li>
+                nuevoelemento.textContent = nombre;
+
+                //añadimos el elemnto a la lista
+                item.appendChild(nuevoelemento);
+
+                arraynombres.push(nombre);
+
+
+
+            }
+            document.getElementById("name").value = "";
+        }
+
+        
+        let nomale=document.getElementById("elegido");
+
+
+        function nombrealeatorio(){
+
+            if(arraynombres.length>0){
+
+                nomale.style.display="block";
+
+                nomale.innerHTML="El nombre elegido es: <span id='nombreale'></span>";
+
+
+                let aleatorio=Math.floor(Math.random()*arraynombres.length);
+
+                document.getElementById("nombreale").innerHTML=arraynombres[aleatorio];
+            }
+
+
+            
+        }
+
+        function borrarlista() {
+
+            item.textContent = "";
+            arraynombres=[];
+            nomale.style.display="none";
+
+        }
+    </script>
+
+
+</body>
+
+</html>

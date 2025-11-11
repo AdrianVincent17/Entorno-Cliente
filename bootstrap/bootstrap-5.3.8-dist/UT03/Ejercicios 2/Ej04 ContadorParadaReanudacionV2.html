@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="temporizadorCss.css">
+
+    <title>Contador con parada y reanudacion</title>
+</head>
+<body>
+
+    <p id="resultado">0</p>
+    <button id="continuar" onclick="continuar()">Continuar</button>
+    <button id="detener" onclick="detener()">Detener</button>
+    <button id="reset" type="reset" onclick="reestablecer()">Reset</button>
+
+    <script>
+        let intervalo;
+        let segundos=0;
+
+        //Funcion que incrementa el contador y lo muestra
+        function aumentarcontador(){
+
+            segundos++;
+            document.getElementById("resultado").textContent=segundos;
+        }
+
+        //Iniciamo el temporizador al cargar la pagina
+
+        intervalo=setInterval(aumentarcontador,1000);
+
+
+        //Detiende el temporizador
+        function detener(){
+            clearInterval(intervalo);
+        }
+
+        //Continua el temporizador (Solo si esta detenido)
+        function continuar(){
+            clearInterval(intervalo);       //Evita que se creen multiples intervalos
+            intervalo=setInterval(aumentarcontador,1000);
+        }
+
+        function reestablecer(){
+            clearInterval(intervalo);
+            segundos=0;
+           document.getElementById("resultado").textContent=0;
+        }
+
+    </script>
+
+    
+    
+</body>
+</html>

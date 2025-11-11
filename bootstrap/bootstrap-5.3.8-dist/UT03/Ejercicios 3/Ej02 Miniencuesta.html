@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini encuesta</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            background-color: bisque;
+            box-shadow: 0px 0px 10px 1px black;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        #respuesta {
+            font-style: italic;
+            color: coral;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>Mini encuesta</h1>
+    <p>¿Crees que vas a aprobar el curso?</p>
+    <button onclick="conta('si')">Si</button>
+    <button onclick="conta('no')">No</button>
+    <button onclick="conta('nsnc')">NS/NC</button>
+    <button onclick="reset()">Reset</button>
+
+    <p>Has respondido: <span id="respuesta"></span></p>
+
+    <div id="caja" class="caja"></div>
+
+
+    <script>
+        let contasi = 0;
+        let contano = 0;
+        let contansnc = 0;
+
+        let caja = document.getElementById("caja");
+        let respuesta = document.getElementById("respuesta");
+
+        function conta(parametro) {
+            if (parametro == 'si') {
+                contasi++;
+                respuesta.innerHTML = parametro;
+            } else if (parametro == 'no') {
+                contano++;
+                respuesta.innerHTML = parametro;
+            } else if (parametro == 'nsnc') {
+                contansnc++;
+                respuesta.innerHTML = parametro;
+            }
+
+            caja.innerHTML = `Respuestas "Si": ${contasi}<br>
+            Respuestas "No": ${contano}<br>
+            Respuestas "NSNC": ${contansnc}<br>`;
+        }
+
+        function reset() {
+            contasi = 0;
+            contano = 0;
+            contansnc = 0;
+            caja.innerHTML = "";
+            respuesta.innerHTML = "";
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

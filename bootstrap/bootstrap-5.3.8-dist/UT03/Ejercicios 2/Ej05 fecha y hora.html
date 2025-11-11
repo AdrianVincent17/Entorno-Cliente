@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css" type="text/css">
+    <title>Fecha y hora</title>
+</head>
+<body>
+    <h1>Hora y fecha actuales</h1>
+
+    <div id="fechahora" class="caja">
+        <p id="fecha"></p>
+        <p id="hora"></p>
+    </div>
+    
+
+    <script>
+
+        function mostrarfecha(){
+            const ahora=new Date(); //de aqui sacamos tanto la fecha como la hora actual
+
+            //Fecha y hora actuales en formato local
+
+            document.getElementById("fecha").textContent=ahora.toLocaleDateString();
+            document.getElementById("hora").textContent=ahora.toLocaleTimeString();
+
+        }
+
+        //mostrar fecha y hora nada mas cargar la pagina
+        mostrarfecha();
+
+        setInterval(mostrarfecha,1000); //refrescar la hora cada segundo
+
+    </script>
+</body>
+</html>
