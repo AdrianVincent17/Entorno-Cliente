@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iteraccion con el usuario</title>
+</head>
+<body>
+    <h1>Ejercicio: Iteraccion con el usuario</h1>
+    <div id="resultado"></div>
+
+
+    <script>
+        alert("Bienvenido/a");
+
+
+        //Solicitar nombre
+        let nombre=prompt("¿Como te llamas?");
+        if(!nombre){  //null o cadena vacia
+            nombre="Invitado"
+        }
+
+        let deseasaludo=confirm("¿Quieres ver un saludo personalizado?");
+
+        if(deseasaludo){
+            alert("Hola, "+nombre+"!");
+        }else{
+            alert("Hasta pronto");
+        }
+
+        let resumen=document.getElementById("resultado");
+
+        resumen.innerHTML=`<p><b>Nombre usado: </b>${nombre}</p>
+        <p><b>Decision del usuario: </b> ${deseasaludo ? "Quiso ver el saludo": "No quiso ver el saludo"}</p>`;
+    </script>
+</body>
+</html>

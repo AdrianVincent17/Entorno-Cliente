@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apariencia de la ventana</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            .espacio {
+                height: 1000px;
+                background: #f1f5f9;
+                margin-top: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ejercicioi: Apariencia de la ventana</h1>
+
+    <p id="info">Pulsa los botones para obtener informacion</p>
+
+    <button onclick="mostrarviewport()">Mostrar viewport</button>
+    <button onclick="mostrarscroll()">Mostrar scroll</button>
+    <button onclick="bajar()">Bajar 300px</button>
+    <button onclick="arriba()">Volver arriba</button>
+    <button onclick="imprimirpagina()">Imprimir</button>
+
+    <div class="espacio">Contenido de prueba para hacer scroll</div>
+
+    <script>
+        let info = document.getElementById("info");
+        function mostrarviewport() {
+            info.textContent = "Viewport: " + window.innerWidth + "px" + window.innerHeight + "px";
+        }
+        function mostrarscroll() {
+            info.textContent = "Scroll: " + window.scrollX + " , " + window.scrollY;
+        }
+        function bajar() {
+            window.scrollTo({ Top: window.scrollY + 300, Left: 0, behavior: "smooth" });
+        }
+        function arriba() {
+            window.scrollTo({ Top: 0, Left: 0, behavior: "smooth" });
+        }
+        function imprimirpagina() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

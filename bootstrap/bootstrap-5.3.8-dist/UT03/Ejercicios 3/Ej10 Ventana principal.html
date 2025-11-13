@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ventana Principal</h1>
+    <button onclick="abrirVentana()">Abrir ventana secundaria</button>
+
+    <script>
+        function abrirVentana(){
+            let nuevaventana=window.open("","ventanaHija","widht=400,height=300");
+
+            nuevaventana.document.write("<h2>Hola, soy la ventana secundaria</h2>")
+             nuevaventana.document.write("<p>Este texto fue enviado desde la ventana principal</p>")
+        }
+
+       
+    </script>
+</body>
+</html>

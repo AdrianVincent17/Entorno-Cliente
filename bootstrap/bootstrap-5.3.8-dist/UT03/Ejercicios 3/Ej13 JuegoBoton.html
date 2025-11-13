@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del boton</title>
+    <style>
+        #botonX {
+            position: absolute;
+            /**/
+            border-radius: 80px;
+            color: white;
+            background-color: red;
+            text-align: center;
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            font-size: 30px;
+            box-shadow: 1px 5px 5px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="modofacil()">Facil</button>
+    <button onclick="modomedio()">Medio</button>
+    <button onclick="mododificil()">dificil</button>
+    <button id="botonX" onclick="aumentacontador()">X</button>
+
+    <div>Aciertos: <span id="resultados">0</span></div>
+
+    <script>
+
+        intervalo = null;
+        const boton = document.getElementById("botonX");
+
+        function moverBoton() {
+            const anchoVentana = window.innerWidth;
+            const altoVentana = window.innerHeight;
+
+            const anchoBoton = boton.offsetWidth;
+            const altoBoton = boton.offsetHeight;
+
+            const x = Math.random() * (anchoVentana - anchoBoton);
+            const y = Math.random() * (altoVentana - altoBoton);
+
+            boton.style.left = x + "px";
+            boton.style.top = y + "px";
+        }
+
+        moverBoton();
+        intervalo = setInterval(moverBoton, 1500);
+
+
+        let aciertos=0;
+
+        function aumentacontador(){
+            aciertos++;
+            document.getElementById("resultados").textContent=aciertos;
+        }
+       
+
+
+        function modofacil() {
+            clearInterval(moverBoton);
+            if (intervalo == null) {
+                anchoBoton = boton.style.width = "100px";
+                altoBoton = boton.style.height = "100px";
+                setInterval(moverBoton, 2000); 
+            }
+
+        }
+        function modomedio() {
+            anchoBoton = boton.style.width = "60px";
+            altoBoton = boton.style.height = "60px";
+            clearInterval(moverBoton());
+            setInterval(moverBoton, 1000);
+        }
+        function mododificil() {
+            anchoBoton = boton.style.width = "40px";
+            altoBoton = boton.style.height = "40px";
+            clearInterval(moverBoton());
+            setInterval(moverBoton, 750);
+        }
+
+    </script>
+
+</body>
+
+</html>
