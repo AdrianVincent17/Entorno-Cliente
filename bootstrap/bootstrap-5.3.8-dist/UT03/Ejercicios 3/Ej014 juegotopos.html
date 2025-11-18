@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ventanamodal.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            background: #390080;
+            background: linear-gradient(180deg, rgba(57, 0, 128, 1) 50%, rgba(102, 0, 204, 1) 100% toFixed);
+            justify-content: center;
+        }
+
+        #contenedor {
+            width: 700px;
+            height: 600px;
+            border: none;
+            box-shadow: 0px 0px 10px rgb(113, 113, 113);
+            margin: -120px auto;
+            background-color: #f8fcff5e;
+            border-radius: 10px;
+            justify-content: center;
+
+
+
+        }
+
+        .topo {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            border: none;
+            background: radial-gradient(#d980ff, #6e00c9);
+            border-radius: 50%;
+            box-shadow: 1px 5px 5px rgb(25, 25, 25);
+            cursor: pointer;
+            /* Inicialmente oculto */
+        }
+
+        #marcador {
+            background-color: #ffffff52;
+            color: white;
+            width: 500px;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            margin: 150px auto;
+            justify-content: space-around;
+        }
+    </style>
+    <title>El juego del topo</title>
+</head>
+
+<body>
+    <div id="marcador">
+        <div>Tiempo: <span id="tiempo"></span></div>
+        <div>Aciertos: <span id="aciertos"></span> Aciertos</div>
+        <div>Record: <span id="record"></span> Aciertos</div>
+    </div>
+
+    <div id="contenedor">
+        <button class="topo" id="topo1" onclick="golpear(this)"></button>
+        <button class="topo" id="topo2" onclick="golpear(this)"></button>
+        <button class="topo" id="topo3" onclick="golpear(this)"></button>
+        <button class="topo" id="topo4" onclick="golpear(this)"></button>
+        <button class="topo" id="topo5" onclick="golpear(this)"></button>
+        <button class="topo" id="topo6" onclick="golpear(this)"></button>
+        <button class="topo" id="topo7" onclick="golpear(this)"></button>
+        <button class="topo" id="topo8" onclick="golpear(this)"></button>
+        <button class="topo" id="topo9" onclick="golpear(this)"></button>
+    </div>
+    <div id="overlay">
+        <div id="modal">
+
+        </div>
+    </div>
+
+    <script>
+
+        const DURACION = 3; // Duracion del juego en segundos
+        let tiempoRestante = parseFloat(DURACION);
+        let aciertos = 0;
+        const CLAVE_RECORD = "recordtopos";
+
+        let intervaloTiempo;
+        let intervaloTopo;
+
+        let topoActual;
+
+
+        //funcion para obtener el record almacenado en localStorage
+        function obtenerrecord() {
+
+            //localStroge.getItem devuelve el valor asociado a la clave o null si no existe
+            const recordguardado = localStorage.getItem(CLAVE_RECORD);
+
+            //si existe devolvemos el valor parseado a entero,(porque se guarda como cadena)
+            //si no hay record (null) devolvemos 0
+            return recordguardado ? parseInt(recordguardado) : 0;
+        }
+
+        function iniciarJuego() {
+            aciertos = 0;
+            clearInterval(intervaloTiempo);
+            clearInterval(intervaloTopo);
+            tiempoRestante = DURACION;
+            intervaloTiempo = setInterval(actualizarTiempo, 10);
+            intervaloTopo = setInterval(mostrarTopoAleatorio, 2000);
+            document.getElementById("aciertos").textContent = aciertos;
+            document.getElementById("record").textContent = obtenerrecord();
+        }
+
+        function actualizarTiempo() {
+            tiempoRestante = (tiempoRestante - 0.01).toFixed(2);
+            document.getElementById("tiempo").textContent = tiempoRestante;
+            if (tiempoRestante <= 0) {
+                finalizarJuego();
+            }
+        }
+
+        function mostrarTopoAleatorio() {
+            const numeroAleatorio = Math.floor(Math.random() * 9) + 1;
+            topoActual = document.getElementById(`topo${numeroAleatorio}`);
+            topoActual.style.background = 'radial-gradient(#cacaca,#606060)';
+            setTimeout(colornormal, 1500);
+        }
+
+        function colornormal() {
+            topoActual.style.background = "radial-gradient(#d980ff, #6e00c9)";
+        }
+
+        function golpear(topogolpeado) {
+            if (tiempoRestante > 0 && topogolpeado === topoActual) {
+                aciertos++;
+                document.getElementById("aciertos").textContent = aciertos;
+                colornormal();
+            }
+        }
+
+        function finalizarJuego() {
+
+            clearInterval(intervaloTiempo);
+            clearInterval(intervaloTopo);
+
+            //octener el record actual
+            let recordactual = obtenerrecord();
+            if (aciertos > recordactual) {
+                localStorage.setItem(CLAVE_RECORD, aciertos);
+                alert("Nuevo Record: " + aciertos);
+            }
+            abrirmodal();
+        }
+
+         function abrirmodal() {
+            document.getElementById("overlay").style.display = "flex";
+
+            //actualizar los resultados en el modal
+            document.getElementById("modal").innerHTML =`<h2>Fin de la partida</h2>
+            <p>Has conseguido: <span>${aciertos}</span> Aciertos</p>
+            <p>Record: <span>${obtenerrecord()}</span> Aciertos</p>
+            <button onclick="cerrarmodal()">Reiniciar partida</button>`
+           
+        }
+
+        function cerrarmodal(){
+            document.getElementById("overlay").style.display="none";
+            iniciarJuego();
+        }
+
+        iniciarJuego();
+
+    </script>
+
+</body>
+
+</html>

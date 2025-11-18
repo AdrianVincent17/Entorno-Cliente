@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ventanamodal.css">
     <title>Juego del boton</title>
     <style>
         #botonX {
@@ -44,48 +45,67 @@
         <div>Aciertos: <span id="resultados">0</span></div>
         <div>Record: <span id="record">0</span></div>
     </div>
+    <div id="overlay">
+
+        <div id="modal">
+
+        </div>
+    </div>
 
     <script>
-        const DURACION = 10;
-        const velocidad = 1500;
-        const CLAVE_RECORD="recordjuego";
 
-        let tiemporestante = DURACION;
-        let aciertos = 0;
+        //--- constantes para la configuracion del juego -----
+        const DURACION = 20;    // duracion de la partida
+        const VELOCIDAD = 2000; // velocidad de movimiento del boton
+        const CLAVE_RECORD = "recordjuego";   // clave para almacenar el record en localStorage
 
-        let intMovimiento = null;
-        let intTiempo = null;
+        //---- variables del juego -----
+        let tiemporestante = parseFloat(DURACION);      // tiempo restante en la partida
+        let aciertos = 0;                // numero de aciertos en la partida
+
+        let intMovimiento = null;       // identificador del intervalo de movimiento del boton
+        let intTiempo = null;           // identificador del intervalo de tiempo
 
 
+        //---referencias a elementos del DOM -----
         const boton = document.getElementById("botonX");
         const success = document.getElementById("resultados");
         const time = document.getElementById("tiempo");
-        const mejor=document.getElementById("record");
+        const mejor = document.getElementById("record");
 
         function moverBoton() {
 
+            //--- obtener dimensiones de la ventana ----
             const anchoVentana = window.innerWidth;
             const altoVentana = window.innerHeight;
 
-            const anchoBoton = boton.offsetWidth;
-            const altoBoton = boton.offsetHeight;
+            //--- obtener dimensiones del boton ----
+            const anchoBoton = boton.offsetWidth;   //Ancho del boton
+            const altoBoton = boton.offsetHeight;   //Alto del boton
 
+            // Calcular posiciones aleatorias dentro de los limites visibles
             const x = Math.random() * (anchoVentana - anchoBoton);
             const y = Math.random() * (altoVentana - altoBoton);
 
+            //aplicamos las coordenadas al boton
             boton.style.left = x + "px";
             boton.style.top = y + "px";
 
 
         }
 
-        function obtenerrecord(){
-            const recordguardado=localStorage.getItem(CLAVE_RECORD);
+        //funcion para obtener el record almacenado en localStorage
+        function obtenerrecord() {
 
-            return recordguardado ? parseInt(recordguardado): 0;
+            //localStroge.getItem devuelve el valor asociado a la clave o null si no existe
+            const recordguardado = localStorage.getItem(CLAVE_RECORD);
+
+            //si existe devolvemos el valor parseado a entero,(porque se guarda como cadena)
+            //si no hay record (null) devolvemos 0
+            return recordguardado ? parseInt(recordguardado) : 0;
         }
 
-          function sumarAcierto() {
+        function sumarAcierto() {
             if (tiemporestante > 0) {
                 aciertos++;
                 success.textContent = aciertos;
@@ -94,32 +114,72 @@
 
         }
 
-        function iniciar(){
-            aciertos=0;
-            tiemporestante=DURACION;
-            success.textContent=aciertos;
-            time.textContent=tiemporestante;
-            mejor.textContent=obtenerrecord();
-            
+        function iniciar() {
+
+            // inicializar variables
+
+            aciertos = 0;
+            tiemporestante = DURACION;
+            success.textContent = aciertos;
+            time.textContent = tiemporestante;
+            mejor.textContent = obtenerrecord();
+
 
             moverBoton();
             clearInterval(intMovimiento);
             clearInterval(intTiempo);
-            intMovimiento=setInterval(moverBoton,velocidad);
-            intTiempo=setInterval(actualizartiempo,1000);
+            intMovimiento = setInterval(moverBoton, VELOCIDAD);
+            intTiempo = setInterval(actualizartiempo, 10);
         }
 
         function actualizartiempo() {
-            tiemporestante--;
+            tiemporestante = (tiemporestante - 0.01).toFixed(2);
             time.textContent = tiemporestante;
-            if(tiemporestante<=0){
+            if (tiemporestante <= 0) {
                 finalizar();
+                abrirmodal();
             }
-           
+
+        }
+
+        function finalizar() {
+            clearInterval(intMovimiento);
+            clearInterval(intTiempo);
+            boton.style.display = "none"; // ocultar el boton al finalizar
+
+            //octener el record actual
+            let recordactual = obtenerrecord();
+
+            //si hay nuevo record, lo guardamos en localStorage
+            if (aciertos > recordactual) {
+                localStorage.setItem(CLAVE_RECORD, aciertos);
+            }
+
+
         }
 
 
+        function abrirmodal() {
+            document.getElementById("overlay").style.display = "flex";
+
+            //actualizar los resultados en el modal
+            document.getElementById("modal").innerHTML =`<h2>Fin de la partida</h2>
+            <p>Has conseguido: <span>${aciertos}</span> Aciertos</p>
+            <p>Record: <span>${obtenerrecord()}</span></p>
+            <button onclick="cerrarmodal()">Reiniciar partida</button>`
+           
+        }
+
+        function cerrarmodal(){
+            document.getElementById("overlay").style.display="none";
+            boton.style.display = "block"; // mostrar el boton al reiniciar
+            iniciar();
+        }
+
+
+        // iniciar el juego al cargar la pagina
         iniciar();
+      
 
 
     </script>
