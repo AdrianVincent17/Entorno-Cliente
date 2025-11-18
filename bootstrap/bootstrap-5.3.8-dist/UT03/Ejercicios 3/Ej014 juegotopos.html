@@ -4,8 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ventanamodal.css">
+
     <style>
+       
+        /*fondo que cubre la pantalla*/
+        #overlay {
+
+            position: fixed;
+            inset: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0, 0.6);
+
+        }
+
+        /*Caja modal*/
+
+        #modal {
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            width: 320px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        body>button {
+            margin-top: 30px;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
@@ -83,7 +126,7 @@
 
     <script>
 
-        const DURACION = 3; // Duracion del juego en segundos
+        const DURACION = 20; // Duracion del juego en segundos
         let tiempoRestante = parseFloat(DURACION);
         let aciertos = 0;
         const CLAVE_RECORD = "recordtopos";
@@ -129,6 +172,7 @@
             topoActual = document.getElementById(`topo${numeroAleatorio}`);
             topoActual.style.background = 'radial-gradient(#cacaca,#606060)';
             setTimeout(colornormal, 1500);
+           
         }
 
         function colornormal() {
@@ -157,19 +201,19 @@
             abrirmodal();
         }
 
-         function abrirmodal() {
+        function abrirmodal() {
             document.getElementById("overlay").style.display = "flex";
 
             //actualizar los resultados en el modal
-            document.getElementById("modal").innerHTML =`<h2>Fin de la partida</h2>
+            document.getElementById("modal").innerHTML = `<h2>Fin de la partida</h2>
             <p>Has conseguido: <span>${aciertos}</span> Aciertos</p>
             <p>Record: <span>${obtenerrecord()}</span> Aciertos</p>
             <button onclick="cerrarmodal()">Reiniciar partida</button>`
-           
+
         }
 
-        function cerrarmodal(){
-            document.getElementById("overlay").style.display="none";
+        function cerrarmodal() {
+            document.getElementById("overlay").style.display = "none";
             iniciarJuego();
         }
 
