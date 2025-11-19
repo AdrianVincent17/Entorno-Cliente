@@ -55,7 +55,7 @@
     <script>
 
         //--- constantes para la configuracion del juego -----
-        const DURACION = 20;    // duracion de la partida
+        const DURACION = 10;    // duracion de la partida
         const VELOCIDAD = 2000; // velocidad de movimiento del boton
         const CLAVE_RECORD = "recordjuego";   // clave para almacenar el record en localStorage
 
@@ -124,7 +124,6 @@
             time.textContent = tiemporestante;
             mejor.textContent = obtenerrecord();
 
-
             moverBoton();
             clearInterval(intMovimiento);
             clearInterval(intTiempo);
@@ -170,6 +169,15 @@
            
         }
 
+        function modalinicio(){
+
+            document.getElementById("overlay").style.display = "flex";
+             //actualizar los resultados en el modal
+            document.getElementById("modal").innerHTML =`<h2>Bienvenido/a</h2>
+            <p>Este es el juego del boton</p>
+            <button onclick="cerrarmodal()">Iniciar partida</button>`
+        }
+
         function cerrarmodal(){
             document.getElementById("overlay").style.display="none";
             boton.style.display = "block"; // mostrar el boton al reiniciar
@@ -177,8 +185,8 @@
         }
 
 
-        // iniciar el juego al cargar la pagina
-        iniciar();
+        modalinicio();
+        
       
 
 
