@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Juego del boton</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: black;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #botonX {
+            position: absolute;
+            background-color: orangered;
+            color: white;
+            border-radius: 50%;
+            box-shadow: 1px 2px 5px black;
+            border: none;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            font-size: 25px;
+            margin: 5px 5px;
+        }
+
+        #marcador {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            width: 500px;
+            height: 80px;
+            box-shadow: 2px 2px 5px rgb(100, 100, 100);
+            border-radius: 5px;
+            margin: 60px auto;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #contenedor {
+
+            position:relative;
+            justify-content: center;
+            align-items: center;
+            margin: 120px auto;
+            width: 750px;
+            height: 750px;
+            background-color: rgba(255, 255, 255, 0.505);
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgb(111, 111, 111);
+        }
+
+        #modal {
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.73);
+            width: 500px;
+            height: 350px;
+            border-radius: 8px;
+            align-items: center;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        body>button {
+            margin-top: 30px;
+        }
+
+        #overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.36);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <main>
+            <div id="marcador">
+                <div>Tiempo: <span id="tiempo"> 0 </span> s</div>
+                <div>Puntuacion: <span id="aciertos"> 0 </span> aciertos</div>
+                <div>Record: <span id="record"> 0 </span> aciertos</div>
+            </div>
+
+            <div id="contenedor">
+                <button id="botonX" onclick="sumarAcierto()">X</button>
+            </div>
+
+            <div id="overlay">
+                <div id="modal">
+
+                </div>
+            </div>
+
+        </main>
+    </section>
+
+    <script>
+
+        const DURACION = 5;
+        const VELOCIDAD = 750;
+        const CLAVE_RECORD = 'document.getElementById("nombre").value;';
+
+        let tiemporestante = parseFloat(DURACION);
+        let aciertos = 0;
+
+        let contenedor = document.getElementById("contenedor");
+        let boton = document.getElementById("botonX");
+        let tiempo = document.getElementById("tiempo");
+        let puntuacion = document.getElementById("aciertos");
+        let record = document.getElementById("record");
+    
+
+        let intervalomovimiento = null;
+        let intervalotiempo = null;
+
+        function moverBoton() {
+
+            const anchocontenedor = contenedor.offsetWidth;
+            const altocontenedor = contenedor.offsetHeight;
+
+            const anchoboton = boton.offsetWidth;
+            const altoboton = boton.offsetHeight;
+
+            let x = Math.random() * (anchocontenedor - anchoboton);
+            let y = Math.random() * (altocontenedor - altoboton);
+
+            boton.style.left = x + "px";
+            boton.style.top = y + "px";
+
+        }
+
+        function iniciar() {
+
+            aciertos = 0;
+            tiemporestante = DURACION;
+
+            tiempo.textContent = tiemporestante;
+            puntuacion.textContent = aciertos;
+            record.textContent = obtenerrecord();
+
+            moverBoton();
+
+
+            clearInterval(intervalomovimiento);
+            clearInterval(intervalotiempo);
+
+            intervalomovimiento = setInterval(moverBoton, VELOCIDAD);
+            intervalotiempo = setInterval(actualizarTiempo, 10);
+
+        }
+
+         function actualizarTiempo() {
+
+            tiemporestante = (tiemporestante - 0.01).toFixed(2);
+            tiempo.textContent = tiemporestante;
+            if (tiemporestante == 0) {
+                finalizar();
+                abrirmodal();
+            }
+        }
+
+        //funcion para obtener el record almacenado en localStorage
+        function obtenerrecord() {
+
+            //localStroge.getItem devuelve el valor asociado a la clave o null si no existe
+            const recordguardado = localStorage.getItem(CLAVE_RECORD);
+
+            //si existe devolvemos el valor parseado a entero,(porque se guarda como cadena)
+            //si no hay record (null) devolvemos 0
+            return recordguardado ? parseInt(recordguardado) : 0;
+        }
+
+        function finalizar() {
+
+            clearInterval(intervalomovimiento);
+            clearInterval(intervalotiempo);
+            boton.style.display = "none"; // ocultar el boton al finalizar
+            //octener el record actual
+            let recordactual = obtenerrecord();
+
+            //si hay nuevo record, lo guardamos en localStorage
+            if (aciertos > recordactual) {
+                localStorage.setItem(CLAVE_RECORD, aciertos);
+            }
+        }
+
+
+        function sumarAcierto() {
+            if (tiemporestante > 0) {
+                aciertos++;
+                puntuacion.textContent = aciertos;
+            }
+
+        }
+
+        function modalinicio() {
+            document.getElementById("overlay").style.display = "flex";
+            document.getElementById("modal").innerHTML = `<h1>Bienvenido/a</h1>
+            <p>Este es el Juego del boton</p><input id='nombre' name='nombre' placeholder='Escribe tu nombre'>
+            <button onclick='cerrarmodal()'>Iniciar Juego</button>`;
+        }
+
+        function abrirmodal() {
+            document.getElementById("overlay").style.display = "flex";
+            document.getElementById("modal").innerHTML = `<h2>Fin de la partida</h2>
+            <p>Has conseguido: <span>${aciertos}</span> Aciertos</p>
+            <p>Record: <span>${obtenerrecord()}</span> Aciertos</p>
+            <button onclick="cerrarmodal()">Reiniciar partida</button>
+            <button onclick="borraRecord()">Borrar record</button>`;;
+
+        }
+
+        function cerrarmodal() {
+            document.getElementById("overlay").style.display = "none";
+            boton.style.display = "block";
+            iniciar();
+        }
+
+        function borraRecord(){
+            localStorage.removeItem(CLAVE_RECORD);
+            boton.style.display = "block";
+            cerrarmodal();
+            
+        }
+
+        modalinicio();
+
+
+
+    </script>
+
+</body>
+
+</html>
