@@ -47,7 +47,7 @@
 
         #contenedor {
 
-            position:relative;
+            position: relative;
             justify-content: center;
             align-items: center;
             margin: 120px auto;
@@ -60,7 +60,8 @@
             box-shadow: 2px 2px 5px rgb(111, 111, 111);
         }
 
-        #modal {
+        #modalinicio,
+        #modalfinal {
             justify-content: center;
             align-items: center;
             background-color: rgba(255, 255, 255, 0.73);
@@ -89,13 +90,21 @@
             margin-top: 30px;
         }
 
-        #overlay {
+        #overlay1,
+        #overlay2 {
             position: fixed;
             inset: 0;
             background-color: rgba(0, 0, 0, 0.36);
             display: none;
             justify-content: center;
             align-items: center;
+        }
+        input{
+            width: 150px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.475);
+            border-radius: 5px;
+            border: none;
         }
     </style>
 </head>
@@ -113,16 +122,35 @@
                 <button id="botonX" onclick="sumarAcierto()">X</button>
             </div>
 
-            <div id="overlay">
-                <div id="modal">
 
+            <div id="overlay1">
+                <div id="modalinicio">
+                    <h1>Bienvenido/a</h1>
+                    <input type="text" name="jugador" id="jugador" placeholder="Escribe tu nombre">
+                    <button onclick="cerrarmodal()">Iniciar Partida</button>
                 </div>
             </div>
+
+            <div id="overlay2">
+                <div id="modalfinal">
+                    <h1>Fin de la partida</h1>
+                    <p>Tu puntuacion de: <span id="player"></span> es <span id="aciertosfinal">0</span> Aciertos</p>
+                    <p>El record esta en: <span id="recordfinal">0</span> Aciertos</p>
+                    <button onclick="cerrarmodal()">Iniciar Partida</button>
+                    <button onclick="borraRecord()">Borrar Record</button>
+                </div>
+            </div>
+
+
 
         </main>
     </section>
 
     <script>
+
+        let jugador = "";
+        let player = document.getElementById("player");
+        player.textContent = jugador;
 
         const DURACION = 5;
         const VELOCIDAD = 750;
@@ -136,7 +164,7 @@
         let tiempo = document.getElementById("tiempo");
         let puntuacion = document.getElementById("aciertos");
         let record = document.getElementById("record");
-    
+
 
         let intervalomovimiento = null;
         let intervalotiempo = null;
@@ -165,7 +193,7 @@
             tiempo.textContent = tiemporestante;
             puntuacion.textContent = aciertos;
             record.textContent = obtenerrecord();
-
+            
             moverBoton();
 
 
@@ -177,13 +205,13 @@
 
         }
 
-         function actualizarTiempo() {
+        function actualizarTiempo() {
 
             tiemporestante = (tiemporestante - 0.01).toFixed(2);
             tiempo.textContent = tiemporestante;
             if (tiemporestante == 0) {
                 finalizar();
-                abrirmodal();
+                modalfinal();
             }
         }
 
@@ -222,33 +250,38 @@
         }
 
         function modalinicio() {
-            document.getElementById("overlay").style.display = "flex";
-            document.getElementById("modal").innerHTML = `<h1>Bienvenido/a</h1>
-            <p>Este es el Juego del boton</p><input id='nombre' name='nombre' placeholder='Escribe tu nombre'>
-            <button onclick='cerrarmodal()'>Iniciar Juego</button>`;
+            document.getElementById("overlay1").style.display = "flex";
         }
 
-        function abrirmodal() {
-            document.getElementById("overlay").style.display = "flex";
-            document.getElementById("modal").innerHTML = `<h2>Fin de la partida</h2>
-            <p>Has conseguido: <span>${aciertos}</span> Aciertos</p>
-            <p>Record: <span>${obtenerrecord()}</span> Aciertos</p>
-            <button onclick="cerrarmodal()">Reiniciar partida</button>
-            <button onclick="borraRecord()">Borrar record</button>`;;
+        function modalfinal() {
+            document.getElementById("overlay2").style.display = "flex";
+            document.getElementById("aciertosfinal").textContent = aciertos;
+            document.getElementById("recordfinal").textContent = obtenerrecord();
 
         }
+
+
 
         function cerrarmodal() {
-            document.getElementById("overlay").style.display = "none";
+            jugador = document.getElementById("jugador").value;
+
+            if(jugador.trim()==""){
+                player.textContent="invitado"
+            }else{
+                player.textContent=jugador;
+            }
+            
+            document.getElementById("overlay1").style.display = "none";
+            document.getElementById("overlay2").style.display = "none";
             boton.style.display = "block";
             iniciar();
         }
 
-        function borraRecord(){
+        function borraRecord() {
             localStorage.removeItem(CLAVE_RECORD);
             boton.style.display = "block";
             cerrarmodal();
-            
+
         }
 
         modalinicio();
