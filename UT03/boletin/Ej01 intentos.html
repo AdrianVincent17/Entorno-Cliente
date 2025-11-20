@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el numero</title>
+    <style>
+        body {
+            background-color: lightgrey;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        /*fondo que cubre la pantalla*/
+        #overlay1,
+        #overlay2 {
+            position: fixed;
+            inset: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0, 0.6);
+        }
+
+        /*Caja modal*/
+
+        #modalinicio,
+        #modalfinal {
+            background-color: white;
+            color: black;
+            border-radius: 10px;
+            width: 320px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 16px;
+
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        body>button {
+            margin-top: 30px;
+        }
+
+        #resultado {
+            background-color: lightgrey;
+            border-radius: 8px;
+            margin: 15px auto;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: none;
+            width: 450px;
+
+        }
+
+        #contenedor {
+
+            justify-content: center;
+            align-items: center;
+            margin: 250px auto;
+            background-color: white;
+            border-radius: 8px;
+            width: 500px;
+            height: auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+
+            margin: 4px;
+        }
+
+        li {
+            justify-content: center;
+            border-radius: 5px;
+            background-color: lightgray;
+            list-style: none;
+            width: 250px;
+            align-items: center;
+            padding: 10px;
+            margin: 5px auto;
+
+        }
+
+        ul {
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="overlay1">
+        <div id="modalinicio">
+            <h1>Adivina un numero</h1>
+            <p>El juego consiste en adivinar un numero entreo 1 y 100</p>
+            <p>Te daremos pistas si el numero es mayor o es menor</p>
+            <p>¡Intenta adivinarlo en el menor numero de intentos</p>
+            <button onclick="cerrarmodal()">Iniciar Juego</button>
+        </div>
+    </div>
+    <div id="overlay2">
+        <div id="modalfinal">
+            <h1>¡Has acertado!</h1>
+            <p>Intentos: <span id="intentosfinales"></span></p>
+            <p>Record: <span id="recordfinal"></span></p>
+            <p id="nuevorecord"></p>
+            <button onclick="cerrarmodal()">Reiniciar Juego</button>
+        </div>
+    </div>
+
+    <div id="contenedor">
+        <h1>Adivina un numero</h1>
+        <div><input type="number" min="1" max="100" placeholder="numero" id="numero" name="numero" focus>
+            <button onclick="probar()">Probar</button>
+        </div>
+
+        <div id="resultado">Escribe un numero entre <b>1</b> y <b>100</b> y pulsa <b>Probar</b></div>
+        <p>intento: <span id="intento">0</span> | Record: <span id="record">-</span></p>
+        <p><b>Historial de intentos:</b></p>
+        <ul id="lista"></ul>
+    </div>
+
+    <script>
+
+        const CLAVE_RECORD = 'recordintentos';
+
+        let intentos = 0;
+        let numeroadivinar = numeroaleatorio();
+        let item = document.getElementById("lista");
+        let resultado = document.getElementById("resultado");
+        let record = document.getElementById("record");
+        let intento = document.getElementById("intento");
+        let recordfinal = document.getElementById("recordfinal");
+        let intentosfinales = document.getElementById("intentosfinales");
+        
+
+
+
+
+        function añadirintento() {
+
+            let intentofallido = document.getElementById("numero").value;
+            //no insertar numero vacio
+            if (numero !== "" || numero > 100) {
+
+            } else {
+
+                //Creamos el elemento
+                let nuevoelemento = document.createElement('li');
+
+                //añadomos la informacion del value del input al elemento <li>
+                nuevoelemento.textContent = `Intento ${intentos}: ${intentofallido}`
+
+                //añadimos el elemnto a la lista
+                item.appendChild(nuevoelemento);
+
+            }
+            document.getElementById("numero").value = "";
+        }
+
+
+        //funcion para obtener el record almacenado en localStorage
+        function obtenerrecord() {
+
+            //localStroge.getItem devuelve el valor asociado a la clave o null si no existe
+            const recordguardado = localStorage.getItem(CLAVE_RECORD);
+
+            //si existe devolvemos el valor parseado a entero,(porque se guarda como cadena)
+            //si no hay record (null) devolvemos 0
+            return recordguardado ? parseInt(recordguardado) : "-";
+        }
+
+        function finalizar() {
+
+            intento.textContent = 0;
+            document.getElementById('numero').value = "";
+            resultado.innerHTML = `Escribe un numero entre <b>1</b> y <b>100</b> y pulsa <b>Probar</b>`;
+            //octener el record actual
+            let recordactual = obtenerrecord();
+
+            if (recordactual === "-") {
+                recordactual = 0;
+            }
+            if (intentos < recordactual) {
+                localStorage.setItem(CLAVE_RECORD, intentos);
+                document.getElementById("nuevorecord").textContent = "Nuevo record";
+            }
+
+        }
+
+
+
+
+        function iniciar() {
+
+            intentos = 0;
+            record.textContent = obtenerrecord();
+            document.getElementById("lista").textContent = "";
+
+        }
+
+        function numeroaleatorio() {
+            let numerito = Math.floor(Math.random() * 100 + 1);
+            return numerito;
+        }
+
+        function probar() {
+
+            intentos++;
+            let entrada = document.getElementById('numero').value;
+            let mensaje = "";
+            intento.textContent = intentos;
+
+            if (entrada > 100) {
+                mensaje = "Error: El numero deberia estar en rango";
+            } else {
+                if (entrada > numeroadivinar) {
+                    mensaje = `El numero secreto es MENOR que ${entrada}`;
+                } else if (entrada < numeroadivinar) {
+                    mensaje = `El numero secreto es MAYOR que ${entrada}`;
+                } else {
+                    
+                    modalfinal();
+                }
+            }
+
+            añadirintento();
+            resultado.innerHTML = mensaje;
+
+        }
+
+        function modalinicio() {
+            iniciar();
+            document.getElementById("overlay1").style.display = "flex";
+        }
+
+        function modalfinal() {
+
+            document.getElementById("overlay2").style.display = "flex";
+            document.getElementById("intentosfinales").textContent = intentos;
+            recordfinal.textContent = obtenerrecord();
+        }
+        function cerrarmodal() {
+            modalinicio();
+            document.getElementById("overlay1").style.display = "none";
+            document.getElementById("overlay2").style.display = "none";
+        }
+
+        modalinicio();
+        console.log(numeroadivinar);
+
+    </script>
+
+</body>
+
+</html>
