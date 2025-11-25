@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="resultado"></h1>
+    <script>
+        let entrada = prompt("Dime una frase");
+
+        let resultado = document.getElementById("resultado");
+        let aleatorio = Math.floor(Math.random() * 50 + 1);
+        let fechactual = new Date().toLocaleDateString();
+        
+
+        console.log("Frase: "+entrada);
+        console.log("Mayusculas: "+entrada.toUpperCase());
+        console.log("Minusculas: "+entrada.toLowerCase());
+
+        console.log("Numero aleatorio: " + aleatorio);
+        console.log("fecha: "+fechactual);
+
+    </script>
+
+
+
+</body>
+
+</html>
