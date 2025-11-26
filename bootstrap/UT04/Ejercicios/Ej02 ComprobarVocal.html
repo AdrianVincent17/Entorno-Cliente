@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobar Vocal</title>
+</head>
+
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f5f5f5;
+        display: flex;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    #contenedor{
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.108);
+        text-align: center;
+        padding: 20px;
+
+    
+
+        
+    }
+
+    button{
+        background-color: lightblue;
+        border-radius: 8px;
+        width: 90%;
+        font-size: 16px;
+        margin-top: 20px;
+        color: white;
+        padding: 10px;
+        border: none;
+
+    }
+
+    button:hover{
+        background-color: blue;
+    }
+
+    input{
+        border-radius: 5px;
+        width: 75%;
+        padding: 10px;
+        margin-top: 10px;
+
+    }
+
+    #resultado{
+        background-color: white;
+        border-radius: 8px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: bold;
+        width: 75%;
+        margin-top: 20px;
+
+    }
+    
+</style>
+<body>
+
+    <div id="contenedor">
+        <h1>Comprobar Vocal</h1>
+        <p>Introduce un único carácter</p>
+        <input id="numero" type="text" maxlength="1" placeholder="Ejemplo:a,E,ó">
+        <button onclick="comprobar()">Comprobar vocal</button>
+        <div id="resultado">Esperando entrada...</div>
+    </div>
+    
+
+    <script>
+
+        function Comprobar(c){
+
+            const car=c.toLowerCase();
+
+            const vocales=aeiouáéíóú;
+
+            return vocales.includes(car);
+        }
+
+    </script>
+</body>
+</html>

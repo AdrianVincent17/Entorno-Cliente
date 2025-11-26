@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function esPar(numero){
+            if(typeof numero !=="number" || isNaN(numero)){
+                return "Error, el argumento debe ser un numero";
+            }
+
+            return numero%2===0;
+        }
+
+        console.log(esPar(4));
+        console.log(esPar(7));
+        console.log(esPar("hola"));
+        console.log(esPar(null));
+        console.log(esPar(undefined));
+
+        let par=(num)=>{
+            return num%2===0?true:false;
+        }
+        console.log(par(2));
+        console.log(par(7));
+        console.log(par("hola"));
+        console.log(par(null));
+        console.log(par(undefined));
+
+
+
+
+    </script>
+</body>
+</html>
