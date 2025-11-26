@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,63 +8,62 @@
 </head>
 
 <style>
-    body{
+    body {
         font-family: Arial, Helvetica, sans-serif;
         background-color: #f5f5f5;
         display: flex;
-        margin: 0;
         justify-content: center;
         align-items: center;
+        margin: 0;
+        height: 100vh;
     }
-    #contenedor{
+
+    #contenedor {
         background-color: white;
         border-radius: 8px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.108);
         text-align: center;
         padding: 20px;
-
-    
-
-        
     }
 
-    button{
-        background-color: lightblue;
+    button {
+        background-color: rgb(50, 149, 182);
         border-radius: 8px;
-        width: 90%;
+        width: 80%;
         font-size: 16px;
         margin-top: 20px;
         color: white;
         padding: 10px;
         border: none;
-
     }
 
-    button:hover{
+    button:hover {
         background-color: blue;
     }
 
-    input{
+    input {
         border-radius: 5px;
-        width: 75%;
+        width: 72%;
         padding: 10px;
         margin-top: 10px;
 
     }
 
-    #resultado{
-        background-color: white;
+    #resultado {
+        
         border-radius: 8px;
         justify-content: center;
         align-items: center;
         text-align: center;
         font-weight: bold;
-        width: 75%;
         margin-top: 20px;
+        padding: 10px;
+        width: 75%;
+        margin: 10px auto;
 
     }
-    
 </style>
+
 <body>
 
     <div id="contenedor">
@@ -73,19 +73,33 @@
         <button onclick="comprobar()">Comprobar vocal</button>
         <div id="resultado">Esperando entrada...</div>
     </div>
-    
+
 
     <script>
 
-        function Comprobar(c){
+        let result = document.getElementById("resultado");
 
-            const car=c.toLowerCase();
 
-            const vocales=aeiouáéíóú;
+        function comprobar() {
+            let valororiginal = document.getElementById("numero").value;
 
-            return vocales.includes(car);
+            let valor = valororiginal.toLowerCase();
+
+            const vocales = 'aeiouáéíóú';
+
+            if (vocales.includes(valor)) {
+                result.style.backgroundColor = "lightgreen";
+                result.textContent = valororiginal + " Es una vocal";
+            } else{
+                result.style.backgroundColor = "#fffd96";
+                result.textContent = valororiginal + " No es una vocal";
+            }
+
+
+        
         }
 
     </script>
 </body>
+
 </html>
