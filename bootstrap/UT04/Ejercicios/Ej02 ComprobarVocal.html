@@ -50,7 +50,7 @@
     }
 
     #resultado {
-        
+
         border-radius: 8px;
         justify-content: center;
         align-items: center;
@@ -77,26 +77,43 @@
 
     <script>
 
-        let result = document.getElementById("resultado");
+        function esVocal(caracter) {
 
-
-        function comprobar() {
-            let valororiginal = document.getElementById("numero").value;
-
-            let valor = valororiginal.toLowerCase();
-
-            const vocales = 'aeiouáéíóú';
-
-            if (vocales.includes(valor)) {
-                result.style.backgroundColor = "lightgreen";
-                result.textContent = valororiginal + " Es una vocal";
-            } else{
-                result.style.backgroundColor = "#fffd96";
-                result.textContent = valororiginal + " No es una vocal";
+            if (caracter === null || caracter === undefined || caracter.lenght !== 1) {
+                return "Error: Debes introducir exactamente un caracter";
             }
 
+            const caracterMin = caracter.toLowerCase();
+            const vocales = 'aeiouáéíóú';
 
-        
+            if (vocales.includes(caracterMin)) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        function comprobar() {
+
+            let valor = document.getElementById("numero");
+            let result = document.getElementById("resultado");
+
+            let car = valor.value.trim();
+
+            let resp = esVocal(car);
+
+            if (typeof resp === 'string') {
+                result.style.backgroundColor = "red";
+                result.textContent = resp;
+            } else if (resp === true) {
+                result.style.backgroundColor = "#ccffe6";
+                result.textContent = car + "es una vocal";
+            } else {
+                result.style.backgroundColor = "#ffffcc";
+                result.textContent = car + "NO es una vocal";
+            }
+
         }
 
     </script>
