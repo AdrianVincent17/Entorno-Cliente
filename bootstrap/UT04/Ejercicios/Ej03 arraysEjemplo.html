@@ -14,13 +14,17 @@
         console.log(nombres[nombres.length-1]);
         console.log(nombres.indexOf("Ana"));
         console.log(nombres.includes("Luis"));
-        console.log(nombres.push("Elena"));
-        console.log(nombres.unshift("Zaraida"));
+        console.log(nombres.push("Elena")); //añade el ultimo
+        console.log(nombres.unshift("Zaraida")); //añade el primero
         
-        nombres.pop();
-        nombres.shift();
-        console.log(nombres.sort());
-        console.log(nombres.reverse());
+        nombres.pop(); //elimina el ultimo
+        nombres.shift(); //elimina el primero
+        console.log(nombres.sort()); //ordenacion del array 
+        console.log(nombres.reverse()); //ordenacion al reves
+
+        nombres.splice(2,2,"Julandron","pepe");
+
+        console.log(nombres);
         
     
     </script>
