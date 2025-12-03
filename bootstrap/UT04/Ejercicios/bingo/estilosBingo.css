@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* Último número generado (texto grande) */
+#ultimaBola {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 15px 0;
+    min-height: 48px;
+    /* Para que no cambie de tamaño al pasar de "-" a número */
+}
+
+/* Mensaje de estado (texto informativo) */
+#mensaje {
+    margin-bottom: 15px;
+    font-style: italic;
+    min-height: 20px;
+}
+
+/* Contenedor del tablero con los números 1–90 */
+#tablero {
+    display: inline-block;
+    /* Permite centrar el tablero como bloque */
+    margin-top: 10px;
+}
+
+.fila {
+    margin: 3px 0;
+    /* Separación vertical entre filas */
+}
+
+/* Formato básico de cada número del tablero */
+.numero {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 2px;
+    text-align: center;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Clase para resaltar el último número generado */
+.ultimo {
+    background-color: lightgreen;
+    font-weight: bold;
+}
+
+/* Clase para marcar números que ya han salido (pero no son el último) */
+.anteriores {
+    background-color: #eee;
+    color: #666;
+}
