@@ -78,6 +78,7 @@ function generarNumero() {
 
 
     if (arrayNums.length === 0) {
+
         let aceptar = confirm("El bingo ha terminado desea volver a empezar?");
 
         if (aceptar) {
@@ -143,8 +144,8 @@ function iniciar() {
 
     for (let i = 1; i <= filas * numeros; i++) {
 
-        document.getElementById("num-" + actual).classList.remove("anteriores");
-        document.getElementById("num-" + actual).classList.add("numero");
+        document.getElementById("num-").classList.remove("anteriores");
+        document.getElementById("num-").classList.ultimo("numero");
     }
 
 }
