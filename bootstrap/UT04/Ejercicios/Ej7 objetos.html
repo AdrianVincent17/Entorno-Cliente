@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let coche={
+        marca: "toyota",
+        modelo: "corolla",
+        año: 2022
+    };
+
+    console.log(coche.marca);  //muestra marca de coche 
+    console.log(coche["modelo"]); //muestra modelo de coche
+
+    coche.color="rojo"; //añadir
+    coche["motor"]="electrico";  //añadir
+
+    coche.año=2023;  //modificar
+
+    delete coche.color;  //eliminar
+
+    for(let prop in coche){
+        console.log(coche[prop]); //itera sobre las propiedades del coche 
+    }
+
+    console.log(coche.fabricante); //undefined
+    console.log("fabricante" in coche); //false
+    console.log("marca" in coche);  //true
+
+
+    let cochecito={
+        marca:"toyota",
+        modelo:"Corolla",
+        arrancar: function(){
+            console.log("El coche esta arrancando...");
+        }
+    }
+
+    cochecito.arrancar();  //El coche esta arrancando 
+
+    let alumno={
+        nombre:"Luis",
+        curso: "2º DAW",
+        presentarse: function(){
+            console.log("Hola, soy "+ this.nombre +" y curso "+ this.curso);
+        }
+    };
+
+    alumno.presentarse()  // Hola, soy Luis y curso 2º DAW
+
+
+    let estudiante={
+        nombre: "Julia",
+        asignatura: ["DWEC","DIW","DAW"],
+        direccion:{
+            calle: "Mayor",
+            numero: 12
+        }
+    };
+
+    console.log(estudiante.asignatura[0]);    //DWEC
+    console.log(estudiante.direccion.calle);  //Mayor
+
+
+</script>
+</html>

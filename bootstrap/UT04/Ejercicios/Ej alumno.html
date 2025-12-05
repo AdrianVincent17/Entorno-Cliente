@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let alumno={
+            nombre: "Juan",
+            edad: 23,
+            curso: "2º DAW",
+            presentarse: function(){
+                console.log("hola, soy "+this.nombre+" tengo "+this.edad+" y curso "+this.curso);
+            }
+        }
+
+        for(let p in alumno){
+            console.log(alumno[p]);
+        }
+
+        alumno.notaMedia=8.2;
+        alumno.curso="1º DAW";
+
+        console.log(alumno.presentarse());
+
+        
+        
+
+
+    </script>
+</body>
+</html>
