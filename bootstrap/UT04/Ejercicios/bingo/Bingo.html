@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador números del bingo</title>
+    <link rel="stylesheet" href="estilosBingo.css">
+</head>
+<body>
+
+    <h2>Generador de números del bingo</h2>
+
+    <!-- Botón: que genera el siguiente número -->
+    <div>
+        <button id="boton" onclick="generarNumero()">Generar número</button>
+    </div>
+
+    <!-- Último número generado. Inicialmente "-" -->
+    <div id="ultimaBola">-</div>
+
+    <!-- Mensaje: cuántos números han salido, etc. -->
+    <div id="mensaje">Pulsa "Generar número" para sacar una bola.</div>
+
+    <!-- Tablero con los números del 1 al 90 -->
+    <div id="tablero">
+        <!-- Se rellena dinámicamente con JavaScript -->
+    </div>
+
+    <script src="scriptBingo.js"></script>
+
+</body>
+</html>
