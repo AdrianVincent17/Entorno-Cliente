@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secuencia de Fibonacci</title>
+</head>
+
+<body>
+    <h2>Serie de Fibonacci</h2>
+    <script>
+        //funcion que devuelve la serie de Fibonacci hasta n elementos 
+
+        function fibonacci(n) {
+            let serie = [];
+
+            if (n >= 1) {
+                serie.push(0);
+            }
+
+            if (n >= 2) {
+                serie.push(1);
+            }
+
+            for (let i = 2; i < n; i++) {
+                serie.push(serie[i - 1] + serie[i - 2])
+            }
+
+            return serie;
+
+        }
+
+        //Pedimos numero al usuario
+        let entrada = prompt("Dime un numero entero positivo");
+       
+        let n = parseInt(entrada);
+
+
+
+        //Validamos
+        if (isNaN(n) || n <= 0) {
+            document.write("Error, Debes introducir un numero entero positivo");
+        } else {
+            let resultado = fibonacci(n).join(", ");
+             let salida = prompt("Dime un tipo de salida (console | alert | document)").toLowerCase().trim();
+            switch (salida) {
+                case 'alert': alert(`Los primeros ${n} numeros de la serie de fibonacci son: ${resultado}`); break;
+                case 'console': console.log(`Los primeros ${n} numeros de la serie de fibonacci son: ${resultado}`); break;
+                case 'document': document.write(`Los primeros ${n} numeros de la serie de fibonacci son: ${resultado}`); break;
+                default:document.write("Error, Opcion no valida, usa console, alert o document");
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
