@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperaturas</title>
+</head>
+<body>
+
+    <script>
+
+        const temperaturas=[18,20,22,23,25,26,24,21,19,17];
+
+        const mayoresk22=temperaturas.filter(temp=> temp>22);
+
+        console.log("a) Temperaturas >22ºC:", mayoresk22);
+
+        const descripciones=temperaturas.map(temp => `La temperatura fue de ${temp}ºC`);
+        console.log("b) Descripciones: ",descripciones);
+
+        const tempMax=temperaturas.reduce((maxima,temp) => Math.max(maxima,temp));
+        console.log("c) Temperatura maxima: ",tempMax);
+
+        const filtradas=temperaturas.filter(t=> t>22);
+        const suma=temperaturas.reduce((acum,t) => acum+t,0);
+        const media=suma/filtradas.length;
+
+        console.log("d) Media de temperaturas mayores de 22ºC: ",media);
+
+    </script>
+    
+</body>
+</html>

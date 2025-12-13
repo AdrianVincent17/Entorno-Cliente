@@ -1,0 +1,88 @@
+body {
+    /*background-color: #efefef;*/
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 25px;
+}
+
+.controles {
+    margin-top: 25px;
+}
+
+label {
+    margin: 0 5px;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 3px;
+    text-align: center;
+}
+
+button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+#mensaje {
+    margin-top: 10px;
+    min-height: 20px;
+    font-style: italic;
+}
+
+#libres {
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+/* Contenedor de la matriz/asientos */
+#sala {
+    display: inline-block;
+    /* Para poder centrarla */
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.fila {
+    margin: 3px 0;
+}
+
+/* Etiqueta con el número de fila, a la izquierda */
+.numero-fila {
+    display: inline-block;
+    width: 28px;
+    margin-right: 6px;
+    color: #888;
+    font-size: 0.8em;
+}
+
+.asiento {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    margin: 2px;
+    border: 1px solid #888;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Asiento libre */
+.libre {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Asiento ocupado */
+.ocupado {
+    background-color: lightgreen;
+    font-weight: bold;
+    color: #000;
+}

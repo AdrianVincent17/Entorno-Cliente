@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva de asientos - Sala de cine</title>
+    <link rel="stylesheet" href="estilosCine.css">
+</head>
+
+<body>
+
+    <h2>Reserva de asientos - Sala de cine</h2>
+
+    <div id="mensaje">Introduce fila y asiento y pulsa "Reservar asiento".</div>
+
+    <!-- Controles para introducir fila y número de asiento -->
+    <div class="controles">
+        <label for="fila">Fila:</label>
+        <input type="number" id="fila" min="1">
+
+        <label for="asiento">Asiento:</label>
+        <input type="number" id="asiento" min="1">
+
+        <button onclick="reservarAsiento()">Reservar asiento</button>
+    </div>
+
+    <!-- Contenedor donde se dibujará la matriz de asientos -->
+    <div id="sala"></div>
+
+    <!-- Información sobre el número de asientos libres-->
+    <div id="libres"></div>
+
+    <script src="scriptCine.js"></script>
+</body>
+
+</html>

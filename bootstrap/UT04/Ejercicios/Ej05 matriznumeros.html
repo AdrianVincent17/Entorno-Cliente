@@ -20,13 +20,22 @@
             }
         }
         console.log("suma total de todos los elementos: "+sumatotal);
+
         sumafila2=0;
-        for(let fila2 of matriz[2]){
-            for(let valor of fila2){
-                sumafila2+=valor
-            }
+        for(let valor of matriz[1]){
+                sumafila2+=valor;
+           
         }
         console.log("suma de los elementos de la segunda fila "+sumafila2);
+
+        let sumacolumna3=0;
+
+        for(let i=0; i<matriz.length; i++){
+            sumacolumna3+=matriz[i][2];
+        }
+
+        console.log("Suma de la tercera columna: ", sumacolumna3);
+        
     </script>
 </body>
 

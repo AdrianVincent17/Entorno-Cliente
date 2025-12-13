@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de alumnos</title>
+</head>
+
+<body>
+
+    <h1>Abre la </h1>
+
+    <script>
+        let alumnos = [
+            {nombre: "Adrian", edad: 34, curso: "1DAW", notas: [4, 5, 8, 8.9]},
+            {nombre: "Alvaro", edad: 30, curso: "1DAW",notas: [8, 6.7, 5, 9]},
+            {nombre: "Edu", edad: 40, curso: "1DAW", notas: [10, 10, 10, 9.8]},
+        ];
+
+        alumnos.forEach(alumno => {
+            alumno.calcularMedia = function () {
+                const suma = this.notas.reduce((acum, n) => acum + n, 0);
+                return suma / this.notas.length;
+            };
+        });
+
+        alumnos.forEach(alumno => {
+            const media = alumno.calcularMedia();
+            console.log(`${alumno.nombre} (${alumno.curso}) tiene una media de ${media.toFixed(2)}`);
+        });
+
+        const MatHonor = alumnos.find(alumno => alumno.calcularMedia() >= 9.5);
+
+        if (MatHonor) {
+            console.log(`\nMatricula de honor: ${MatHonor.nombre} (media: ${MatHonor.calcularMedia().toFixed(2)})`);
+        } else {
+            console.log("Ningun alumno ha obtenido Matricula de Honor");
+        }
+
+    </script>
+
+
+</body>
+
+</html>

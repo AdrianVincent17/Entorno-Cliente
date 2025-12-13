@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concatenar cadenas</title>
+</head>
+
+<body>
+    <p>Abre la consola del navegador para ver los resultados</p>
+
+    <script>
+
+        // funcion con rest
+
+        function concatenarCadenas(...cadenas) {
+            return cadenas.join(" ");
+        }
+
+        console.log("Hola", "mundo", "desde", "JavaScript");
+
+        //desectructuracion de array con rest
+        let numeros = [5, 10, 15, 20, 25];
+        let [a, b, ...otros] = numeros;
+
+        console.log("a: ", a);
+        console.log("b: ", b);
+        console.log("resto de numeros: ", otros);
+
+
+        let producto = { id: 1, nombre: "Portatil", precio: 750, categoria: "Informatica" };
+
+        let {nombre, ...detalles} = producto;
+
+        console.log("Nombre: ", nombre);
+        console.log("Detalles: ", detalles);
+
+
+    </script>
+</body>
+
+</html>

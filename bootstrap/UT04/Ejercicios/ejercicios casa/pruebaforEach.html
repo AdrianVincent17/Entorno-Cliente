@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let notas = [8, 5, 6, 7, 9];
+
+        notas.forEach((notas, indice) => {
+            console.log(`Alumno; ${indice + 1} Nota: ${notas}`);
+        })
+
+        let alumnos = ["Adrian", "Maria", "Sonia", "Juan", "Olivia", "Oscar"];
+
+        alumnos.forEach(alumno => {
+            console.log(`Hola ${alumno} bienvenido`);
+        });
+
+        let letras = alumnos.find(alumno => alumno.length > 5);
+        console.log(letras);
+
+        for(let indice of alumnos){
+            console.log(indice);
+        }
+        
+    </script>
+
+</body>
+
+</html>

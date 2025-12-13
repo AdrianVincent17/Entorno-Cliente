@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion productos</title>
+</head>
+
+<body>
+
+    <h1>Abre la consola del navegador para ver resultados</h1>
+    <script>
+        let productos = [
+            { nombre: "Raton inalambrico", precio: 20, stock: 15 },
+            { nombre: "Teclado mecanico", precio: 75, stock: 8 },
+            { nombre: "Monitor 27\"", precio: 220, stock: 5 },
+            { nombre: "USB 64GB", precio: 12, stock: 0 },
+            { nombre: "Portatil", precio: 899, stock: 3 },
+            { nombre: "Alfombrilla", precio: 8, stock: 25 }
+
+        ];
+
+        productos.forEach(producto => {
+            console.log(`Nombre: ${producto.nombre}\nPrecio: ${producto.precio}\nStock: ${producto.stock}`);
+        });
+
+        const productosConIVA = productos.map(producto => {
+            return {
+                nombre: producto.nombre,
+                precioConIVA: producto.precio * 1.21
+            };
+        });
+
+        console.log(`\nb) Productos con IVA (21%)`);
+        console.log(productosConIVA);
+
+        const productosEnStock=productos.filter(producto=> producto.stock>0);
+
+        console.log(`\nc) Productos con stock disponible: `);
+        console.log(productosEnStock);
+
+        const valorTotalStock=productos.reduce((acum,p) => {
+            return acum + p.precio*p.stock;
+        },0);
+
+        console.log(`\nd) Valor total del stock: ${valorTotalStock}`);
+
+        const productoPremium=productos.find(p=> p.precio>=100);
+
+        console.log(`\ne) Primer producto premium (precio >=100 €)`);
+
+        if(productoPremium){
+            console.log(`${productoPremium.nombre} - ${productoPremium.precio} €`);
+        }else{
+            console.log(`No hay productos premium`);
+        }
+
+        const copiaProductos=[...productos];
+
+        copiaProductos.sort((a,b)=> b.precio - a.precio);
+
+        const top3Caros=copiaProductos.splice(0, 3);
+
+        console.log(`\nf) Top 3 productos mas caros: `);
+        console.log(top3Caros);
+
+        console.log('\ng) productos ordenados por orden alfabetico')
+        productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+        productos.forEach(producto => {
+            console.log(`Nombre: ${producto.nombre}\nPrecio: ${producto.precio}\nStock: ${producto.stock}`);
+        })
+
+      
+    </script>
+</body>
+
+</html>

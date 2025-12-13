@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo de pelicuals</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .contenedor {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .apartado {
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="contenedor">
+        <h1>Catalogo de peliculas</h1>
+        <div class="apartado">
+            <h2>A. Catálogo completo</h2>
+            <div id="apartadoA">
+
+            </div>
+        </div>
+        <div class="apartado">
+            <h2>B. Titulo y nota de las peliculas mas recomendadas (nota ≥ 7)</h2>
+            <div id="apartadoB">
+
+            </div>
+        </div>
+        <div class="apartado">
+            <h2>C. Titulos de las peliculas menos recomendadas (nota &lt; 7 )</h2>
+            <div id="apartadoC">
+
+            </div>
+        </div>
+        <div class="apartado">
+            <h2>D. Duracion total del catalogo</h2>
+            <div id="apartadoD">
+
+            </div>
+        </div>
+        <div class="apartado">
+            <h2>E. Primera pelicula anterior al año 2000</h2>
+            <div id="apartadoE">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const apA = document.getElementById("apartadoA");
+        const apB = document.getElementById("apartadoB");
+        const apC = document.getElementById("apartadoC");
+        const apD = document.getElementById("apartadoD");
+        const apE = document.getElementById("apartadoE");
+
+
+        const catalogo = [
+            { titulo: "Interéstelar", año: 2012, duracion: 125, nota: 8.9 },
+            { titulo: "Origen", año: 2010, duracion: 148, nota: 8.8 },
+            { titulo: "La Llegada", año: 2016, duracion: 116, nota: 8.5 },
+            { titulo: "Blade Runner", año: 1997, duracion: 164, nota: 6 },
+            { titulo: "Gravity", año: 2013, duracion: 91, nota: 6.9 }
+        ];
+
+        catalogo.forEach(peli => {
+            peli.descripcion = function () {
+                return `${peli.titulo} (${peli.año}) | Duración: ${peli.duracion} min | Nota: ${peli.nota}\n `;
+            }
+        })
+        catalogo.forEach(peli => {
+            apA.innerHTML += peli.descripcion() + "<br>";
+        })
+
+        let recomendadas = catalogo.filter(peli => peli.nota >= 7);
+        if (recomendadas.length != 0) {
+            recomendadas.forEach(peli => {
+                apB.innerHTML += `${peli.titulo} (${peli.nota})<br>`;
+            });
+
+        } else {
+            apB.innerHTML = `No hay niguna pelicula recomendada`;
+        }
+
+        let NOrecomendadas = catalogo.filter(peli => peli.nota < 7);
+        if (NOrecomendadas.length != 0) {
+            const titulos=NOrecomendadas.map(peli => peli.titulo).join(", "); 
+                apC.innerHTML=titulos;
+        } else {
+            apC.innerHTML = `No hay niguna pelicula NO recomendada`;
+        }
+
+        let duracionTotal=catalogo.reduce((acum,peli)=> acum+peli.duracion,0);
+        apD.textContent=duracionTotal+" min";
+
+
+        let primerapeli=catalogo.find(peli=> peli.año<2000);
+        if(primerapeli){
+            apE.textContent=primerapeli.descripcion();
+        }else{
+            apE.textContent="No hay pelicuals anteriores al año 2000";
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Descuento</title>
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <h2>Calcular Descuento</h2>
+        <input type="number" id="precioInput" placeholder="Precio del producto (€)" min="0">
+        <br><br>
+        <input type="number" id="descuentoInput" placeholder="Porcentaje de Descuento (%)" min="0" max="100">
+        <button onclick="calcular()">Calcular precio final</button>
+        <div id="resultado">Introduce los valores y calcula</div>
+    </div>
+
+    <script>
+
+        function calcularDescuento(precio, porcentaje) {
+
+            const p = parseFloat(precio);
+            const desc = parseFloat(porcentaje);
+
+            if (isNaN(p) || isNaN(desc)) {
+                return "Error: Los parametros deben ser numeros";
+            }
+            if (p < 0 || desc < 0) {
+                return "Error: Los parametros deben ser positivos";
+            }
+
+            let cantidadDescuento = precio * (porcentaje / 100);
+
+            let precioFinal = p - cantidadDescuento;
+
+            return precioFinal;
+
+        }
+
+        function calcular() {
+
+            const precio = document.getElementById("precioInput").value;
+            const descuento = document.getElementById("descuentoInput").value;
+
+            const result = document.getElementById("resultado");
+
+            const precioFinal = calcularDescuento(precio, descuento);
+
+            if (typeof preciofinal == 'number') {
+                const precioformateado = precioFinal.toFixed(2);
+                result.textContent = `Precio final: ${precioformateado} € `;
+                result.style.backgroundColor = '#ccffe6';
+            } else {
+                result.textContent = precioFinal;
+                result.style.backgroundColor = '#ffe0e0';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
