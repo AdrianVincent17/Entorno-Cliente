@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- PANEL 1 -->
+      <div class="panel" id="panel-fecha-hora">
+        <h2>Fecha y hora actual</h2>
+        <div class="fecha-hora">
+          <div id="fecha-actual">--/--/--</div>
+          <div id="hora-actual">--:--:--</div>
+        </div>
+      </div>
+
+      <!-- PANEL 2 -->
+      <div class="panel" id="panel-info-ventana">
+        <h2>Información de la ventana / navegador</h2>
+
+        <p class="info-linea">
+          <span>tamaño del ancho de ventana:</span>
+          <span class="valor" id="ancho-ventana">-</span>
+        </p>
+        <p class="info-linea">
+          <span>tamaño del alto de ventana:</span>
+          <span class="valor" id="alto-ventana">-</span>
+        </p>
+        <p class="info-linea">
+          <span>lenguaje del navegador:</span>
+          <span class="valor" id="lenguaje-navegador">-</span>
+        </p>
+        <p class="info-linea">
+          <span>conectado a internet:</span>
+          <span class="valor" id="estado-internet">-</span>
+        </p>
+      </div>
+
+      <!-- PANEL 3 -->
+      <div class="panel" id="panel-navegacion">
+        <h2>Navegación</h2>
+
+        <label for="input-url">Ir a la URL:</label>
+        <input type="text" id="input-url" placeholder="https://ejemplo.com" />
+
+        <div class="panel-3-buttons">
+          <button onclick="irUrl()">Ir a la URL</button>
+          <button onclick="irAtras()">Ir para atrás</button>
+          <button onclick="irAlante()">Ir para delante</button>
+          <button onclick="google()">Ir a Google</button>
+        </div>
+        <p>La última página visitada ha sido: <span id="ultPagVisitada">-</span></p>
+      </div>
+
+      <!-- PANEL 4 -->
+      <div class="panel" id="panel-cuenta-atras">
+        <h2>Cuenta atrás</h2>
+
+        <label for="input-cuenta">Número para iniciar la cuenta atrás:</label>
+        <input type="number" id="input-cuenta" min="0" placeholder="Escribe un número" />
+
+        <button id="btn-iniciar-cuenta" onclick="continuar()">Iniciar cuenta</button>
+
+        <div class="panel-4-display" id="display-cuenta">-</div>
+      </div>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>
