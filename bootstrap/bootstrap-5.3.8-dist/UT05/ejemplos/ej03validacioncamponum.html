@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos2.css">
+    <title>Document</title>
+</head>
+<body>
+    <form id="formulario">
+        <div>
+            <label for="edad">Edad: </label>
+            <input type="number" id="edad"required>
+        </div>
+        <button>Comprobar</button>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script>
+        const formulario=document.getElementById("formulario");
+        const mensaje=document.getElementById("mensaje");
+        const inputedad=document.getElementById("edad");
+
+        formulario.addEventListener("submit", function(event){
+            event.preventDefault();
+
+            const edad=Number(inputedad.value);
+
+            if(isNaN(edad)){
+                mensaje.textContent="Debes introducir un numero valido";
+            }else if(edad<18){
+                 mensaje.textContent="Debes ser mayor de edad";
+            }else{
+                 mensaje.textContent="Edad valida";
+            }
+        });
+    </script>
+</body>
+</html>

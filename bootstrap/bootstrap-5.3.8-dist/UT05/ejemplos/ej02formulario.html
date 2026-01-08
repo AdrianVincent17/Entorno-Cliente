@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        .correcto {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="formulario">
+        <input type="text" id="nombre" placeholder="Escribe tu nombre">
+        <button>Enviar</button>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script>
+        const formulario = document.getElementById('formulario');
+        const mensaje = document.getElementById('mensaje');
+
+        formulario.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+
+            mensaje.classlist.remove("error","correcto");
+
+       
+             if (nombre == "") {
+                mensaje.textContent = "El nombre no puede estar vacio";
+                mensaje.classlist.add("error");
+            } else {
+                mensaje.textContent = "hola " + nombre;
+                mensaje.classList.add("correcto");
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>
