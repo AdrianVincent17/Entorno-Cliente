@@ -8,9 +8,7 @@ function limpiarEstadosVisuales(){
     mensaje.classList.remove("error","correcto");
     mensaje.textContent="";
 
-    //campos
-    inputnombre.classList.add()
-    mostrarerror;
+    
 }
 
 
@@ -25,13 +23,13 @@ formulario.addEventListener("submit", function (event) {
     const aceptar = document.getElementById('aceptar').checked;
 
     if(nombre.lengh<3){
-             inputnombre.classList.add("campo-error");
+        nombre.classList.add("campo-error");
         mensaje.textContent= "El nombre debe tener mas de 3 caracteres";
     }else if(nombre==""){
-        inputnombre.classList.add("campo-error");
+        nombre.classList.add("campo-error");
         mensaje.textContent= "El nombre no puede estar vacio";
     }else if(curso==""){
-        inputcurso.classList.add("campo-error");
+        curso.classList.add("campo-error");
         mensaje.textContent="El curso no puede estar vacio";
     }else if (!aceptar) {
         mensaje.textContent="primero debes aceptar las condiciones";
