@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Calculo del factorial</h1>
+    <div id="result"></div>
+
+    <script>
+
+        let numero=prompt("Introduce un numero mayor o igual que 0");
+        let num=parseInt(numero);
+
+        if(isNaN(num)){
+            alert("No es un numero");
+        }
+
+        if(num<0){
+            alert("El numero deberia ser mayor a 0");
+        }
+
+        
+        function facto(num){{
+            for(let i=1; i<num; i++){
+                num=num*i;
+            }
+            return num;
+        };
+
+        document.getElementById("result").innerHTML=`factorial de` ;
+  
+
+        }
+
+    </script>
+    
+</body>
+</html>

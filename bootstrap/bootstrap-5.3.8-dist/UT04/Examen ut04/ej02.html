@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H1>Combinacion de la loteria primitiva</H1>
+
+    <div id="result"></div>
+    <script>
+         
+        let bombo=[];
+
+        
+        for(let i=0; i<6; i++){
+            bombo.push(Math.floor(Math.random()*49)+1);
+        }
+
+        bombo.sort((a,b)=> b -a);
+
+        document.getElementById("result").innerHTML=`Combinacion ${bombo}`; 
+
+    </script>
+</body>
+</html>

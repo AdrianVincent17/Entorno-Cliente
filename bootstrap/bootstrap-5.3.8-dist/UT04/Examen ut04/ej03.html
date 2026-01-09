@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videojuegos</title>
+</head>
+
+<body>
+
+    <!-- contenedores de la informacion -->
+    <h1>Videojuegos</h1>
+
+    <h2>A. Lista completa de videojuegos</h2>
+    <br>
+    <div id="salidaA"></div>
+    <br>
+
+    <h2>B. Juegos largos (>50 horas)</h2>
+    <br>
+    <div id="salidaB"></div>
+    <br>
+    <h2>C. Titulos recomendados (puntuacion>=8)</h2>
+    <br>
+    <div id="salidaC"></div>
+    <br>
+    <h2>D. Total de horas jugadas</h2>
+    <br>
+    <div id="salidaD"></div>
+    <br>
+    <h2>E. Primer RPG encontrado</h2>
+    <br>
+    <div id="salidaE"></div>
+    <br>
+
+    <script>
+
+        // constantes y variables globales
+
+        const salA = document.getElementById("salidaA");
+        const salB = document.getElementById("salidaB");
+        const salC = document.getElementById("salidaC");
+        const salD = document.getElementById("salidaD");
+        const salE = document.getElementById("salidaE");
+
+
+        // creamos el array con la informacion 
+
+        let videojuegos = [
+            {
+                titulo: "Elden Ring",
+                genero: "RPG",
+                horas: 120,
+                puntuacion: 9.5
+            },
+            {
+                titulo: "FIFA 25",
+                genero: "Deportes",
+                horas: 45,
+                puntuacion: 7.8
+            },
+            {
+                titulo: "Minecraft",
+                genero: "Sandbox",
+                horas: 200,
+                puntuacion: 9
+            },
+            {
+                titulo: "Mario Kart",
+                genero: "Carreras",
+                horas: 60,
+                puntuacion: 8.2
+            },
+            {
+                titulo: "Hades",
+                genero: "Roguelike",
+                horas: 35,
+                puntuacion: 7.9
+            },
+        ];
+
+
+        videojuegos.forEach(juegos => {
+
+        salA.innerHTML += `${juegos.titulo} - ${juegos.genero} (${juegos.horas} horas, ${juegos.puntuacion} puntos) <br>`;
+        });
+
+        let juegoslargos = videojuegos.filter(juegos => juegos.horas > 50);
+        juegoslargos.forEach(juegos => {
+            salB.innerHTML += `${juegos.titulo} (${juegos.horas} horas)<br>`;
+        });
+
+        let recomendados = videojuegos.filter(juegos => juegos.puntuacion >= 8);
+        recomendados.forEach(juegos => {
+            salC.innerHTML += `${juegos.titulo}, `;
+        });
+
+        let totalhoras = videojuegos.reduce((acum, juego) => {
+            return acum + juego.horas;
+        }, 0);
+
+            salD.innerHTML = `${totalhoras} horas`; 
+        
+        
+
+        let primero = videojuegos.find(juegos => juegos.genero === "RPG");
+
+
+             salE.innerHTML = `${primero.titulo} (${primero.puntuacion}) puntos`;
+
+        
+
+       
+
+
+
+    </script>
+
+</body>
+
+</html>
