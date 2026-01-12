@@ -1,5 +1,16 @@
 // ----- VARIABLES GLOBALES -----
-let conta=0;
+
+//array con los numero que aun no han salido (el bombo)
+
+let bombo=[];
+
+//Ultimo numero generado (null al inicio);
+let ultimoNumero=null;
+
+//-------Objetos del DOM-----
+
+const ultimaBola= document.getElementById("ultimaBola");
+const mensaje=document.getElementById("mensaje");
 
 
 // ----- FUNCIONES -----
@@ -23,18 +34,15 @@ function dibujarTablero() {
 
     // 3. Empezamos por el número 1.
     let numeroActual = 1;
-    const filas=9;
-    const numeros=10;
 
     // 4. Queremos crear 9 filas. Cada fila tendrá hasta 10 números.
-    for (let fila = 0; fila < filas; fila++) {
+    for (let fila = 0; fila < 9; fila++) {
 
         // Creamos un <div> para la fila y le ponemos la clase "fila"
         let divFila = document.createElement("div");
         divFila.className = "fila";
-
-        // Dentro de cada fila, intentamos colocar 10 números
-        for (let i = 0; i < numeros; i++) {
+  
+        for (let i = 0; i < 10; i++) {
 
             // Creamos un <span> para mostrar el número
             let spanNumero = document.createElement("span");
@@ -61,24 +69,73 @@ function dibujarTablero() {
     }
 }
 
-// Función que genera un nuevo número aleatorio que no haya salido aún (onclick del botón 'Generar número')
-function generarNumero() {
-    conta++;
-    let array=[];
-    for(i=0; i<filas*numeros; i++){
-        array+=array[i];
+function nuevoBingo(){
+
+    bombo=[]; //vaciamos el bombo
+    ultimoNumero=null;
+
+    //Rellenamos el bombo con los numeros del 1 al 90
+    for(let i=1; i<=90; i++){
+        bombo.push(i);
     }
 
-    let naleatorio=Math.floor(Math.random()*Array.length+1);
+    //Dibujamos el tablero con los 90 numeros
+    dibujarTablero();
+
+    const todos=document.getElementsByClassName("numero");
+    for(let i=0; i<=todos.length; i++){
+        todos[i].classList.remove("ultimo");
+        todos[i].classList.remove("anteriores");
+    }
+
+    //Actualizamos la interfaz de texto
+    ultimaBola.textContent="-";
+    mensaje.textContent='Pulsa "Generar numero" para sacar una bola';
 
 }
 
- let array=[];
-    for(i=0; i<(filas*numeros); i++){
-        array+=array[i];
+// Función que genera un nuevo número aleatorio que no haya salido aún (onclick del botón 'Generar número')
+function generarNumero() {
+
+    if(bombo.length===0){
+        const jugarOtraVez=confirm("Ya han salido todos los numeros (1 al 90). \n¿Quieres jugar otra vez?");
+
+        if(jugarOtraVez){
+            nuevoBingo();
+        }else{
+            mensaje.textContent="Juego Finalizado. Ya han salido todos los numeros";
+        }
+
+    }else{
+        //aqui ya sabemos que bombo.length es mayor que 0
+
+        const indice=Math.floor(Math.random()*bombo.length);
+        const numero=bombo[indice];
+
+        //Eliminamos el numero del bombo para que no pueda rapetirse
+        bombo.splice(indice, 1);
+
+        //Actualizamos los estilos
+        //a) El anterior ultimo numero se vuelve gris
+
+        if(ultimoNumero!==null){
+            let anterior=document.getElementById("num-"+ultimoNumero);
+            anterior.classList.remove("ultimo");
+            anterior.classList.add("anteriores");
+        }
+
+        //b)el nuevo numero se vuelve verde
+        document.getElementById("num-"+ numero).classList.add("ultimo");
+
+        //actualizamos el ultimo numero
+        ultimoNumero=numero;
+        ultimaBola.textContent=numero;
+
+        //mesaje informativo
+        mensaje.textContent="Han salido "+ (90-bombo.length)+ " numeros";
     }
+
+}
 
 // Llamamos a la función dibujarTablero() una vez para que el tablero aparezca en la página cuando el usuario la carga por primera vez
 dibujarTablero();
-
-console.log(array[naleatorio]);

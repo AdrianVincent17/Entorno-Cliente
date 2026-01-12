@@ -16,7 +16,6 @@
     <br>
     <div id="salidaA"></div>
     <br>
-
     <h2>B. Juegos largos (>50 horas)</h2>
     <br>
     <div id="salidaB"></div>
@@ -43,7 +42,6 @@
         const salC = document.getElementById("salidaC");
         const salD = document.getElementById("salidaD");
         const salE = document.getElementById("salidaE");
-
 
         // creamos el array con la informacion 
 
@@ -77,13 +75,11 @@
                 genero: "Roguelike",
                 horas: 35,
                 puntuacion: 7.9
-            },
+            }
         ];
 
-
         videojuegos.forEach(juegos => {
-
-        salA.innerHTML += `${juegos.titulo} - ${juegos.genero} (${juegos.horas} horas, ${juegos.puntuacion} puntos) <br>`;
+            salA.innerHTML += `${juegos.titulo} - ${juegos.genero} (${juegos.horas} horas, ${juegos.puntuacion} puntos) <br>`;
         });
 
         let juegoslargos = videojuegos.filter(juegos => juegos.horas > 50);
@@ -92,28 +88,14 @@
         });
 
         let recomendados = videojuegos.filter(juegos => juegos.puntuacion >= 8);
-        recomendados.forEach(juegos => {
-            salC.innerHTML += `${juegos.titulo}, `;
-        });
+        let recomenadisimos = recomendados.map(juegos => juegos.titulo).join(", ");
+        salC.innerHTML += `${recomenadisimos}`;
 
-        let totalhoras = videojuegos.reduce((acum, juego) => {
-            return acum + juego.horas;
-        }, 0);
-
-            salD.innerHTML = `${totalhoras} horas`; 
-        
-        
+        let totalhoras = videojuegos.reduce((acum, juego) => acum + juego.horas,0);
+        salD.innerHTML = `${totalhoras} horas`;
 
         let primero = videojuegos.find(juegos => juegos.genero === "RPG");
-
-
-             salE.innerHTML = `${primero.titulo} (${primero.puntuacion}) puntos`;
-
-        
-
-       
-
-
+        salE.innerHTML = `${primero.titulo} (${primero.puntuacion}) puntos`;
 
     </script>
 

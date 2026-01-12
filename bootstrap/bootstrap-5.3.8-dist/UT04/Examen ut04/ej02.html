@@ -12,15 +12,27 @@
     <script>
          
         let bombo=[];
+        for(let i=1; i<=50; i++){
+            bombo.push(i);
+        }
+
+        let combinacion=[];
 
         
         for(let i=0; i<6; i++){
-            bombo.push(Math.floor(Math.random()*49)+1);
+            
+            let numeroaleatorio=Math.floor(Math.random()*bombo.length);
+
+            let numerosacado=bombo.splice(numeroaleatorio,1);
+
+            combinacion.push(numerosacado);
         }
 
-        bombo.sort((a,b)=> b -a);
 
-        document.getElementById("result").innerHTML=`Combinacion ${bombo}`; 
+
+        combinacion.sort((a,b)=> b - a);
+
+        document.getElementById("result").innerHTML=`Numeros primitiva : ${combinacion.join(" - ")}`; 
 
     </script>
 </body>

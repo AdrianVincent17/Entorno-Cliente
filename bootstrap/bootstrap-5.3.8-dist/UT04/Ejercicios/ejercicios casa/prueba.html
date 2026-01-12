@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="mostrar"></div>
+    <button onclick="mostrar()" id="boton" >mostrar</button>
+    <button onclick="ocultar()" id="botonocultar" style="display: none;">ocultar</button>
+    <script>
+
+        const mostrarserie=document.getElementById("mostrar");
+        const boton=document.getElementById("boton");
+
+        let serie=[];
+
+        for(let i=0; i<50; i++){
+            serie.push(i);
+        }
+
+        function mostrar(){
+            mostrarserie.style.display="flex";
+            mostrarserie.textContent=serie.join("-");
+            boton.style.display="none";
+            botonocultar.style.display="flex";
+        }
+
+        function ocultar(){
+            mostrarserie.style.display="none";
+            boton.style.display="flex";
+            botonocultar.style.display="none";
+        }
+    </script>
+    
+</body>
+</html>

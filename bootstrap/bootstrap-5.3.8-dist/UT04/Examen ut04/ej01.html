@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
 
@@ -23,18 +24,16 @@
             alert("El numero deberia ser mayor a 0");
         }
 
-        
-        function facto(num){{
-            for(let i=1; i<num; i++){
-                num=num*i;
+        let factor=1;
+
+        function facto(num){
+            for(let i=1; i<=num; i++){
+                factor=factor*i;
             }
-            return num;
+            return factor;
         };
 
-        document.getElementById("result").innerHTML=`factorial de` ;
-  
-
-        }
+        document.getElementById("result").innerHTML=`factorial de ${num} es ${facto(num)}` ;
 
     </script>
     

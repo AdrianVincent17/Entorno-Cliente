@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .contenedor {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .apartado {
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Productos de una tienda</h1>
+
+    <div class="contenedor">
+        <div class="apartado">
+            <h2>A) Listado de productos </h2>
+            <div id="salidaA"></div>
+        </div>
+        <div class="apartado">
+            <h2>B) Productos con IVA </h2>
+            <div id="salidaB"></div>
+        </div>
+        <div class="apartado">
+            <h2>C) Productos con stock disponible</h2>
+            <div id="salidaC"></div>
+        </div>
+        <div class="apartado">
+            <h2>D) valor total del stock </h2>
+            <div id="salidaD"></div>
+        </div>
+        <div class="apartado">
+            <h2>E) Primer producto premium (precio>=100 €) </h2>
+            <div id="salidaE"></div>
+        </div>
+        <div class="apartado">
+            <h2>F) top 3 productos mas caros </h2>
+            <div id="salidaF"></div>
+        </div>
+        <div class="apartado">
+            <h2>G) productos ordenados por orden alfabetico </h2>
+            <div id="salidaG"></div>
+        </div>
+
+
+    </div>
+
+    <script>
+
+        const salidaA = document.getElementById('salidaA');
+        const salidaB = document.getElementById('salidaB');
+        const salidaC = document.getElementById('salidaC');
+        const salidaD = document.getElementById('salidaD');
+        const salidaE = document.getElementById('salidaE');
+        const salidaF = document.getElementById('salidaF');
+        const salidaG = document.getElementById('salidaG');
+
+        let productos = [
+            { nombre: "Raton inalambrico", precio: 20, stock: 15 }, //300
+            { nombre: "Teclado mecanico", precio: 75, stock: 8 }, //600
+            { nombre: "Monitor 27\"", precio: 220, stock: 5 }, //1100
+            { nombre: "USB 64GB", precio: 12, stock: 0 }, //0 
+            { nombre: "Portatil", precio: 899, stock: 3 }, //2697
+            { nombre: "Alfombrilla", precio: 8, stock: 25 } //200
+
+        ];
+
+
+        productos.forEach(item=>{
+            salidaA.innerHTML+=`${item.nombre} | Precio: ${item.precio} € | stock: ${item.stock} unidades<br>`;
+        });
+
+        let productosConIva=productos.map(item=>{
+            let productoFinal=(item.precio*1.21).toFixed(2);
+            return `${item.nombre}: ${productoFinal} € <br>`;
+        }).join("");
+
+        salidaB.innerHTML=`${productosConIva}`;
+
+        let productosStock=productos.filter(item=> item.stock>0);
+
+        productosStock.forEach(item=> {
+            salidaC.innerHTML+=item.nombre+"<br>";
+        });
+
+        let valorTotalStock=productos.reduce((acum,item)=> acum+(item.precio*item.stock),0);
+
+        salidaD.innerHTML=valorTotalStock+" €";
+
+        let productoPremium=productos.find(item=> item.precio>=100);
+
+        if(productoPremium){
+             salidaE.innerHTML=`${productoPremium.nombre} - ${productoPremium.precio} €`;
+        }else{
+            salidaE.textContent="No hay articulos con ese precio";
+        }
+
+        let copiaProductos=[...productos];
+
+        copiaProductos.sort((a,b) => b.precio-a.precio);
+
+        const top3Caros=copiaProductos.splice(0,3);
+
+        let mostrarCaros=top3Caros.map(item=> {
+            return `${item.nombre}: ${item.precio} €`;
+        }).join("<br>");
+
+        salidaF.innerHTML=mostrarCaros;
+
+        let ordenados=productos.sort((a,b)=> a.nombre.localeCompare(b.nombre));
+
+        ordenados.forEach(item=>{
+            salidaG.innerHTML+=item.nombre+"<br>";
+        })
+
+    </script>
+
+</body>
+
+</html>

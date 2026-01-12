@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ej01.css">
+    <title>Ejercicio de varios paneles</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+
+        <!-- PANEL 1 -->
+        <div class="panel" id="panel-fecha-hora">
+            <h2>FECHA Y HORA ACTUAL</h2>
+            
+            <div class="fecha-hora">
+                <div id="fecha">--/--/--</div>
+                <div id="hora">--/--/--</div>
+            </div>
+        </div>
+
+        <!-- panel 2 -->
+        <div class="panel" id="panel-info-ventana">
+            <h2>INFORMACION DE LA VENTANA/NAVEGADOR</h2>
+            
+            <div class="info-linea">
+                tamaño de la ventana <span id="ancho">-</span>
+            </div>
+            <div class="info-linea">
+                tamaño del alto de la ventana <span id="alto">-</span>
+            </div>
+            <div class="info-linea">
+                lenguaje del navegador <span id="lenguaje">-</span>
+            </div>
+            <div class="info-linea">
+                conectado a internet: <span id="online">-</span>
+            </div>
+        </div>
+
+        <!-- panel 3 -->
+        <div class="panel" id="panel-navegacion">
+            <h2>NAVEGACIÓN</h2>
+            <label for="inputurl">Ir a la URL:</label>
+            <input type="text" name="inputurl" id="inputurl" placeholder="https://ejemplo.com">
+            <div class="panel-3-buttons">
+                <button onclick="ir()">Ir a URL</button>
+                <button onclick="atras()">Ir hacia atras</button>
+                <button onclick="adelante()">Ir hacia delante</button>
+                <button onclick="google()">Ir a Google</button>
+            </div>
+            <p>La ultima pagina visitada ha sido: <span id="ultima">-</span></p>
+        </div>
+
+        <!-- panel 4 -->
+
+        <div class="panel" id="panel-cuenta-atras">
+            <h2>CUENTA ATRAS</h2>
+            <div class="panel-4-display">
+                <label for="cuenta"></label>
+                <input type="number" id="cuenta" name="cuenta" placeholder="Escribe un numero">
+                <button onclick="iniciar()">Iniciar cuenta</button>
+                <p id="contador">-</p>
+            </div>
+        </div>
+    </div>
+    <script src="ej01.js"></script>
+</body>
+
+</html>

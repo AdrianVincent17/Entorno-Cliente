@@ -141,8 +141,7 @@
         <ul id="lista"></ul>
     </div>
 
-    <script>
-
+   <script>
         const CLAVE_RECORD = 'recordintentos';
 
         let intentos = 0;
@@ -153,122 +152,130 @@
         let intento = document.getElementById("intento");
         let recordfinal = document.getElementById("recordfinal");
         let intentosfinales = document.getElementById("intentosfinales");
-        
-
-
-
+        let nuevoRecordTexto = document.getElementById("nuevorecord"); // Referencia al texto de nuevo record
 
         function añadirintento() {
+            let inputElement = document.getElementById("numero");
+            let intentofallido = inputElement.value;
 
-            let intentofallido = document.getElementById("numero").value;
-            //no insertar numero vacio
-            if (numero !== "" || numero > 100) {
-
-            } else {
-
-                //Creamos el elemento
-                let nuevoelemento = document.createElement('li');
-
-                //añadomos la informacion del value del input al elemento <li>
-                nuevoelemento.textContent = `Intento ${intentos}: ${intentofallido}`
-
-                //añadimos el elemnto a la lista
-                item.appendChild(nuevoelemento);
-
-            }
-            document.getElementById("numero").value = "";
+            // Corrección: Validar que no esté vacío
+            if (intentofallido === "" || intentofallido > 100 || intentofallido < 1) {
+                return; // Salimos si no es válido
+            } 
+            
+            let nuevoelemento = document.createElement('li');
+            nuevoelemento.textContent = `Intento ${intentos}: ${intentofallido}`
+            item.appendChild(nuevoelemento);
+            
+            inputElement.value = "";
         }
 
-
-        //funcion para obtener el record almacenado en localStorage
         function obtenerrecord() {
-
-            //localStroge.getItem devuelve el valor asociado a la clave o null si no existe
             const recordguardado = localStorage.getItem(CLAVE_RECORD);
-
-            //si existe devolvemos el valor parseado a entero,(porque se guarda como cadena)
-            //si no hay record (null) devolvemos 0
+            // Devolvemos el número o null si no existe
             return recordguardado ? parseInt(recordguardado) : "-";
         }
 
-        function finalizar() {
+        // --- ESTA FUNCIÓN AHORA SE LLAMA "gestionarRecord" Y SE USA AL GANAR ---
+        function gestionarRecord() {
+            let recordActual = obtenerrecord();
+            let esNuevoRecord = false;
 
-            intento.textContent = 0;
-            document.getElementById('numero').value = "";
-            resultado.innerHTML = `Escribe un numero entre <b>1</b> y <b>100</b> y pulsa <b>Probar</b>`;
-            //octener el record actual
-            let recordactual = obtenerrecord();
-
-            if (recordactual === "-") {
-                recordactual = 0;
-            }
-            if (intentos < recordactual) {
+            // Si no hay record (null) O si mis intentos son menores al record
+            if (recordActual === null || intentos < recordActual) {
                 localStorage.setItem(CLAVE_RECORD, intentos);
-                document.getElementById("nuevorecord").textContent = "Nuevo record";
+                esNuevoRecord = true;
+                recordActual = intentos; // Actualizamos para mostrarlo
             }
 
+            // Actualizamos la UI del modal final
+            recordfinal.textContent = recordActual;
+            
+            if (esNuevoRecord) {
+                nuevoRecordTexto.textContent = "¡NUEVO RÉCORD!";
+                nuevoRecordTexto.style.color = "red";
+                nuevoRecordTexto.style.fontWeight = "bold";
+            } else {
+                nuevoRecordTexto.textContent = "";
+            }
+            
+            // Actualizamos el record en la pantalla principal también
+            record.textContent = recordActual;
         }
 
-
-
-
         function iniciar() {
-
             intentos = 0;
-            record.textContent = obtenerrecord();
+            // Mostrar "-" si es null, o el numero si existe
+            let rec = obtenerrecord();
+            record.textContent = rec === null ? "-" : rec;
+            
             document.getElementById("lista").textContent = "";
-
+            intento.textContent = "0";
+            resultado.innerHTML = `Escribe un numero entre <b>1</b> y <b>100</b> y pulsa <b>Probar</b>`;
+            
+            // IMPORTANTE: Generar nuevo número al reiniciar
+            numeroadivinar = numeroaleatorio(); 
+            console.log("Nuevo número secreto:", numeroadivinar);
         }
 
         function numeroaleatorio() {
-            let numerito = Math.floor(Math.random() * 100 + 1);
-            return numerito;
+            return Math.floor(Math.random() * 100) + 1;
         }
 
         function probar() {
-
-            intentos++;
-            let entrada = document.getElementById('numero').value;
-            let mensaje = "";
-            intento.textContent = intentos;
-
-            if (entrada > 100) {
-                mensaje = "Error: El numero deberia estar en rango";
-            } else {
-                if (entrada > numeroadivinar) {
-                    mensaje = `El numero secreto es MENOR que ${entrada}`;
-                } else if (entrada < numeroadivinar) {
-                    mensaje = `El numero secreto es MAYOR que ${entrada}`;
-                } else {
-                    
-                    modalfinal();
-                }
+            let entrada = parseInt(document.getElementById('numero').value); // Parsear a int
+            
+            if (isNaN(entrada) || entrada < 1 || entrada > 100) {
+                resultado.innerHTML = "Error: Introduce un número válido entre 1 y 100";
+                return;
             }
 
-            añadirintento();
-            resultado.innerHTML = mensaje;
+            intentos++;
+            intento.textContent = intentos;
+            
+            añadirintento(); // Movemos esto antes de limpiar o ganar para que salga en la lista
 
+            let mensaje = "";
+
+            if (entrada > numeroadivinar) {
+                mensaje = `El número secreto es MENOR que ${entrada}`;
+            } else if (entrada < numeroadivinar) {
+                mensaje = `El número secreto es MAYOR que ${entrada}`;
+            } else {
+                mensaje = "¡HAS ACERTADO!";
+                // AQUÍ LLAMAMOS A LA GESTIÓN DEL RÉCORD
+                gestionarRecord(); 
+                modalfinal();
+            }
+
+            resultado.innerHTML = mensaje;
         }
 
         function modalinicio() {
-            iniciar();
+            // Solo mostramos el modal, iniciar() ya se llama al cerrar este o al cargar
             document.getElementById("overlay1").style.display = "flex";
         }
 
         function modalfinal() {
-
             document.getElementById("overlay2").style.display = "flex";
-            document.getElementById("intentosfinales").textContent = intentos;
-            recordfinal.textContent = obtenerrecord();
+            intentosfinales.textContent = intentos;
+            // El record ya se actualizó en gestionarRecord()
         }
+
         function cerrarmodal() {
-            modalinicio();
             document.getElementById("overlay1").style.display = "none";
             document.getElementById("overlay2").style.display = "none";
+            
+            // Si venimos del final (overlay2 estaba visible), reiniciamos el juego
+            // Pero como esta función la usas para ambos botones, simplemente llamamos a iniciar
+            // Ojo: Si cierras el modal de "Inicio", no deberías resetear todo de cero si ya cargó.
+            // Para simplificar tu lógica actual:
+            iniciar(); 
         }
 
+        // Al cargar la página
+        iniciar(); 
         modalinicio();
-        console.log(numeroadivinar);
 
     </script>
 
