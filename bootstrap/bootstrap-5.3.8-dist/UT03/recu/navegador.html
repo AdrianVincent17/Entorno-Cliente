@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navegador e Historial</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Panel 1: Información del navegador -->
+  <div class="panel">
+      <h2>Información del navegador</h2>
+      <p>Ancho de la ventana: <span id="anchoVentana">-</span> px</p>
+      <p>Alto de la ventana: <span id="altoVentana">-</span> px</p>
+      <p>Idioma del navegador: <span id="idiomaNavegador">-</span></p>
+      <p>Estado de conexión: <span id="estadoConexion">-</span></p>
+  </div>
+
+  <!-- Panel 2: historial y navegación -->
+  <div class="panel">
+      <h2>Historial y navegación</h2>
+
+      <!-- 1ª línea: campo + botón "Ir a URL" -->
+      <div>
+        <input type="text" id="inputUrl" placeholder="Escribe una dirección web">
+        <button onclick="irAUrl()">Ir a URL</button>
+      </div>
+
+      <!-- 2ª línea: tres botones -->
+      <div>
+        <button onclick="irAtras()">Atrás</button>
+        <button onclick="irAdelante()">Adelante</button>
+        <button onclick="irAGoogle()">Ir a Google</button>
+      </div>
+
+      <!-- 3ª línea: última URL abierta -->
+      <p>Última URL abierta: <span id="ultimaUrl">-</span></p>
+  </div>
+
+  <script src="navegador.js"></script>
+</body>
+</html>

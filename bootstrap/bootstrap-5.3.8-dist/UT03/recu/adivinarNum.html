@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adivina un número</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Panel 1: juego + mensaje + tiempo + récord -->
+  <div class="panel">
+    <h2>Adivinar un número</h2>
+    <p>Adivina el número secreto (1–10) en el menor tiempo posible</p>
+
+    <div>
+      <button id="btnIniciar" onclick="iniciarPartida()">Iniciar partida</button>
+      <button id="btnIntentar" onclick="intentar()">Intentar</button>
+    </div>
+
+    <p id="mensaje" class="mensaje">Pulsa <strong>Iniciar partida</strong> para empezar.</p>
+
+    <p>Tiempo transcurrido: <strong id="tiempoTxt">0 s</strong>&nbsp;&nbsp;|&nbsp;&nbsp; Tiempo récord: <strong
+        id="recordTxt">–</strong> </p>
+  </div>
+
+  <!-- Panel 2: historial -->
+  <div class="panel">
+    <h3>Historial</h3>
+    <ul id="historial"></ul>
+  </div>
+
+  <script src="adivinar.js"></script>
+</body>
+</html>
