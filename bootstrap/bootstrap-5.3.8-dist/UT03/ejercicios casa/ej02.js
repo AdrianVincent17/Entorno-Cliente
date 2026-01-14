@@ -14,9 +14,9 @@ function aumentacontador() {
 
     contador.innerHTML = segundos.toFixed(2);
 
-    if (segundos >= 10) {
-        segundos = 10;
-        contador.innerHTML = "10.00";
+    if (segundos >= 3) {
+        segundos = 3;
+        contador.innerHTML = "3.00";
         detener();
     }
 }
@@ -38,8 +38,8 @@ function detener() {
 
     let nuevoelemento = document.createElement("li");
 
-    if (segundos >= 10) {
-        document.body.style.backgroundColor="red";
+    if (segundos >= 3) {
+        document.body.style.backgroundColor="yellow";
         nuevoelemento.textContent = `Intento: ${intentos} FALLO no paraste a tiempo`;
     } else {
         nuevoelemento.textContent = `Intento: ${intentos} ${segundos.toFixed(2)} segundos`;
@@ -63,4 +63,15 @@ function detener() {
     }
 
     intervalo=null;
+
+    if(intentos>5){
+        let retirate= confirm("no crees que ya llevas muchos intentos?");
+        if(retirate){
+            intentos=0;
+            lista.innerHTML="";
+        }else{
+            alert("juego terminado");
+            
+        }
+    }
 }

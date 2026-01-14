@@ -20,28 +20,31 @@ let url;
 // Panel HISTORIAL Y NAVEGACIÓN 
 // ----------------------------
 
-ultima.textContent=actualizarUltimaUrl();
+ultima.textContent = actualizarUltimaUrl();
 
-let online=navigator.online;
+    let online = navigator.onLine;
 
 idioma.innerHTML = navigator.language;
 
-if(online){
-    estado.textContent="Conectado"
-}else{
-    estado.textContent="Desconectado";
+if (online) {
+    estado.textContent = "Conectado"
+} else {
+    estado.textContent = "Desconectado";
 }
 
-function redimensionar(){
 
-    let anchito=window.innerWidth;
-    let altito=window.innerHeight;
-    
-    ancho.textContent=anchito;
-    alto.textContent=altito;
+function redimensionar() {
+
+
+
+    let anchito = window.innerWidth;
+    let altito = window.innerHeight;
+
+    ancho.textContent = anchito;
+    alto.textContent = altito;
 }
 redimensionar();
-onresize=redimensionar;
+onresize = redimensionar;
 
 function actualizarUltimaUrl(url) {
     return localStorage.getItem(CLAVE_URL);
@@ -53,12 +56,14 @@ function irAUrl() {
 
     if (inputurl.startsWith("http://") || inputurl.startWith("https://")) {
         url = inputurl;
-        localStorage.setItem(CLAVE_URL, url);
-        ultima.textContent = actualizarUltimaUrl();
-        location.href=url;
+
     } else {
-        location.href = "https://" + inputurl;
+        url = "https://" + inputurl;
     }
+
+    localStorage.setItem(CLAVE_URL, url);
+    ultima.textContent = actualizarUltimaUrl();
+    location.href = url;
 }
 
 function irAtras() {
@@ -73,7 +78,7 @@ function irAGoogle() {
     localStorage.setItem(CLAVE_URL, "https://google.com");
     ultima.textContent = actualizarUltimaUrl();
     location.href = "https://google.com";
-    
+
 
 }
 

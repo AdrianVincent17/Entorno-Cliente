@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align: center;">Alumnos y sus notas</h1>
+        <hr>
+        <h2>A) Alumnos</h2>
+        <hr>
+        <div id="alumnos"></div>
+
+        <h2>B) Nota media Alumnos</h2>
+        <div id="media"></div>
+        <hr>
+        <h2>C) Alumnos con matricula de honor</h2>
+        <div id="matricula"></div>
+        <hr>
+        <h2>D) Alumnos de 2 DAW</h2>
+        <div id="segundo"></div>
+        <hr>
+        <h2>E) Suma de todas las notas</h2>
+        <div id="suma"></div>
+    </div>
+
+    <script>
+
+        const inputalumno = document.getElementById('alumnos');
+        const inputmedia = document.getElementById('media');
+        const inputmatricula = document.getElementById('matricula');
+        const inputsegundo = document.getElementById('segundo');
+        const sumatorio = document.getElementById('suma');
+
+        let alumnos = [
+            { nombre: "Adrian", edad: 34, curso: "1DAW", notas: [4, 5, 8, 8.9] },
+            { nombre: "Alvaro", edad: 30, curso: "1DAW", notas: [8, 6.7, 5, 9] },
+            { nombre: "Edu", edad: 40, curso: "1DAW", notas: [10, 10, 10, 9.8] },
+            { nombre: "Elena", edad: 23, curso: "2DAW", notas: [7, 5, 4, 7.8] },
+            { nombre: "Alberto", edad: 26, curso: "2DAW", notas: [4, 8, 9, 6] },
+        ];
+
+        alumnos.forEach(alumno => {
+            inputalumno.innerHTML += `${alumno.nombre} de ${alumno.edad} años, cursa: ${alumno.curso} y sus notas son: ${alumno.notas}<br>`;
+
+        });
+
+        //añadimos la funcion al array de objetos para cada alumno
+        alumnos.forEach(alumno => {
+            alumno.calcularmedia = function () {
+                const suma = this.notas.reduce((acum, n) => acum + n, 0);
+                return media = suma / this.notas.length;
+            };
+        });
+
+        alumnos.forEach(alumno => {
+            inputmedia.innerHTML += `${alumno.nombre} (${alumno.curso}) tiene una media de: ${alumno.calcularmedia().toFixed(2)}<br>`;
+        });
+
+        const MatriculaH = alumnos.find(alumno => alumno.calcularmedia() > 9.5);
+
+        if (MatriculaH) {
+            inputmatricula.innerHTML = `Matricula de honor: ${MatriculaH.nombre} (media: ${MatriculaH.calcularmedia().toFixed(2)})`;
+
+        } else {
+            inputmatricula.innerHTML = `No hay ningun alumno con matricula de honor`;
+        }
+
+        const alumnossegundo = alumnos.filter(alumno => alumno.curso === "2DAW");
+
+        const pasaron = alumnossegundo.map(alumno => alumno.nombre).join(", ");
+
+        inputsegundo.innerHTML = pasaron;
+
+
+
+        let sumaTotal = 0;
+
+        alumnos.forEach(alumno => {
+            // Recorremos las notas de cada alumno
+            alumno.notas.forEach(nota => {
+                sumaTotal += nota;
+            });
+        });
+
+        console.log("La suma total es:", sumaTotal);
+
+        sumatorio.textContent = sumaTotal;
+
+    </script>
+</body>
+
+</html>

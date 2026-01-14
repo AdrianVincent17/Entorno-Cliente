@@ -12,6 +12,8 @@ function panel1() {
 }
 panel1();
 
+
+
 function panel2() {
     const ancho = window.innerWidth;
     const alto = window.innerHeight;
@@ -36,7 +38,7 @@ function panel2() {
 
 }
 panel2();
-onresize = panel2;
+window.onresize = panel2;
 
 
 // PANEL 3
@@ -89,7 +91,7 @@ intervalo = null;
 
 function disminuircontador() {
 
-    segundos=(segundos-0.01).toFixed(2);
+    segundos = (segundos - 0.01).toFixed(2);
     conta.textContent = segundos;
 
     if (segundos == 0) {
@@ -101,17 +103,18 @@ function disminuircontador() {
 
 function iniciar() {
     const inputconta = document.getElementById('cuenta').value;
-    segundos=inputconta;
-    conta.textContent=segundos;
+    segundos = inputconta;
+    conta.textContent = segundos;
 
-    panelrojo.style.backgroundColor="white";
+    panelrojo.style.backgroundColor = "white";
 
-    if(inputconta<=0){
-        conta.textContent="Debe ser mayor que 0";
-    }else{
-        if(intervalo==null){
-            intervalo=setInterval(disminuircontador,10);
-            document.getElementById('cuenta').value="";        }
+    if (inputconta <= 0) {
+        conta.textContent = "Debe ser mayor que 0";
+    } else {
+        if (intervalo == null) {
+            intervalo = setInterval(disminuircontador, 10);
+            document.getElementById('cuenta').value = "";
+        }
     }
 
 }

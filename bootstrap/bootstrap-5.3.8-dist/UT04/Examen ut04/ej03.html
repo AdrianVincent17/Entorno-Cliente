@@ -89,7 +89,7 @@
 
         let recomendados = videojuegos.filter(juegos => juegos.puntuacion >= 8);
         let recomenadisimos = recomendados.map(juegos => juegos.titulo).join(", ");
-        salC.innerHTML += `${recomenadisimos}`;
+        salC.innerHTML = `${recomenadisimos}`;
 
         let totalhoras = videojuegos.reduce((acum, juego) => acum + juego.horas,0);
         salD.innerHTML = `${totalhoras} horas`;
