@@ -9,6 +9,25 @@ h1{
     margin-top: 0;
     text-align: center;
 }
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffff;
+    padding: 20px;
+    border: 2px solid #00B5dd;
+    border-radius: 8px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
 /**contenedor principal*/
 .panel{
     max-width: 500px;
@@ -49,8 +68,41 @@ button{
     cursor: pointer;
 }
 
-input{
-    padding: 6px;
+input[type="text"] {  
     width: 100%;
+    padding: 6px;
     box-sizing: border-box;
+}
+
+#mensaje {
+    max-width: 400px;
+    margin: 20px auto 0;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.oculto {
+    display: none;
+}
+
+.error {
+    color: #b00020;
+    background: #ffaaaa;
+    border: 1px solid #b00020;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.correcto {
+    color: green;
+    background: #a8ffc3;
+    border: 1px solid green;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.campo-error {
+    border: 2px solid #b00020;
+    outline: none;
 }

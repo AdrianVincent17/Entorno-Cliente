@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Formulario de solicitud</h1>
+    <form id="formulario" novalidate>
+
+        <!-- nombre -->
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre">
+            <p id="errorNombre" class="error oculto"></p>
+        </div>
+
+        <!-- nacionalidad -->
+        <div>
+            <label for="nacionalidad">Nacionalidad:</label>
+            <select id="nacionalidad">
+                <option value="">---Selecciona---</option>
+                <option value="Española">Española</option>
+                <option value="Francesa">Francesa</option>
+                <option value="Alemana">Alemana</option>
+                <option value="Otra">Otra...</option>
+            </select>
+            <p id="errorNacionalidad" class="error oculto"></p>
+        </div>
+        <!-- descripcion + contador -->
+        <div>
+            <label for="descripcion">Descripcion (max. 100 caracteres):</label>
+            <textarea id="descripcion" maxlength="100" placeholder="Escribe tu solicitud..."></textarea>
+            <div id="contador" class="contador">0/100</div>
+            <p id="errorDescripcion" class="error oculto"></p>
+        </div>
+
+        <!-- Checkbox -->
+        <div>
+            <label for="terminos">
+                <input type="checkbox" id="chkTerminos">
+                Acepto los terminos
+            </label>
+            <p id="errorTerminos" class="error oculto">Debes aceptar los terminos</p>
+        </div>
+
+        <button id="btnEnviar" type="submit" disabled>Enviar solicitud</button>
+    </form>
+
+    <script src="ej03.js"></script>
+</body>
+
+</html>

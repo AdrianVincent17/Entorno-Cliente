@@ -1,78 +1,100 @@
 
+
 const formulario = document.getElementById('formulario');
 const mensaje = document.getElementById('mensaje');
-const inputnombre = document.getElementById('nombre');
-const inputcurso = document.getElementById('curso');
-const chkcondiciones = document.getElementById('aceptar');
-const inputemail=document.getElementById('email');
-const inputtelefono=document.getElementById('telefono');
 
-const emailreg=/^[^\s@]+@[^\n@]+\.[^\s@]+$/;
-const telefonoreg=/^[6789]\d{8}$/;
+const inputNombre = document.getElementById('nombre');
+const inputCurso = document.getElementById('curso');
+const inputEmail = document.getElementById('email');
+const inputTelefono = document.getElementById('telefono');
+const chkCondiciones = document.getElementById('aceptar');
 
-mensajes=[];
+
+
+
+
 
 function limpiarEstadosVisuales() {
+
+
     //mensaje
     mensaje.classList.add("oculto");
     mensaje.classList.remove("error", "correcto");
     mensaje.textContent = "";
+    
 
-    inputnombre.classList.remove('campo-error');
-    inputcurso.classList.remove('campo-error');
-
+    //campos
+    inputNombre.classList.remove("campo-error");
+    inputCurso.classList.remove("campo-error");
+    inputEmail.classList.remove("campo-error");
+    inputTelefono.classList.remove("campo-error");
 }
 
 formulario.addEventListener("submit", function (event) {
+
     event.preventDefault();
     limpiarEstadosVisuales();
 
-    const nombre = inputnombre.value.trim();
-    const curso = inputcurso.value.trim();
-    const acepta = chkcondiciones.checked;
-    const correo= inputemail.value.trim();
-    const tel=inputtelefono.value.trim();
+    let mensajes = [];
 
+    const nombre = inputNombre.value.trim();
+    const curso = inputCurso.value.trim();
+    const email = inputEmail.value.trim();
+    const telefono = inputTelefono.value.trim();
+    const acepta = chkCondiciones.checked;
 
-
-
-    if (nombre == "" ) {
-        inputnombre.classList.add("campo-error");
+    if (nombre === "") {
+        inputNombre.classList.add("campo-error");
         mensajes.push("El nombre no puede estar vacio");
-    } else if (nombre.lengh < 3) {
-        inputnombre.classList.add("campo-error");
+    } else if (nombre.length < 3) {
+        inputNombre.classList.add("campo-error");
         mensajes.push("El nombre debe tener mas de 3 caracteres");
     }
-    
+
     //curso
-    if (curso == "") {
-        inputcurso.classList.add("campo-error");
+    if (curso === "") {
+        inputCurso.classList.add("campo-error");
         mensajes.push("El curso no puede estar vacio");
-    } else if (!acepta) {
-        mensajes.push("primero debes aceptar las condiciones");
     }
+    const emailRegex = /^[^\s@]+@[^\n@]+\.[^\s@]+$/;
 
     //email
-    if(correo===""){
-        inputemail.classList.add('campo-error');
+    if (email === "") {
+        inputEmail.classList.add('campo-error');
         mensajes.push('El email es obligatorio');
-
-    }else if(!emailreg.text(correo)){
-        inputemail.classList.add('campo-error');
+    } else if (!emailRegex.test(email)) {
+        inputEmail.classList.add('campo-error');
         mensajes.push('El email no tiene un formato valido');
     }
 
     //telefono
 
-     if(tel===""){
-        inputtelefono.classList.add("campo-error");
-        mensajes.push("El telefono es obligatorio");
-     }else if(!telefonoreg.test(tel)){
-        inputtelefono.classList.add("campo-error");
-        mensajes.push("El telefono tiene que tener al menos 9 digitos y empeza por 6,7,8 o 9")
-     }
+    const telefonoRegex = /^[6789]\d{8}$/;
 
-     else {
+    if (telefono === "") {
+        inputTelefono.classList.add("campo-error");
+        mensajes.push("El telefono es obligatorio");
+    } else if (!telefonoRegex.test(telefono)) {
+        inputTelefono.classList.add("campo-error");
+        mensajes.push("El telefono tiene que tener 9 digitos y empeza por 6,7,8 o 9")
+    }
+
+    //checkbox
+
+    if (!acepta) {
+        mensajes.push("Debes aceptar las condiciones para continuar");
+    }
+
+    if (mensajes.length != 0) {
+        //si se ha registrado algun error
+        mensaje.innerHTML = mensajes.join("<br>");
+        mensaje.classList.add("error");
+        mensaje.classList.remove("oculto", "correcto");
+    } else {
+        // si todo esta bien 
+        mensaje.classList.remove("oculto", "error")
+        mensaje.classList.add("correcto");
         mensajes.push("inscripcion correcta " + nombre + "(" + curso + ")");
+        mensaje.textContent=mensajes;
     }
 });

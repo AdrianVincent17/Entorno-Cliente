@@ -5,38 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estilos.css">
-
     <title>Document</title>
 </head>
 
 <body>
-    <h1>formulario de inscripcion</h1>
+    <h1>Formulario de inscripcion</h1>
     <form id="formulario">
         <div>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre">
+            <p id="errorNombre" class="error oculto">Introduce tu nombre</p>
         </div>
+
 
         <div>
-            <label for="curso">Curso</label>
-            <input type="text" id="curso">
+            <label for="chkBoton">
+                <input type="checkbox" id="terminos">
+                Acepto los terminos</label>
         </div>
-
-        <div>
-            <label for="aceptar">
-                <input type="checkbox" id="aceptar">
-                Acepto las condiciones
-            </label>
-
-        </div>
-        <button id="boton">Enviar</button>
+         <button id="btnEnviar" disabled>Enviar inscripcion</button>
 
     </form>
 
-    <p id="mensaje" class="oculto"></p>
-
-    <script src="ej03.js"></script>
-
+    <script src="ej01.js"></script>
 </body>
 
 </html>
