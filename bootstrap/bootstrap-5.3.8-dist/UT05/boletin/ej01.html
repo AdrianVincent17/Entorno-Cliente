@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cambio de contraseña</h1>
+
+    <form id="formulario">
+        <div>
+            <label for="pass1">Nueva Contraseña</label>
+            <input type="password" id="pass1">
+            <p id="errorPass1" class="error oculto"></p>
+        </div>
+        <div>
+            <label for="pass2">Repetir Contraseña</label>
+            <input type="password" id="pass2">
+            <p id="errorPass2" class="error oculto"></p>
+        </div>
+        <div>
+            <label for="chkConfirmar">
+                <input type="checkbox" id="chkConfirmar">
+                Confirmo el cambio de contraseña
+            </label>
+            <p id="errorConfirmar" class="error oculto"></p>
+        </div>
+
+        <button id="btnEnviar" disabled>Cambiar contraseña</button>
+
+    </form>
+    <script src="ej01.js"></script>
+</body>
+</html>
