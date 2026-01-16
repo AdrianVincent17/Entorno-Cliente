@@ -20,7 +20,6 @@ const errorProvincia = document.getElementById("errorProvincia");
 const errorPostal = document.getElementById("errorPostal");
 const errorContraseña = document.getElementById("errorContraseña");
 const errorDescripcion=document.getElementById("errorDescripcion");
-
 const errorTerminos = document.getElementById("errorTerminos");
 
 
@@ -211,34 +210,43 @@ formulario.addEventListener("submit", function (event) {
 });
 
 
-inputNombre.addEventListener("blur", validarNombre);
-inputNombre.addEventListener("input", function(){
+// inputNombre.addEventListener("blur", validarNombre);
+inputNombre.addEventListener("blur", function(){
+    validarNombre();
     actualizarBoton();
 });
-inputEmail.addEventListener("blur", validarEmail);
-inputEmail.addEventListener("input", function(){
+// inputEmail.addEventListener("blur", validarEmail);
+inputEmail.addEventListener("blur", function(){
+    validarEmail(); 
     actualizarBoton();
 });
-selectProvincia.addEventListener("change", validarProvincia);
+// selectProvincia.addEventListener("change", validarProvincia);
 selectProvincia.addEventListener("change", function(){
+    validarProvincia();
     actualizarBoton();
 });
-codigoPostal.addEventListener("blur", validarPostal);
-codigoPostal.addEventListener("input", function(){
+// codigoPostal.addEventListener("blur", validarPostal);
+codigoPostal.addEventListener("blur", function(){
+    validarPostal();
     actualizarBoton();
 });
-inputContraseña.addEventListener("blur", validarContraseña);
-inputContraseña.addEventListener("input", function(){
+// inputContraseña.addEventListener("blur", validarContraseña);
+inputContraseña.addEventListener("blur", function(){
+    validarContraseña();
     actualizarBoton();
 });
-chkTerminos.addEventListener("change", validarTerminos);
+// chkTerminos.addEventListener("change", validarTerminos);
 chkTerminos.addEventListener("change", function () {
+    validarTerminos();
     actualizarBoton();
 });
-inputDescripcion.addEventListener("blur",validarDescripcion);
+// inputDescripcion.addEventListener("blur",validarDescripcion);
+inputDescripcion.addEventListener("blur",function(){
+    validarDescripcion();   
+    actualizarBoton();
+    
+});
+
 inputDescripcion.addEventListener("input",function(){
-    actualizarBoton();
     actualizarContador();
-
 });
-
