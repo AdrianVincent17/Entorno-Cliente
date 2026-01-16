@@ -13,6 +13,10 @@ const errorPass2 = document.getElementById('errorPass2');
 const errorConfirmar = document.getElementById('errorConfirmar');
 
 
+const mayusculas=/[A-Z]/;
+const minusculas=/[a-z]/;
+const numeros=/[0-9]/;
+
 
 function validarContraseña1() {
 
@@ -27,6 +31,21 @@ function validarContraseña1() {
         inputPass1.classList.add("campo-error");
         errorPass1.classList.remove("oculto");
         errorPass1.textContent = "Debe tener al menos 6 caracteres";
+        return false;
+    }else if(!mayusculas.test(pass1)){
+        inputPass1.classList.add("campo-error");
+        errorPass1.classList.remove("oculto");
+        errorPass1.textContent = "Debe tener al menos una mayuscula";
+        return false;
+    }else if(!minusculas.test(pass1)){
+        inputPass1.classList.add("campo-error");
+        errorPass1.classList.remove("oculto");
+        errorPass1.textContent = "Debe tener al menos una minuscula";
+        return false;
+    }else if(!numeros.test(pass1)){
+        inputPass1.classList.add("campo-error");
+        errorPass1.classList.remove("oculto");
+        errorPass1.textContent = "Debe tener al menos un numero";
         return false;
     }
 
@@ -68,12 +87,12 @@ function validarConfirmar() {
 }
 
 function actualizarBoton() {
-    btnEnviar.disabled = !chkConfirmar.checked;
+    btnEnviar.disabled = !(chkConfirmar.checked && validarContraseña1() && validarContraseña2());
 }
 
 chkConfirmar.addEventListener("change", function () {
-    actualizarBoton();
 
+    actualizarBoton();
     if (chkConfirmar.checked) {
         chkConfirmar.classList.remove("campo-error");
         errorConfirmar.classList.add("oculto");

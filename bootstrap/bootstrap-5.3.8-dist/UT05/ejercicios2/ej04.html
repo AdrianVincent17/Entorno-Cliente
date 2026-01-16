@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Formulario examen</title>
+</head>
+
+<body>
+    <h1>Formulario de movidas</h1>
+
+    <form id="formulario">
+
+        <div>
+            <label for="inputNombre">Nombre</label>
+            <input type="text" id="inputNombre">
+            <p id="errorNombre" class="error oculto"></p>
+        </div>
+
+        <div>
+            <label for="inputEmail">Correo Electronico</label>
+            <input type="text" id="inputEmail">
+            <p id="errorEmail" class="error oculto"></p>
+        </div>
+
+        <div>
+            <label for="selectProvincia">Provincia</label>
+            <select id="selectProvincia">
+                <option value="">---Selecciona---</option>
+                <option value="murcia">Murcia</option>
+                <option value="valencia">Valencia</option>
+                <option value="barcelona">Barcelona</option>
+                <option value="madrid">Madrid</option>
+            </select>
+            <p id="errorProvincia" class="error oculto"></p>
+        </div>
+
+        <div>
+            <label for="codigoPostal">Codigo Postal</label>
+            <input type="text" id="codigoPostal">
+            <p id="errorPostal" class="error oculto"></p>
+        </div>
+
+        <div>
+            <label for="inputContraseña">Contraseña</label>
+            <input type="password" id="inputContraseña">
+            <p id="errorContraseña" class="error oculto"></p>
+        </div>
+        <div>
+            <label for="inputDescripcion">Descripcion</label>
+            <textarea id="inputDescripcion" maxlength="100" placeholder="Escribeme algo..."></textarea>
+            <div id="contador" class="contador">0/100</div>
+            <p id="errorDescripcion" class="error oculto"></p>
+        </div>
+
+        <div>
+            <label for="chkTerminos">
+                <input type="checkbox" id="chkTerminos">
+                Acepta los terninos
+            </label>
+            <p id="errorTerminos" class="error oculto"></p>
+        </div>
+
+        <button id="btnEnviar" disabled>Enviar Formulario</button>
+    </form>
+
+    <script src="ej04.js"></script>
+</body>
+
+</html>
