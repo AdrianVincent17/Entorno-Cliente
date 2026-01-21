@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Siete y media</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <h1>Siete y media</h1>
+
+  <div class="panel">
+
+    <div class="reglas">
+      <p><strong>Objetivo:</strong> acercarte a 7'5 sin pasarte</p>
+      <p><strong>Cartas:</strong> 1-7 valen su número; sota, caballo y rey valen 0'5</p>
+    </div>
+
+    <div id="marcador" class="msg">Puntos: <span id="puntos">0</span></div>
+
+    <!-- Carta actual -->
+    <img id="imgCarta" class="carta" src="img/cartainicio.png" alt="Carta boca abajo" />
+
+    <!-- Mensaje principal -->
+    <div id="mensaje" class="msg">Pide carta</div>
+
+    <!-- Botones -->
+    <div class="acciones">
+      <button id="btnPedir">Pedir carta</button>
+      <button id="btnPlantarse" disabled>Plantarse</button>
+      <button id="btnNueva">Nueva partida</button>
+    </div>
+
+    <!-- Historial -->
+    <div class="historial">
+      <strong>Historial de cartas</strong>
+      <div id="historial">Todavía no has pedido ninguna carta.</div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

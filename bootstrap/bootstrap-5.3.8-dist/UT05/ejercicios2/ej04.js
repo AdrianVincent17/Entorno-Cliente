@@ -20,7 +20,6 @@ const errorProvincia = document.getElementById("errorProvincia");
 const errorPostal = document.getElementById("errorPostal");
 const errorContraseña = document.getElementById("errorContraseña");
 const errorDescripcion=document.getElementById("errorDescripcion");
-
 const errorTerminos = document.getElementById("errorTerminos");
 
 
@@ -218,7 +217,11 @@ inputNombre.addEventListener("blur", function(){
 });
 // inputEmail.addEventListener("blur", validarEmail);
 inputEmail.addEventListener("blur", function(){
+<<<<<<< HEAD
     validarEmail();
+=======
+    validarEmail(); 
+>>>>>>> 1ca6586e3bd2d68c6ca4ad55c0ed1c450a1307d1
     actualizarBoton();
 });
 // selectProvincia.addEventListener("change", validarProvincia);
@@ -241,10 +244,13 @@ chkTerminos.addEventListener("change", function () {
     validarTerminos();
     actualizarBoton();
 });
-inputDescripcion.addEventListener("blur",validarDescripcion);
-inputDescripcion.addEventListener("input",function(){
+// inputDescripcion.addEventListener("blur",validarDescripcion);
+inputDescripcion.addEventListener("blur",function(){
+    validarDescripcion();   
     actualizarBoton();
-    actualizarContador();
-
+    
 });
 
+inputDescripcion.addEventListener("input",function(){
+    actualizarContador();
+});
