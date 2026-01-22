@@ -8,6 +8,9 @@ const imgCartaE = document.querySelector("#imgCarta");
 const mensajeE = document.querySelector("#mensaje");
 const historialE = document.querySelector("#historial");
 
+
+
+
 const btnPedir = document.querySelector("#btnPedir");
 const btnPlantarse = document.querySelector("#btnPlantarse");
 const btnNueva = document.querySelector("#btnNueva");
@@ -15,7 +18,9 @@ const btnNueva = document.querySelector("#btnNueva");
 // --- Variables de estado del juego (lo que “va cambiando”) ---
 let baraja = [];        // cartas disponibles
 let puntos = 0;         // puntos acumulados
+let puntosB=0;
 let historial = "";     // texto concatenado con las cartas
+let historialBanca="";
 let terminado = false;  // para bloquear el juego cuando acaba
 
 // --- Funciones ---
@@ -71,11 +76,66 @@ function crearBaraja() {
  *  Función para empezar/reiniciar la partida
  */
 function nuevaPartida() {
+
+    // Reiniciamos estados
+        baraja=crearBaraja();
+        terminado=false;
+        puntos=0;
+        historial="";
+
+        //Reiniciamos interfaz
+        puntosE.textContent="0";
+        imgCartaE.src="img/cartainicio.png";
+        imgCartaE.alt="Carta boca abajo";
+        mensajeE.textContent="Pide Carta";
+        historialE.textContent="Todavia no has pedido ninguna carta";
+
+        //Botones: al inicio solo tiene sentido pedir
         btnPedir.disabled=false;
         btnPlantarse.disabled=true;
-        puntos=0;
-        historial="Todavia no has pedido ninguna carta.";
 
+
+}
+
+function turnoBanca(){
+    if(puntos>7.5){
+        mensajeE.textContent=`Te has pasado con ${puntos} puntos`;
+    }else{
+        while(puntosB<6 && baraja.length>0){
+
+             const i=Math.floor(Math.random()*baraja.length);
+            //1b
+            const eliminadas=baraja.splice(i,1);
+
+            const carta=eliminadas[0];
+
+            imgCartaE.src=carta.img;
+            imgCartaE.alt=carta.nombre;
+
+            puntosB=Math.round((puntosB + carta.valor)*2)/2;
+            historialBanca=(historialBanca==="") ? carta.nombre :(historialBanca +", "+carta.nombre);
+
+        }
+
+        const textJugador=(historial==="")?"-":historial;
+        const textoBanca=(historialBanca==="")? "-" :historialBanca;
+        historialE.innerHTML=`<strong>Jugador:</strong>${textJugador}<br><strong>Banca:</strong>${textoBanca}`;
+
+        if(puntosB>7.5){
+            mensajeE.textContent=`La banca se ha pasado con ${puntosB}. ¡Ganas tu con ${puntos} puntos`;
+
+        }else if(puntos> puntosB){
+            mensajeE.textContent=`Ganas tu: ${puntos} puntos. Banca: ${puntosB}`;
+
+        }else if(puntosB> puntos){
+            mensajeE.textContent=`Ganas la banca: ${puntosB} puntos. Tu: ${puntos}`;
+            
+        }else{
+            mensajeE.textContent=`Empate a ${puntos} puntos`;
+        }
+
+        terminado=true;
+    }
 }
 
 /**
@@ -85,7 +145,59 @@ function nuevaPartida() {
  *   - Actualizamos imagen, marcador, mensaje e historial
  */
 function pedirCarta() {
-    let 
+    //si el juego no ha terminado
+    if(!terminado){
+        //si no hay cartas, acabamos(caso raro pero lo contemplamos)
+        if(baraja.length===0){
+            mensajeE.textContent="No quedan cartas en la baraja";
+            btnPedir.disabled=true;
+            btnPlantarse.disabled=true;
+            terminado=true;
+
+        }else{
+
+            //si quedan cartas
+            //1 elegimos una carta aleatoria y la elminamos de la baraja
+            //1a generamos un numero aleatorio entre 0 y el ultimo indice de la baraja
+            const i=Math.floor(Math.random()*baraja.length);
+            //1b
+            const eliminadas=baraja.splice(i,1);
+
+            const carta=eliminadas[0];
+
+            imgCartaE.src=carta.img;
+            imgCartaE.alt=carta.nombre;
+
+            puntos=Math.round((puntos + carta.valor)*2)/2;
+
+            puntosE.textContent=String(puntos);
+
+            historial=(historial==="")? carta.nombre:(historial+", "+carta.nombre);
+            historialE.textContent=historial;
+
+            btnPlantarse.disabled=false;
+
+            if(puntos<7.5){
+            mensajeE.textContent="Puedes pedir otra carta o plantarse";
+
+            }else if(puntos===7.5){
+                mensajeE.textContent="¡Enhorabuena! Has conseguido 7.5";
+                terminado=true;
+                btnPedir.disabled=true;
+                btnPlantarse.disabled=true;
+
+                turnoBanca();
+
+            }else{
+                mensajeE.textContent=`Te has pasado con ${puntos} puntos`;
+                terminado=true;
+                btnPedir.disabled=true;
+                btnPlantarse.disabled=true;
+
+            }
+
+        }
+    }
 }
 
 /**
@@ -93,7 +205,15 @@ function pedirCarta() {
  * Al pulsar “Plantarse”: se termina la partida con la puntuación actual
  */
 function plantarse() {
+    if(!terminado){
+        mensajeE.textContent=`Te has plantado con ${puntos} puntos, turno de la Banca...`;
+        terminado=true;
+        btnPedir.disabled=true;
+        btnPlantarse.disabled=true;
 
+        setTimeout(turnoBanca,3000);
+      
+    }
 }
 
 // --- Eventos (conectamos botones con funciones) ---
