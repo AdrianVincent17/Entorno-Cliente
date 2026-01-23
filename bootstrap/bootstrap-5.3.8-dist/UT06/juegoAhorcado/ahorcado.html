@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h1>Juego del Ahorcado</h1>
+
+    <div class="panel">
+        <div class="info">Adivina la palabra pulsando letras en el teclado.</div>
+
+        <div id="palabra" class="palabra">_ _ _ _</div>
+
+        <div id="estado" class="msg"></div>
+
+        <img id="muñeco" class="muñeco" src="img/img0.png" alt="Muñeco del ahorcado">
+
+        <div class="info">
+            Errores: <strong><span id="errores">0</span></strong> / <strong><span id="maxErrores">6</span></strong>
+        </div>
+
+        <div class="acciones">
+            <button id="btnNueva" type="button">Nueva partida</button>
+            <button id="btnRevelar" type="button">Revelar palabra</button>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="info">Teclado</div>
+        <div id="teclado" class="teclado"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
