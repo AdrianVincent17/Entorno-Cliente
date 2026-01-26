@@ -101,7 +101,7 @@ function turnoBanca(){
     if(puntos>7.5){
         mensajeE.textContent=`Te has pasado con ${puntos} puntos`;
     }else{
-        while(puntosB<6 && baraja.length>0){
+        while(puntosB<7 && baraja.length>0){
 
              const i=Math.floor(Math.random()*baraja.length);
             //1b
@@ -119,7 +119,7 @@ function turnoBanca(){
 
         const textJugador=(historial==="")?"-":historial;
         const textoBanca=(historialBanca==="")? "-" :historialBanca;
-        historialE.innerHTML=`<strong>Jugador:</strong>${textJugador}<br><strong>Banca:</strong>${textoBanca}`;
+        historialE.innerHTML=`<strong>Jugador: </strong>${textJugador}<br><strong>Banca: </strong>${textoBanca}`;
 
         if(puntosB>7.5){
             mensajeE.textContent=`La banca se ha pasado con ${puntosB}. ¡Ganas tu con ${puntos} puntos`;
@@ -128,7 +128,7 @@ function turnoBanca(){
             mensajeE.textContent=`Ganas tu: ${puntos} puntos. Banca: ${puntosB}`;
 
         }else if(puntosB> puntos){
-            mensajeE.textContent=`Ganas la banca: ${puntosB} puntos. Tu: ${puntos}`;
+            mensajeE.textContent=`Gana la banca: ${puntosB} puntos. Tu: ${puntos}`;
             
         }else{
             mensajeE.textContent=`Empate a ${puntos} puntos`;

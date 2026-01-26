@@ -95,6 +95,7 @@ function nuevaPartida() {
         boton.classList.remove("error", "acierto");
         boton.disabled = false;
     });
+    btnRevelar.disabled=false;
     // - Mostrar la palabra oculta llamando a pintarPalabra()
     pintarPalabra();
 }
@@ -149,11 +150,7 @@ function jugarLetra(letra, btn) {
             if(haGanado()) {
                 juegoTerminado = true;
                 finalizar(true);
-            }
-    } else {
-    // - Si la letra no está en la palabra
-    //      - Marcar el botón como error
-        btn.classList.add("error");
+                ;
     //      - Incrementar el contador de errores
         errores++;
     //      - Actualizar el contador de errores, la imagen del muñeco y el mensaje de error
