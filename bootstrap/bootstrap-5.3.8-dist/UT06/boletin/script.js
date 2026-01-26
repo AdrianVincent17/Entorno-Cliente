@@ -42,37 +42,56 @@ let contadorCPU = 0;
 let contadorEmpates = 0;
 let eleccionUsuario = "";
 let eleccionCPU = "";
-
 const opciones = ["piedra", "papel", "tijera"];
 
-function jugar(opcion) {
-  eleccionUsuario = opcion;
-  eleccionCPU = opciones[Math.floor(Math.random() * opciones.length)];
-
-  imgUsuario.src = `img/${eleccionUsuario}.png`;
-  imgCPU.src = `img/${eleccionCPU}.png`;
-
-  if (eleccionUsuario === eleccionCPU) {
-    msgResultado.textContent = "¡Empate!";
-    contadorEmpates++;
-    winsEmpates.textContent = contadorEmpates;
-  } else if (
-    (eleccionUsuario === "piedra" && eleccionCPU === "tijera") ||
-    (eleccionUsuario === "papel" && eleccionCPU === "piedra") ||
-    (eleccionUsuario === "tijera" && eleccionCPU === "papel")
-  ) {
-    msgResultado.textContent = "¡Ganaste!";
-    contadorUsuario++;
-    winsUsuario.textContent = contadorUsuario;
-  }
-  else {
-    msgResultado.textContent = "¡Perdiste!";
-    contadorCPU++;
-    winsCPU.textContent = contadorCPU;
-  }
-  desactivarBotones();  
+function generareleccionCPU() {
+  const elecCPU = opciones[Math.floor(Math.random() * opciones.length)];
+  return elecCPU;
 }
 
+eleccionCPU = generareleccionCPU();
+console.log("Elección CPU (inicial): " + eleccionCPU);
+
+
+// Evento para los botones de elección del usuario
+btnPiedra.addEventListener("click", function(){ 
+  piedra(); 
+});
+btnPapel.addEventListener("click", function(){
+  papel(); 
+});
+btnTijera.addEventListener("click", function(){
+  tijera(); 
+});
+
+// Evento para el botón de volver a jugar
+btnJugar.addEventListener("click", volverJugar);
+
+function piedra() {
+  imgUsuario.src = "img/piedra.png";
+  eleccionUsuario = "piedra";
+  turnoCPU();
+  desactivarBotones();
+  determinarGanador();
+}
+
+function papel() {
+  imgUsuario.src = "img/papel.png";
+  eleccionUsuario = "papel";
+  turnoCPU();
+  desactivarBotones();
+  determinarGanador();
+}
+
+function tijera() {
+  imgUsuario.src = "img/tijera.png";
+  eleccionUsuario = "tijera";
+  turnoCPU();
+  desactivarBotones();
+  determinarGanador();
+
+
+}
 function desactivarBotones() {
   btnPiedra.disabled = true;
   btnPapel.disabled = true;
@@ -80,20 +99,49 @@ function desactivarBotones() {
   btnJugar.disabled = false;
 }
 
-function reiniciarJuego() {
-  msgResultado.textContent = "Pulsa un boton para comenzar";
+function reactivarBotones() {
   btnPiedra.disabled = false;
   btnPapel.disabled = false;
   btnTijera.disabled = false;
   btnJugar.disabled = true;
 }
 
-btnPiedra.addEventListener("click", () => jugar("piedra"));
-btnPapel.addEventListener("click", () => jugar("papel"));
-btnTijera.addEventListener("click", () => jugar("tijera"));
-btnJugar.addEventListener("click", reiniciarJuego);
+function volverJugar() {
+  eleccionCPU = generareleccionCPU();
+  console.log("Elección CPU: " + eleccionCPU);
+  reactivarBotones();
+  msgResultado.textContent = "Pulsa una opción para jugar";
+}
 
+function turnoCPU() { 
 
+  if (eleccionCPU === "piedra") {
+    imgCPU.src = "img/piedra.png";
+  } else if (eleccionCPU === "papel") {
+    imgCPU.src = "img/papel.png";
+  } else if (eleccionCPU === "tijera") {
+    imgCPU.src = "img/tijera.png";
+  }
+}
+
+function determinarGanador() {
+  
+  if (eleccionUsuario === eleccionCPU) {
+    msgResultado.textContent = "¡Empate!";
+    contadorEmpates++;
+    winsEmpates.textContent = contadorEmpates;
+  } else if ((eleccionUsuario === "piedra" && eleccionCPU === "tijera") ||
+    (eleccionUsuario === "papel" && eleccionCPU === "piedra") ||
+    (eleccionUsuario === "tijera" && eleccionCPU === "papel")) {
+    msgResultado.textContent = "¡Has ganado!";
+    contadorUsuario++;
+    winsUsuario.textContent = contadorUsuario;
+  } else {
+    msgResultado.textContent = "¡Has perdido!";
+    contadorCPU++;
+    winsCPU.textContent = contadorCPU;
+  }
+}
 
 
 

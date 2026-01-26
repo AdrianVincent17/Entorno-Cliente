@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 5px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.celda {
+  width: 100px;
+  height: 100px;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.celda:disabled {
+  cursor: not-allowed;
+  background-color: #f0f0f0;
+}
+
+#btnReiniciar {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
