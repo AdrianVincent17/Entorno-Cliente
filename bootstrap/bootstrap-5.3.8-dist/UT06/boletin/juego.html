@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Piedra, papel o tijera</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h1>Piedra, papel o tijera</h1>
+
+    <!-- Panel 1: elección del usuario -->
+    <div class="panel">
+        <h2>Elige tu jugada</h2>
+        <button id="btnPiedra">Piedra</button>
+        <button id="btnPapel">Papel</button>
+        <button id="btnTijera">Tijera</button>
+        <button id="btnJugar" disabled>Volver a jugar</button>
+    </div>
+
+    <!-- Panel 2: resultado -->
+    <div class="panel">
+        <h2>Resultado</h2>
+
+        <div class="resultado">
+            <div class="bloque-jugada">
+                <p>Usuario</p>
+                <img id="imgUsuario" class="jugada-img" src="img/piedra.png" alt="Jugada del usuario">
+            </div>
+
+            <div class="bloque-jugada">
+                <p>CPU</p>
+                <img id="imgCPU" class="jugada-img" src="img/piedra.png" alt="Jugada de la CPU">
+            </div>
+        </div>
+
+        <div class="msg" id="msgResultado">Pulsa un botón para comenzar.</div>
+    </div>
+
+    <!-- Panel 3: marcador -->
+    <div class="panel" id="panelMarcador">
+        <h2>Marcador</h2>
+        <div>Usuario: <span id="winsUsuario">0</span></div>
+        <div>CPU: <span id="winsCPU">0</span></div>
+        <div>Empates: <span id="winsEmpates">0</span></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

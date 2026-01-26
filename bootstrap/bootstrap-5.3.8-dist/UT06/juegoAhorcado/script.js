@@ -88,14 +88,14 @@ function nuevaPartida() {
     elErrores.textContent = "0";
     elEstado.textContent = "¡Suerte!";
     // - Cambiar la imagen del muñeco a la inicial (img0.jpg)
-    elMuñeco.src = "img/img"+errores+".png";
+    elMuñeco.src = "img/img" + errores + ".png";
     // - Reactivar todos los botones del teclado
     const botones = elTeclado.querySelectorAll("button");
     botones.forEach(boton => {
         boton.classList.remove("error", "acierto");
         boton.disabled = false;
     });
-    btnRevelar.disabled=false;
+    btnRevelar.disabled = false;
     // - Mostrar la palabra oculta llamando a pintarPalabra()
     pintarPalabra();
 }
@@ -139,81 +139,83 @@ function jugarLetra(letra, btn) {
         }
     }
     // - Comprobar si la letra está en la palabra secreta
-    if(palabraSecreta.includes(letra)) {
-    //      - Marcar el botón como acierto y guardar la letra como acertada
-            btn.classList.add("acierto");
-            letrasAcertadas.push(letra);
-    //      - Actualizar el mensaje y la palabra mostrada
-            elEstado.textContent = "¡Bien hecho! ultima letra pulsada "+letra;
-            pintarPalabra();
-    //      - Comprobar si el jugador ha ganado la partida
-            if(haGanado()) {
-                juegoTerminado = true;
-                finalizar(true);
-                ;
-    //      - Incrementar el contador de errores
-        errores++;
-    //      - Actualizar el contador de errores, la imagen del muñeco y el mensaje de error
-        elErrores.textContent = errores;
-        elMuñeco.src = "img/img" + errores + ".png";
-        elEstado.textContent = "¡Error! ultima letra pulsada "+letra;
-    //      - Comprobar si se ha alcanzado el máximo de errores 
-        if(errores >= 6) {
+    if (palabraSecreta.includes(letra)) {
+        //      - Marcar el botón como acierto y guardar la letra como acertada
+        btn.classList.add("acierto");
+        letrasAcertadas.push(letra);
+        //      - Actualizar el mensaje y la palabra mostrada
+        elEstado.textContent = "¡Bien hecho! ultima letra pulsada " + letra;
+        pintarPalabra();
+        //      - Comprobar si el jugador ha ganado la partida
+        if (haGanado()) {
             juegoTerminado = true;
-            finalizar(false);
+            finalizar(true);
+            ;
+            //      - Incrementar el contador de errores
+            errores++;
+            //      - Actualizar el contador de errores, la imagen del muñeco y el mensaje de error
+            elErrores.textContent = errores;
+            elMuñeco.src = "img/img" + errores + ".png";
+            elEstado.textContent = "¡Error! ultima letra pulsada " + letra;
+            //      - Comprobar si se ha alcanzado el máximo de errores 
+            if (errores >= 6) {
+                juegoTerminado = true;
+                finalizar(false);
+            }
+
         }
-    
     }
 }
 
-// Muestra la palabra a adivinar en pantalla.
-// Sustituye las letras no acertadas por guiones bajos (_).
-function pintarPalabra() {
-    // Recorrer la palabra secreta letra a letra
-    let palabraMostrada = "";
-    for (const letra of palabraSecreta) {
-        if (letrasAcertadas.includes(letra)) {
-            palabraMostrada += letra + " ";
+    // Muestra la palabra a adivinar en pantalla.
+    // Sustituye las letras no acertadas por guiones bajos (_).
+    function pintarPalabra() {
+        // Recorrer la palabra secreta letra a letra
+        let palabraMostrada = "";
+        for (const letra of palabraSecreta) {
+            if (letrasAcertadas.includes(letra)) {
+                palabraMostrada += letra + " ";
+            } else {
+                palabraMostrada += "_ ";
+            }
+        }
+        // Mostrar la letra si ha sido acertada o un guión bajo (_) si no lo ha sido
+        elPalabra.textContent = palabraMostrada.trim();
+    }
+
+    // Comprueba si el jugador ha acertado todas las letras de la palabra.
+    // Devuelve true si ha ganado la partida.
+    function haGanado() {
+        // Recorrer la palabra secreta
+        for (const letra of palabraSecreta) {
+            // Comprobar si cada letra está en el array de letras acertadas
+            if (!letrasAcertadas.includes(letra)) {
+                return false; // Si falta alguna letra, devolver false
+            }
+        }
+        // Devolver true si todas las letras están acertadas
+        return true;
+        // Devolver false en otro caso
+
+    }
+
+    // Finaliza la partida.
+    // Desactiva el teclado y muestra el mensaje final según si se ha ganado o perdido.
+    function finalizar(ganado) {
+        // Marcar el juego como terminado
+        juegoTerminado = true;
+        // Desactivar todos los botones del teclado
+        const botones = elTeclado.querySelectorAll("button");
+        botones.forEach(boton => {
+            boton.disabled = true;
+        });
+        // Mostrar un mensaje final en función a si ha ganado o no
+        if (ganado) {
+            elEstado.textContent = "¡Felicidades, has ganado!";
+            btnRevelar.disabled = true;
         } else {
-            palabraMostrada += "_ ";
+            elEstado.textContent = "¡Has perdido! La palabra era: " + palabraSecreta;
+            btnRevelar.disabled = true;
         }
     }
-    // Mostrar la letra si ha sido acertada o un guión bajo (_) si no lo ha sido
-    elPalabra.textContent = palabraMostrada.trim();
-}
 
-// Comprueba si el jugador ha acertado todas las letras de la palabra.
-// Devuelve true si ha ganado la partida.
-function haGanado() {
-    // Recorrer la palabra secreta
-    for (const letra of palabraSecreta) {
-        // Comprobar si cada letra está en el array de letras acertadas
-        if (!letrasAcertadas.includes(letra)) {
-            return false; // Si falta alguna letra, devolver false
-        }
-    }
-    // Devolver true si todas las letras están acertadas
-    return true;    
-    // Devolver false en otro caso
-
-}
-
-// Finaliza la partida.
-// Desactiva el teclado y muestra el mensaje final según si se ha ganado o perdido.
-function finalizar(ganado) {
-    // Marcar el juego como terminado
-    juegoTerminado = true;
-    // Desactivar todos los botones del teclado
-    const botones = elTeclado.querySelectorAll("button");
-    botones.forEach(boton => {
-        boton.disabled = true;
-    });
-    // Mostrar un mensaje final en función a si ha ganado o no
-    if (ganado) {
-        elEstado.textContent = "¡Felicidades, has ganado!";
-        btnRevelar.disabled = true;
-    } else {
-        elEstado.textContent = "¡Has perdido! La palabra era: " + palabraSecreta;
-        btnRevelar.disabled = true;
-    }
-}

@@ -1,0 +1,110 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 16px;
+  max-width: 445px;
+  margin-inline: auto;
+  line-height: 1.4;
+  background-color: #f7f7f7;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  text-align: center;
+}
+
+h2 {
+  margin: 4px 0 6px;
+  font-size: 18px;
+}
+
+.panel {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 14px;
+  background-color: white;
+  text-align: center;
+}
+
+.msg {
+  margin: 12px 0 6px;
+  font-weight: bold;
+  color: #333;
+  background: #fafafa;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 14px 12px;
+  margin: 6px 4px;
+}
+
+button:hover {
+  background-color: #eaeaea;
+  border-color: #999;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: .75;
+}
+
+/* (Opcional, recomendado): que el hover no “parezca” activo si está disabled */
+button:disabled:hover {
+  background: #f7f7f7;
+  border-color: #ccc;
+}
+
+.resultado {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.bloque-jugada {
+  text-align: center;
+  min-width: 130px;
+}
+
+.bloque-jugada p {
+  margin: 6px 0 8px;
+  font-weight: bold;
+}
+
+.jugada-img {
+  display: block;
+  width: 120px;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* === Marcador === */
+#panelMarcador > div {
+  display: inline-block;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+  margin: 4px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+}
+
+#panelMarcador > div span {
+  font-size: 18px;
+  color: #222;
+}
