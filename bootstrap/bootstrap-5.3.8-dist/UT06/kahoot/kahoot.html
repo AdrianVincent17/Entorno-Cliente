@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test interactivo UT6</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>Test interactivo (Kahoot UT6)</h1>
+    <div class="contenedor">
+        <!-- CAJA SUPERIOR: contadores + reiniciar -->
+        <div class="caja">
+            <div class="fila">
+                <div>
+                    <!-- Contador de preguntas "Pregunta X/Y" (actualizar con JS) -->
+                    <span class="pill" id="infoPregunta">Pregunta 1/1</span>
+
+                    <!-- Contador de puntuación "Puntuación: X" (actualizar con JS) -->
+                    <span class="pill" id="infoPuntos">Puntuación: 0</span>
+                </div>
+
+                <div>
+                    <!-- Botón para reiniciar el test (JS)-->
+                    <button class="btn btn-reiniciar" id="btnReiniciar" type="button">Reiniciar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAJA PRINCIPAL: pregunta + respuestas + feedback + botón siguiente -->
+        <div class="caja">
+            <!-- Inserta el texto de la pregunta (JS) -->
+            <div class="pregunta" id="txtPregunta">—</div>
+
+            <!-- Aquí se generan dinámicamente los botones de respuesta (JS) -->
+            <div class="respuestas" id="respuestas">
+                <!-- Botones/respuesta creados por JS -->
+            </div>
+
+            <!-- Muestra feedback tras responder (JS) -->
+            <div class="feedback" id="feedback">
+                <div id="txtFeedback">—</div>
+            </div>
+
+            <!-- Botón para pasar a la siguiente pregunta o mostrar el resultado final (JS) -->
+            <button class="btn btn-principal" id="btnSiguiente" type="button" disabled>Siguiente</button>
+
+            <!-- Mensaje de información para el usuario (JS) -->
+            <div class="estado" id="txtEstado">Estado: esperando respuesta</div>
+        </div>
+
+    </div>
+
+    <!-- Script que debes desarrollar -->
+    <script src="app.js"></script>
+</body>
+
+</html>

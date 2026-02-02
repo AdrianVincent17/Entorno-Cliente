@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f2f2;
+    color: #222;
+}
+
+/* Título */
+h1 {
+    font-size: 18px;
+    text-align: center;
+    margin: 16px 0 12px;
+}
+
+/* Contenedor principal */
+.contenedor {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px 16px;
+}
+
+/* Caja “tipo tarjeta” */
+.caja {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+/* Fila para alinear contadores a la izquierda y botón a la derecha */
+.fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* =========================
+   BOTONES (UNA BASE + VARIANTES)
+   ========================= */
+
+/* Clase base para TODOS los botones (respuestas y acciones) */
+.btn {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background: #f7f7f7;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Botón principal ("Siguiente") */
+.btn-principal {
+    border-color: #2f80ed;
+    background: #2f80ed;
+    color: #fff;
+}
+
+.btn-principal:hover {
+    background: #256bd0;
+}
+
+/* Botón reiniciar */
+.btn-reiniciar {
+    border-color: #2f80ed;
+    background: #eaf2ff;
+    color: #222;
+}
+
+.btn-reiniciar:hover {
+    background: #dce9ff;
+}
+
+/* =========================
+   ELEMENTOS QUE JS ACTUALIZA
+   ========================= */
+
+/* (JS) #infoPregunta -> texto "Pregunta X/Y" */
+/* (JS) #infoPuntos   -> texto "Puntuación: X" */
+.pill {
+    display: inline-block;
+    font-size: 14px;
+    color: #555;
+    background: #f3f4f5;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    padding: 10px 12px;
+    margin-right: 6px;
+}
+
+/* (JS) #txtPregunta -> texto de pregunta */
+.pregunta {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* (JS) #respuestas -> aquí se crean botones dinámicamente */
+/* Importante: los botones dentro de .respuestas ocupan todo el ancho */
+.respuestas .btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 12px 0;
+}
+
+/* =========================
+   ESTADOS DE RESPUESTA (JS AÑADE CLASES)
+   ========================= */
+
+/* (JS) Añade .correcta al botón correcto */
+.correcta {
+    background: #e8f7ee;
+    border-color: #2e9e57;
+}
+
+/* (JS) Añade .incorrecta al botón elegido incorrecto */
+.incorrecta {
+    background: #fdecec;
+    border-color: #d64545;
+}
+
+/* =========================
+   FEEDBACK / ESTADO
+   ========================= */
+
+/* (JS) #feedback se muestra añadiendo .ok o .bad */
+.feedback {
+    margin: 12px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    background: #fafafa;
+    display: none;
+    font-size: 14px;
+}
+
+/* (JS) feedback.classList.add("ok") */
+.feedback.ok {
+    display: block;
+    background: #e8f7ee;
+    border-color: #2e9e57;
+}
+
+/* (JS) feedback.classList.add("bad") */
+.feedback.bad {
+    display: block;
+    background: #fdecec;
+    border-color: #d64545;
+}
+
+/* (JS) #txtEstado -> texto "Estado: ..." */
+.estado {
+    font-size: 12px;
+    color: #666;
+    margin-top: 14px;
+}

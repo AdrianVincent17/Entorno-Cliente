@@ -1,0 +1,22 @@
+[
+    {
+        "nombre":"Adrian",
+        "edad":20,
+        "curso":"2º DAW"
+    },
+     {
+        "nombre":"Eduardo",
+        "edad":25,
+        "curso":"2º DAW"
+    },
+     {
+        "nombre":"Julia",
+        "edad":19,
+        "curso":"1º DAW"
+    },
+     {
+        "nombre":"Lucas",
+        "edad":30,
+        "curso":"2º DAW"
+    }
+]
